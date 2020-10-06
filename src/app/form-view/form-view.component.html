@@ -1,0 +1,76 @@
+
+<mat-card class="form-card" *ngIf="form">
+    <mat-card-header>
+        <mat-card-title>{{form.type}} / SV</mat-card-title>
+        <mat-card-subtitle>{{form.timestamp | date:'dd.MM.yyyy HH:mm'}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <table>
+            <tr>
+                <td><b>a. </b>Numărul total al alegătorilor prevăzut în listele electorale existente în secția de votare</td>
+                <td>{{form.a[0] + form.a[1] + form.a[2] + form.a[3]}}</td>
+            </tr>
+            <tr>
+                <td><b>a1. </b>Numărul total al alegătorilor potrivit listei electorale permanente</td>
+                <td>{{form.a[0]}}</td>
+            </tr>
+            <tr>
+                <td><b>a2. </b>Numărul total al alegătorilor potrivit copiei de pe lista electorală complementară</td>
+                <td>{{form.a[1]}}</td>
+            </tr>
+            <tr>
+                <td><b>a3. </b>Numărul total al alegătorilor potrivit listelor electorale suplimentare</td>
+                <td>{{form.a[2]}}</td>
+            </tr>
+            <tr>
+                <td><b>a4. </b>Numărul total al alegătorilor în cazul cărora s-a folosit urna specială</td>
+                <td>{{form.a[3]}}</td>
+            </tr>
+            <tr>
+                <td><b>b. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în listele electorale existente în secția de votare</td>
+                <td>{{form.b[0] + form.b[1] + form.b[2] + form.b[3]}}</td>
+            </tr>
+            <tr>
+                <td><b>b1. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în lista electorală permanentă</td>
+                <td>{{form.b[0]}}</td>
+            </tr>
+            <tr>
+                <td><b>b2. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în copia de pe lista electorală complementară</td>
+                <td>{{form.b[1]}}</td>
+            </tr>
+            <tr>
+                <td><b>b3. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în listele electorale suplimentare</td>
+                <td>{{form.b[2]}}</td>
+            </tr>
+            <tr>
+                <td><b>b4. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, în cazul cărora s-a folosit urna specială</td>
+                <td>{{form.b[3]}}</td>
+            </tr>
+            <tr>
+                <td><b>c. </b>Numărul total voturilor valabil exprimate</td>
+                <td>{{form.c}}</td>
+            </tr>
+            <tr>
+                <td><b>d. </b>Numărul voturilor nule</td>
+                <td>{{form.d}}</td>
+            </tr>
+            <tr>
+                <td><b>e. </b>Numărul buletinelor de vot primite</td>
+                <td>{{form.e}}</td>
+            </tr>
+            <tr>
+                <td><b>f. </b>Numărul buletinelor de vot neîntrebuințate și anulate</td>
+                <td>{{form.f}}</td>
+            </tr>
+        </table>
+        <span><b>g. </b> Numărul voturilor valabil exprimate obținute de fiecare candidat</span>
+        <table>
+            <tr *ngFor="let candidate of form.g; let i = index">
+                <td *ngIf="form.type == 'P'">{{candidate.name}}</td>
+                <td>{{candidate.party}}</td>
+                <td>{{i + 1}}</td>
+                <td>{{candidate.votes}}</td>
+            </tr>
+        </table>
+    </mat-card-content>
+</mat-card>

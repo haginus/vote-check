@@ -1,0 +1,31 @@
+<div class="scroll-container">
+  <mat-toolbar>
+      <span>VoteCheck</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="openSettingsDialog()">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openInfoDialog()">
+        <mat-icon>info</mat-icon>
+      </button>
+    </mat-toolbar>
+  <div class="scroll">
+    <div class="home-section">
+      <div class="mat-title">Procese-verbale</div>
+      <mat-card class="form-card" *ngFor="let form of forms; let i = index">
+          <mat-card-header>
+          <mat-card-title>{{form.type}} / SV</mat-card-title>
+          <mat-card-subtitle>{{form.timestamp | date:'dd.MM.yyyy HH:mm'}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+          <button mat-icon-button [routerLink]="['/form', i,'edit']">
+              <mat-icon>arrow_forward</mat-icon>
+          </button>
+          </mat-card-actions>
+      </mat-card>
+      <div>
+          <button mat-button mat-stroked-button [routerLink]="['/form', 'create']">Crează P.V.</button>
+      </div>
+    </div>
+  </div>
+</div>

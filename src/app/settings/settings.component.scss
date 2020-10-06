@@ -1,0 +1,28 @@
+mat-form-field {
+    display: block;
+}
+
+.precinct-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 16px;
+}
+
+.precinct-name {
+    font-size: 14px;
+}
+
+.precinct-name b {
+    font-weight: 500;
+}
+
+.precinct-details {
+    font-size: small;
+    text-transform: capitalize;
+    color: #424242;
+}
+
+.error {
+    color: #D32F2F;
+    font-size: 12px;
+}

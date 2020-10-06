@@ -1,0 +1,191 @@
+<div class="scroll-container">
+    <mat-toolbar>
+        <button mat-icon-button [routerLink]="['/']" style="margin-right: 8px;">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span>{{formId != 'new' ? 'Editare' : 'Adăugare'}} P.V.</span>
+        <span class="spacer"></span>
+        <button mat-icon-button matTooltip="Ștergeți P.V." *ngIf="formId != 'new'" (click)="askDeleteForm()">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Salvați P.V." (click)="saveForm()">
+            <mat-icon>save</mat-icon>
+        </button>
+    </mat-toolbar>
+    <div class="scroll">
+        <app-loading-screen [active]="loading"></app-loading-screen>
+        <form [formGroup]="formV">
+        <mat-card class="form-edit-card mat-elevation-z2">
+            <mat-card-header>
+                <mat-card-title>Proces-verbal</mat-card-title>
+                <mat-card-subtitle [class]="formV.invalid ? 'invalid' : 'valid'">Procesul-verbal este {{formV.invalid ? 'invalid' : 'valid'}}.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Tip P.V.</mat-label>
+                    <mat-select formControlName="type">
+                    <mat-option value="P">Primar</mat-option>
+                    <mat-option value="CL">Consiliu local</mat-option>
+                    <mat-option value="PCJ">Președinte consiliu județean</mat-option>
+                    <mat-option value="CJ">Consiliu județean</mat-option>
+                    </mat-select>
+                    <mat-hint>Selectați tipul autorității locale</mat-hint>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="form-edit-card mat-elevation-z2">
+            <mat-card-header>
+                <mat-card-title>Numărul total al alegătorilor</mat-card-title>
+                <mat-card-subtitle>Numărați toate persoanele de pe următoarele liste:</mat-card-subtitle>
+                <span class="spacer"></span>
+                <button mat-icon-button matTooltip="Obțineți din SIMPV" (click)="simpvAutocomplete()">
+                    <mat-icon>cloud_download</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content formGroupName="a">
+                <mat-form-field appearance="outline">
+                    <mat-label>Toate listele | Se completează automat</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" disabled [value]="form._a">
+                    <mat-hint><b>a. </b>Numărul total al alegătorilor prevăzut în listele electorale existente în secția de votare</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Lista permanentă</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="a1" [errorStateMatcher]="matcher">
+                    <mat-hint><b>a1. </b>Numărul total al alegătorilor potrivit listei electorale permanente</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a1b1">Constrângere nerespectată: <b>a1 ≥ b1</b>!</mat-error>
+                    <mat-error *ngIf="a1.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Copie listă complementară</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="a2" [errorStateMatcher]="matcher">
+                    <mat-hint><b>a2. </b>Numărul total al alegătorilor potrivit copiei de pe lista electorală complementară</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a2b2">Constrângere nerespectată: <b>a2 ≥ b2</b>!</mat-error>
+                    <mat-error *ngIf="a2.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Liste suplimentare</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="a3" [errorStateMatcher]="matcher">
+                    <mat-hint><b>a3. </b>Numărul total al alegătorilor potrivit listelor electorale suplimentare</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a3b3">Constrângere nerespectată: <b>a3 ≥ b3</b>!</mat-error>
+                    <mat-error *ngIf="a3.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Liste urna specială</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="a4" [errorStateMatcher]="matcher">
+                    <mat-hint><b>a4. </b>Numărul total al alegătorilor în cazul cărora s-a folosit urna specială</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a4b4">Constrângere nerespectată: <b>a4 ≥ b4</b>!</mat-error>
+                    <mat-error *ngIf="a4.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="form-edit-card mat-elevation-z2">
+            <mat-card-header>
+                <mat-card-title>Numărul alegătorilor care au votat</mat-card-title>
+                <mat-card-subtitle>Numărați doar persoanele care și-au exercitat dreptul la vot de pe următoarele liste:</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content formGroupName="b">
+                <mat-form-field appearance="outline">
+                    <mat-label>Toate listele | Se completează automat</mat-label>
+                    <input matInput placeholder="Completare" type="number" min="0" inputmode="numeric" pattern="[0-9]*" disabled [value]="form._b">
+                    <mat-hint><b>b. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în listele electorale existente în secția de votare</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Lista permanentă</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="b1" [errorStateMatcher]="matcher">
+                    <mat-hint><b>b1. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în lista electorală permanentă</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a1b1">Constrângere nerespectată: <b>a1 ≥ b1</b>!</mat-error>
+                    <mat-error *ngIf="b1.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Copie listă complementară</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="b2" [errorStateMatcher]="matcher">
+                    <mat-hint><b>b2. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în copia de pe lista electorală complementară</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a2b2">Constrângere nerespectată: <b>a2 ≥ b2</b>!</mat-error>
+                    <mat-error *ngIf="b2.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Liste suplimentare</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="b3" [errorStateMatcher]="matcher">
+                    <mat-hint><b>b3. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, înscriși în listele electorale suplimentare</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a3b3">Constrângere nerespectată: <b>a3 ≥ b3</b>!</mat-error>
+                    <mat-error *ngIf="b3.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Liste urna specială</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="b4" [errorStateMatcher]="matcher">
+                    <mat-hint><b>b4. </b>Numărul total al alegătorilor <b>care s-au prezentat la urne</b>, în cazul cărora s-a folosit urna specială</mat-hint>
+                    <mat-error *ngIf="formV.errors?.a4b4">Constrângere nerespectată: <b>a4 ≥ b4</b>!</mat-error>
+                    <mat-error *ngIf="b4.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="form-edit-card mat-elevation-z2">
+            <mat-card-header>
+                <mat-card-title>Voturi exprimate</mat-card-title>
+                <mat-card-subtitle>Numărați voturile exprimate</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Voturi valabil exprimate | Se completează automat</mat-label>
+                    <input matInput placeholder="Completare" type="number" min="0" inputmode="numeric" pattern="[0-9]*" disabled [value]="form.c">
+                    <mat-hint><b>c. </b>Numărul total al voturilor valabil exprimate; se completează automat după suma voturilor exprimate la g.</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Voturi nule</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="d" [errorStateMatcher]="matcher">
+                    <mat-hint><b>d. </b>Numărul voturilor nule</mat-hint>
+                    <mat-error *ngIf="formV.errors?.cbd">Constrângere nerespectată: <b>c ≤ b - d</b>!</mat-error>
+                    <mat-error *ngIf="formV.errors?.ecdf">Constrângere nerespectată: <b>e ≥ c + d + f</b>!</mat-error>
+                    <mat-error *ngIf="d.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="form-edit-card mat-elevation-z2">
+            <mat-card-header>
+                <mat-card-title>Buletine de vot</mat-card-title>
+                <mat-card-subtitle>Numărați buletinele de vot</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Buletine de vot primite</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="e" [errorStateMatcher]="matcher">
+                    <mat-hint><b>e. </b>Numărul buletinelor de vot primite</mat-hint>
+                    <mat-error *ngIf="formV.errors?.ecdf">Constrângere nerespectată: <b>e ≥ c + d + f</b>!</mat-error>
+                    <mat-error *ngIf="e.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Buletine de vot anulate</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" formControlName="f" [errorStateMatcher]="matcher">
+                    <mat-hint><b>f. </b>Numărul buletinelor de vot întrebuințate și anulate</mat-hint>
+                    <mat-error *ngIf="formV.errors?.ecdf">Constrângere nerespectată: <b>e ≥ c + d + f</b>!</mat-error>
+                    <mat-error *ngIf="f.errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="form-edit-card mat-elevation-z2">
+            <mat-card-header>
+                <mat-card-title>Voturi valabil exprimate pentru fiecare candidat</mat-card-title>
+                <mat-card-subtitle>Numărați voturile valabil exprimate pentru fiecare candidat în parte (<b>punctul g.</b>)
+                <span class="invalid" *ngIf="formV.errors?.cbd"><br>Constrângere nerespectată: <b>c ≤ b - d</b>!</span>
+                <span class="invalid" *ngIf="formV.errors?.ecdf"><br>Constrângere nerespectată: <b>e ≥ c + d + f</b>!</span>
+                <span class="invalid" *ngIf="formV.errors?.cbd || formV.errors?.ecdf"><br>Există posibilitatea ca unul din câmpurile de mai jos să fie completat greșit.</span>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content formGroupName="g">
+                <mat-form-field appearance="outline" *ngFor="let candidate of candidates[type.value]; let i = index">
+                    <mat-label *ngIf="type.value == 'P' || type.value == 'PCJ'">{{i + 1}}. {{candidate.name | titlecase}}</mat-label>
+                    <mat-label *ngIf="type.value == 'CL' || type.value == 'CJ'">{{i + 1}}. {{candidate.party}}</mat-label>
+                    <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" [formControlName]="'g' + (i + 1)" [errorStateMatcher]="matcher">
+                    <mat-hint *ngIf="type.value == 'P' || type.value == 'PCJ'"><b>Partid: </b>{{candidate.party}}</mat-hint>
+                    <mat-error *ngIf="g(i + 1).errors?.negative">Numărul nu poate fi negativ!</mat-error>
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+        </form>
+    </div>
+</div>
