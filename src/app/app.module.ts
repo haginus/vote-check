@@ -29,6 +29,7 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
 import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SetupComponent } from './setup/setup.component';
+import { NamePipe } from './name.pipe';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SetupComponent } from './setup/setup.component';
     DialogFormSimpv,
     LoadingScreenComponent,
     SettingsComponent,
-    SetupComponent
+    SetupComponent,
+    NamePipe
   ],
   imports: [
     BrowserModule,

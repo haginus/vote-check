@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SettingsComponent } from '../settings/settings.component';
 import { SimpvPullService } from '../simpv-pull.service';
 import { ConnectionService } from 'ng-connection-service';
+
 @Component({
   selector: 'app-form-edit',
   templateUrl: './form-edit.component.html',
