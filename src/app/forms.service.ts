@@ -1,110 +1,90 @@
 import { Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import candidates from '../files/candidates_ct.json'
+import { SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormsService {
-  constructor(private storage: StorageMap) { }
+  constructor(private storage: StorageMap, private settingsService: SettingsService) { }
 
-  createForm(form:Form) {
-    return new Observable(subscriber => {
-      this.getForms().subscribe((data:Form[]) => {
-        if(data == undefined) data = []
-        form.timestamp = new Date().getTime()
-        data.push(form);
-        this.storage.set('forms', data).subscribe(() => {
-          subscriber.next(data.length - 1);
-          subscriber.complete();
-        });
-      });
-    });
+  createForm(form: Form) {
+    form.timestamp = new Date().getTime();
+    return this.getForms().pipe(
+      switchMap(forms => {
+        forms.push(form);
+        return this.storage.set('forms', forms).pipe(
+          map(_ => forms.length - 1)
+        );
+      })
+    )
   }
 
   editForm(id: number, form:Form) {
-    return new Observable(subscriber => {
-      this.getForms().subscribe((data:Form[]) => {
-        if(data == undefined) data = []
-        if(!this.checkIndex(data, id)) {
-          subscriber.error('INDEX_OUT_OF_RANGE');
-          subscriber.complete();
-        }
-        data[id] = form;
-        this.storage.set('forms', data).subscribe(() => {
-          subscriber.next(true);
-          subscriber.complete();
-        });
-      });
-    });
+    return this.getForms().pipe(
+      switchMap(forms => {
+        if(!checkIndex(forms, id)) 
+          throw 'INDEX_OUT_OF_RANGE';
+        forms[id] = form;
+        return this.storage.set('forms', forms);
+      })
+    )
   }
 
   deleteForm(id: number) {
-    return new Observable(observer => {
-      this.getForms().subscribe((data:Form[]) => {
-        if(data == undefined) data = []
-        if(this.checkIndex(data, id)) {
-          data.splice(id, 1);
-          this.storage.set('forms', data).subscribe({
-            next: () => observer.next(true),
-            error: (err) => observer.error(err),
-            complete: () => observer.complete()
-          });
-        } else {
-          observer.next(true); // if form is not there return true
-          observer.complete();
+    return this.getForms().pipe(
+      switchMap(forms => {
+        if(checkIndex(forms, id)) {
+          forms.splice(id, 1);
+          return this.storage.set('forms', forms).pipe(
+            map(res => true),
+            catchError(err => of(false))
+          );
         }
-      });
-    })
+        return of(true);
+      })
+    )
   }
 
   getForms() : Observable<Form[]> {
-    return this.storage.get('forms') as Observable<Form[]>
+    return this.storage.get<Form[]>('forms').pipe(
+      map(forms => forms === undefined ? [] : forms)
+    ) as Observable<Form[]>
   }
 
   watchForms() : Observable<Form[]> {
-    return this.storage.watch('forms') as Observable<Form[]>
+    return this.storage.watch('forms').pipe(
+      map(forms => forms === undefined ? [] : forms)
+    ) as Observable<Form[]>
   }
 
   getForm(id: number) : Observable<Form> {
-    return new Observable(subscriber => {
-      this.getForms().subscribe(data => {
-        if(this.checkIndex(data, id))
-          subscriber.next(data[id]);
-        else subscriber.error('INDEX_OUT_OF_RANGE');
-        subscriber.complete();
+    return this.getForms().pipe(
+      map(forms => {
+        if(!checkIndex(forms, id))
+          throw 'INDEX_OUT_OF_RANGE';
+        return forms[id]
       })
-    })
+    );
   }
 
   getCandidates() : Observable<any> {
-    return new Observable(observer => {
-      this.watchSettings().subscribe(settings => {
+    return this.settingsService.watchSettings().pipe(
+      map(settings => {
         let result = { CJ: candidates.county.CJ, PCJ: candidates.county.PCJ };
         const uatData = candidates.uats[settings.uatName];
         result['P'] = uatData.P;
         result['CL'] = uatData.CL;
-        observer.next(result);
+        return result;
       })
-    })
+    );
   }
-
-  private checkIndex = (arr : Form[], i : number) => { return 0 <= i && i < arr.length }
-
-  getSettings() : Observable<any> {
-    return this.storage.get("settings");
-  }
-
-  watchSettings() : Observable<any> {
-    return this.storage.watch("settings");
-  }
-
-  saveSettings(settings : any) {
-    this.storage.set("settings", settings).subscribe(() => {});
-  }
-
 }
+
+const checkIndex = (arr : Form[], i : number) => { return 0 <= i && i < arr.length }
 
 export interface Form {
   timestamp?: number

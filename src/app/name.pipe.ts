@@ -8,10 +8,10 @@ const prepositions = ['A', 'Din', 'Și', 'Cu', 'De', 'La', 'Fără', 'Despre', '
 export class NamePipe implements PipeTransform {
 
   transform(value: string): string {
-    return value.toLowerCase().replace(/(?:^|[\s-/])\(*[\wăîșțâ]/g, function (match) {
+    return value.toLowerCase().replace(/(?:^|[\s-/])\(*[\wăîșşțţâ]/g, function (match) {
       return match.toUpperCase();
     })
-    .replace(/[\wăîșțâĂÎȘȚÂ]*/g, function(match) {
+    .replace(/[\wăîșțâĂÎȘŞȚŢÂ]*/g, function(match) {
       return prepositions.includes(match) ? match.toLowerCase() : match;
     })
   }

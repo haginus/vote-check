@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SettingsComponent } from '../settings/settings.component';
 import { SimpvPullService } from '../simpv-pull.service';
 import { ConnectionService } from 'ng-connection-service';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-form-edit',
@@ -308,7 +309,8 @@ export class DialogFormDelete {}
   templateUrl: '../dialog-templates/dialog-form-simpv.html',
 })
 export class DialogFormSimpv implements OnInit {
-  constructor(private simpv: SimpvPullService, private formsService: FormsService, private dialog: MatDialog, private connectionService: ConnectionService) {}
+  constructor(private simpv: SimpvPullService, private formsService: FormsService, private settingsService: SettingsService,
+    private dialog: MatDialog, private connectionService: ConnectionService) {}
   precinct : any = null;
   settings : any;
   loading : boolean = true;
@@ -320,7 +322,7 @@ export class DialogFormSimpv implements OnInit {
         this.getPrecinctData();
       this.online = online
     });
-    this.formsService.getSettings().subscribe(res => {
+    this.settingsService.getSettings().subscribe(res => {
       this.settings = res;
       if(this.online) this.getPrecinctData();
       else this.loading = false;
@@ -342,7 +344,7 @@ export class DialogFormSimpv implements OnInit {
         return;
       }
       this.loading = true;
-      this.formsService.getSettings().subscribe(res => {
+      this.settingsService.getSettings().subscribe(res => {
         if(res != this.settings) {
           this.settings = res;
           if(this.online) this.getPrecinctData();

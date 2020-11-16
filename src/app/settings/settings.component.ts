@@ -4,6 +4,7 @@ import { ConnectionService } from 'ng-connection-service';
 import { Observable, of, scheduled } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormsService } from '../forms.service';
+import { SettingsService, Settings } from '../settings.service';
 import { SimpvPullService } from '../simpv-pull.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { SimpvPullService } from '../simpv-pull.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private simpv : SimpvPullService, private forms : FormsService, private connectionService: ConnectionService) {
+  constructor(private simpv: SimpvPullService, private forms: FormsService, private connectionService: ConnectionService, private settingsService: SettingsService) {
     this.filteredPrecincts = this.settingsForm.get('precinct').valueChanges
       .pipe(
         startWith(''),
@@ -21,7 +22,7 @@ export class SettingsComponent implements OnInit {
       );
   }
 
-  settings = {county: null, precinct: null, uatName: null}
+  settings : Settings;
   online : boolean = navigator.onLine;
   disabled = true
   precincts = []
@@ -35,7 +36,7 @@ export class SettingsComponent implements OnInit {
       }
       this.online = online
     });
-    this.forms.getSettings().subscribe(res => {
+    this.settingsService.getSettings().subscribe(res => {
       this.settings = res ? res : {county: 'ct', precinct: null};
       this.settingsForm.get('county').setValue(this.settings.county);
       this.settingsForm.get('precinct').setValue(this.settings.precinct);
@@ -82,7 +83,7 @@ export class SettingsComponent implements OnInit {
     this.settings.county = this.settingsForm.get("county").value;
     this.settings.precinct = Number(this.settingsForm.get("precinct").value);
     this.settings.uatName = normalize(this.precincts[this.settings.precinct].uatName).toUpperCase();
-    this.forms.saveSettings(this.settings)
+    this.settingsService.saveSettings(this.settings)
   }
 
   

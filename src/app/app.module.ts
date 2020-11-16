@@ -30,6 +30,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SetupComponent } from './setup/setup.component';
 import { NamePipe } from './name.pipe';
+import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { NamePipe } from './name.pipe';
     LoadingScreenComponent,
     SettingsComponent,
     SetupComponent,
-    NamePipe
+    NamePipe,
+    TasksListComponent
   ],
   imports: [
     BrowserModule,
