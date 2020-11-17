@@ -17,6 +17,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SetupComponent } from './setup/setup.component';
 import { NamePipe } from './name.pipe';
 import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
+import { ProgressComponent } from './tasks/progress/progress.component';
+import { TaskSectionComponent } from './tasks/task-section/task-section.component';
 
 
 @NgModule({
@@ -47,7 +53,9 @@ import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
     SettingsComponent,
     SetupComponent,
     NamePipe,
-    TasksListComponent
+    TasksListComponent,
+    ProgressComponent,
+    TaskSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +67,12 @@ import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
     MatButtonModule,
     MatCardModule,
     MatTableModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatListModule,
     MatAutocompleteModule,
     MatSelectModule,
     MatDialogModule,

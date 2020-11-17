@@ -53,3 +53,53 @@ button[mat-icon-button] {
     font-family: 'Material Icons Outlined';
     font-size: 24px;
 }
+
+.progress-spinner {
+    position: relative;
+
+    .main-spinner, .placeholder-spinner {
+        position: absolute;
+        z-index: 1;
+    }
+
+    .main-spinner {
+        z-index: 2;
+    }
+
+    .main-spinner.low circle {
+        stroke: #F44336!important;
+    }
+
+    .main-spinner.mid circle {
+        stroke: #FF9800!important;
+    }
+
+    .main-spinner.high circle {
+        stroke: #388E3C!important;
+    }
+
+    .placeholder-spinner circle {
+        stroke: #E0E0E0!important;
+    }
+}
+
+mat-checkbox.multiline {
+    .mat-checkbox-layout {
+        white-space: normal;
+        align-items: end;
+        vertical-align: top;
+    }
+    .mat-checkbox-layout .mat-checkbox-label {
+        line-height: 16px;
+    }
+
+    .mat-checkbox-inner-container {
+        margin: 0px;
+        margin-right: 8px;
+    }
+}
+
+
+
+
+

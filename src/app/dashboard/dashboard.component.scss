@@ -12,6 +12,10 @@
     margin: 0px 12px 12px 0px;
 }
 
+.form-card:last-of-type {
+    margin-right: 0px;
+}
+
 .form-card mat-card-actions {
     text-align: right;
     padding: 0;

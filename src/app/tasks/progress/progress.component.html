@@ -1,0 +1,10 @@
+<div class="progress-spinner" [ngStyle]="{'width': diameter + 'px', 'height': diameter + 'px'}">
+    <div *ngIf="progress < 100">
+        <mat-progress-spinner class="placeholder-spinner" mode="determinate" [value]="100" [diameter]="diameter"></mat-progress-spinner>
+        <mat-progress-spinner class="main-spinner" mode="determinate" [value]="progress" [diameter]="diameter"
+        [ngClass]="{'low': progress < 40, 'mid': 40 <= progress && progress <= 80, 'high': progress > 80}"></mat-progress-spinner>
+    </div>
+    <div *ngIf="progress == 100">
+        <mat-icon>done</mat-icon>
+    </div>
+</div>

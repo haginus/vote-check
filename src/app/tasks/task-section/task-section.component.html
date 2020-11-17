@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{section.sectionName}}</h1>
+<div mat-dialog-content>
+    <div *ngFor="let content of section.content" class="section-container">
+        <div class="section-text" *ngIf="content.text">{{content.text}}</div>
+        <div *ngIf="content.type == 'list'">
+            <div *ngFor="let task of content.tasks; let i = index" class="task-container">
+                <mat-checkbox [(ngModel)]="task.checked" class="multiline">{{task.taskName}}</mat-checkbox>
+                <div class="tip-container">
+                    <div class="task-tip" *ngIf="task.tip || task.tipLink ">
+                        <span>{{task.tip}} </span>
+                        <a [routerLink]="[ task.tipLink.link ]" *ngIf="task.tipLink" mat-dialog-close>{{task.tipLink.linkText}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

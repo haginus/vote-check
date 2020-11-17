@@ -1,0 +1,30 @@
+.section-container {
+    margin-bottom: 16px;
+    .section-text {
+        margin-bottom: 8px;
+    }
+}
+
+
+
+.task-container {
+    margin-bottom: 12px;
+}
+
+.tip-container {
+    display: flex;
+    justify-content: center;
+}
+
+.task-tip {
+    padding: 8px 12px;
+    background: #90A4AE;
+    border-radius: 6px;
+    margin-top: 6px;
+    display: inline-block;
+    a {
+        font-weight: 500;
+        text-decoration: none;
+        color: #263238;
+    }
+}

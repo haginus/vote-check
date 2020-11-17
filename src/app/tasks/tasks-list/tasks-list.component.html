@@ -1,3 +1,21 @@
-<div>
+<mat-accordion>
+  <mat-expansion-panel hideToggle *ngFor="let chapter of tasks; let chapterIndex = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <app-progress [diameter]="24" [progress]="progress[chapterIndex].progress"></app-progress>
+        <span class="chapter-title">{{chapter.chapterName}}</span>
+      </mat-panel-title>
+      <span>{{chapter.sections.length}} secțiuni</span>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let section of chapter.sections; let sectionIndex = index" class="task-section" (click)="openSection(chapterIndex, sectionIndex)">
+          <span class="section-title">
+            <span>{{section.sectionName}}</span>
+            <span *ngIf="section.isOptional" class="optional">(Opțional)</span>
+          </span>
+          <app-progress [diameter]="24" [progress]="progress[chapterIndex].sections[sectionIndex]"></app-progress>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>
 
-</div>
