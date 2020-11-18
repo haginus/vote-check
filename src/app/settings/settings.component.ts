@@ -4,8 +4,9 @@ import { ConnectionService } from 'ng-connection-service';
 import { Observable, of, scheduled } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormsService } from '../forms.service';
-import { SettingsService, Settings } from '../settings.service';
+import { SettingsService, Settings, defaultSettings } from '../settings.service';
 import { SimpvPullService } from '../simpv-pull.service';
+import COUNTIES from '../../files/counties.json'
 
 @Component({
   selector: 'app-settings',
@@ -25,43 +26,79 @@ export class SettingsComponent implements OnInit {
   settings : Settings;
   online : boolean = navigator.onLine;
   disabled = true
+  counties = []
   precincts = []
   filteredPrecincts : Observable<any>
 
+  settingsForm = new FormGroup({
+    'county': new FormControl(null),
+    'precinct': new FormControl({value: null, disabled: true}),
+  });
+
+  get county() { return this.settingsForm.get("county") }
+  get precinct() { return this.settingsForm.get("precinct") }
+
   ngOnInit(): void {
+    let counties = COUNTIES
+    this.counties = Object.entries(counties);
+
     this.connectionService.monitor().subscribe(online => {
       if(online == true && !this.online) {
         this.getCountyPrecincts();
+      }
+      if(online) {
+        this.county.enable();
         this.precinct.enable();
       }
       this.online = online
     });
+
     this.settingsService.getSettings().subscribe(res => {
-      this.settings = res ? res : {county: 'ct', precinct: null};
-      this.settingsForm.get('county').setValue(this.settings.county);
-      this.settingsForm.get('precinct').setValue(this.settings.precinct);
-      if(this.online) this.getCountyPrecincts();
-      else this.precinct.disable();
+      if(res == undefined) {
+        this.settings = defaultSettings;
+      } else {
+        this.settings = res;
+        this.county.setValue(this.settings.selectedPrecinct.county);
+        this.precinct.setValue(this.settings.selectedPrecinct.precinct);
+        if(this.online)
+          this.getCountyPrecincts();
+        else {
+          this.county.disable();
+          this.precinct.disable();
+        }
+      }
     })
-    this.settingsForm.valueChanges.subscribe(e => {
-      const val = Number(e.precinct)
+
+    this.county.valueChanges.subscribe(value => {
+      if(this.settings.selectedPrecinct.county != value || value == null) {
+        this.settings.selectedPrecinct.county = value;
+        this.getCountyPrecincts();
+        this.settings.selectedPrecinct.precinct = null;
+        this.precinct.setValue(null);
+      }
+    })
+
+    this.precinct.valueChanges.subscribe(value => {
+      const val = Number(value)
       if(val > 0 && val <= this.precincts.length)
         this.disabled = false;
       else this.disabled = true;
     })
   }
 
-  settingsForm = new FormGroup({
-    'county': new FormControl('ct'),
-    'precinct': new FormControl(null),
-  });
+  
 
   getCountyPrecincts() {
-    this.simpv.getPrecincts(this.settings.county).subscribe(res => {
+    if(!this.settings.selectedPrecinct.county)
+      return;
+    this.precinct.disable();
+    this.simpv.getPrecincts(this.settings.selectedPrecinct.county).subscribe(res => {
       res = res.map((precinct, precinctNo) => {
         return { name: precinct['precinct']['name'].toLowerCase(), uatName: precinct['uat']['name'].toLowerCase(), no: (precinctNo + 1).toString() }
       })
       this.precincts = res;
+      this.precinct.setValue(this.settings.selectedPrecinct.precinct);
+      this.precinct.enable();
     });
   }
 
@@ -76,14 +113,11 @@ export class SettingsComponent implements OnInit {
     );
   }
 
-  get county() { return this.settingsForm.get("county") }
-  get precinct() { return this.settingsForm.get("precinct") }
-
   saveSettings() {
-    this.settings.county = this.settingsForm.get("county").value;
-    this.settings.precinct = Number(this.settingsForm.get("precinct").value);
-    this.settings.uatName = normalize(this.precincts[this.settings.precinct].uatName).toUpperCase();
-    this.settingsService.saveSettings(this.settings)
+    this.settings.selectedPrecinct.county = this.county.value;
+    this.settings.selectedPrecinct.precinct = Number(this.precinct.value);
+    this.settings.selectedPrecinct.uatName = normalize(this.precincts[this.settings.selectedPrecinct.precinct].uatName).toUpperCase();
+    this.settingsService.saveSettings(this.settings).subscribe(_ => {})
   }
 
   

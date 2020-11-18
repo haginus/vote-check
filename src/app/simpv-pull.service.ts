@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,10 @@ export class SimpvPullService {
   constructor(private http: HttpClient) { }
 
   getCountyData(county: string, timestamp?: number) {
+    county = county.toLowerCase()
     if(!timestamp) timestamp = new Date().getTime()
     return this.http.get(`${presenceUrl}?county=${county}&timestamp=${timestamp}`).pipe(
+      retry(3),
       catchError(this.handleError<Object>('getCountyData', {precinct: []}))
     );
   }
@@ -26,20 +28,18 @@ export class SimpvPullService {
   }
 
   getPrecinct(precintNo: number, county: string, timestamp?: number) {
-    return new Observable(observer => {
-      this.getPrecincts(county, timestamp).subscribe(precincts => {
-        precintNo -= 1;
-        if(precincts.length > precintNo && precintNo >= 0)
-          observer.next(precincts[precintNo])
-        else observer.error('INDEX_OUT_OF_RANGE');
-        observer.complete();
+    return this.getPrecincts(county, timestamp).pipe(
+      map(precincts => {
+        precintNo -= 1
+        if(!(0 <= precintNo && precintNo < precincts.length))
+          throw 'INDEX_OUT_OF_RANGE'
+        return precincts[precintNo]
       })
-    })
+    )
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.log(error)
       return of(result as T);
     };
   }

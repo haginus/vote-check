@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import candidates from '../files/candidates_ct.json'
+import candidates from '../files/candidates.json'
 import { SettingsService } from './settings.service';
 
 @Injectable({
@@ -74,10 +74,11 @@ export class FormsService {
   getCandidates() : Observable<any> {
     return this.settingsService.watchSettings().pipe(
       map(settings => {
-        let result = { CJ: candidates.county.CJ, PCJ: candidates.county.PCJ };
-        const uatData = candidates.uats[settings.uatName];
-        result['P'] = uatData.P;
-        result['CL'] = uatData.CL;
+        let result = { CDEP: [], SENAT: [] }
+        try {
+          const candidatesInCounty = candidates[settings.selectedPrecinct.county];
+          result = { CDEP: candidatesInCounty.CDEP, SENAT: candidatesInCounty.SENAT };
+        } catch(e) {}
         return result;
       })
     );

@@ -24,10 +24,8 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Tip P.V.</mat-label>
                     <mat-select formControlName="type">
-                    <mat-option value="P">Primar</mat-option>
-                    <mat-option value="CL">Consiliu local</mat-option>
-                    <mat-option value="PCJ">Președinte consiliu județean</mat-option>
-                    <mat-option value="CJ">Consiliu județean</mat-option>
+                        <mat-option value="CDEP">Camera Deputaților</mat-option>
+                        <mat-option value="SENAT">Senat</mat-option>
                     </mat-select>
                     <mat-hint>Selectați tipul autorității locale</mat-hint>
                 </mat-form-field>
@@ -178,10 +176,8 @@
             </mat-card-header>
             <mat-card-content formGroupName="g">
                 <mat-form-field appearance="outline" *ngFor="let candidate of candidates[type.value]; let i = index">
-                    <mat-label *ngIf="type.value == 'P' || type.value == 'PCJ'">{{i + 1}}. {{candidate.name | name}}</mat-label>
-                    <mat-label *ngIf="type.value == 'CL' || type.value == 'CJ'">{{i + 1}}. {{candidate.party | name}}</mat-label>
+                    <mat-label>{{i + 1}}. {{candidate.party | name}}</mat-label>
                     <input matInput placeholder="" type="number" min="0" inputmode="numeric" pattern="[0-9]*" [formControlName]="'g' + (i + 1)" [errorStateMatcher]="matcher">
-                    <mat-hint *ngIf="type.value == 'P' || type.value == 'PCJ'"><b>Partid: </b>{{candidate.party | name}}</mat-hint>
                     <mat-error *ngIf="g(i + 1).errors?.negative">Numărul nu poate fi negativ!</mat-error>
                 </mat-form-field>
             </mat-card-content>

@@ -38,4 +38,5 @@ export class DashboardComponent implements OnInit {
 })
 export class DialogInfo {
   appVersion : string = environment.appVersion
+  electionName : string = environment.electionName
 } 

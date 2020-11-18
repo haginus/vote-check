@@ -1,0 +1,3686 @@
+{
+  "AB":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  },
+  "AR":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL COMUNIȘTILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL COMUNIȘTILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  },
+  "AG":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIUNEA ROMÂNĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"BACIU VIRGIL"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIUNEA ROMÂNĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      }
+    ]
+  },
+  "BC":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ANDRIAN TIBERIU"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      }
+    ]
+  },
+  "BH":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"DUMA VICTOR-SEBASTIAN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      }
+    ]
+  },
+  "BN":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"CIOANCA NICOLAE-ILIE"
+      },
+      {
+        "party":"RAŢIU OVIDIU-IOAN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      }
+    ]
+  },
+  "BT":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  },
+  "BV":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NAȚIUNEA ROMÂNĂ"
+      },
+      {
+        "party":"ALBU ERWIN-VLAD"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NAȚIUNEA ROMÂNĂ"
+      }
+    ]
+  },
+  "BR":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL FORȚA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"TABARAC ADRIAN"
+      },
+      {
+        "party":"CALU NECULAI"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL FORȚA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      }
+    ]
+  },
+  "BZ":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      }
+    ]
+  },
+  "CS":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ]
+  },
+  "CJ":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"NAŞ SORIN-VALERIU"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ]
+  },
+  "CT":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"MARTIN CORINA"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      }
+    ]
+  },
+  "CV":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"CRISTEA GEORGE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  },
+  "CL":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"IVAN ANDREI"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      }
+    ]
+  },
+  "DJ":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      }
+    ]
+  },
+  "Diaspora":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"RADU DARIUS-CONSTANTIN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"VOLOŞENIUC ŞTEFAN"
+      }
+    ]
+  },
+  "DB":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ]
+  },
+  "GL":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PETREA IONEL"
+      },
+      {
+        "party":"JALBĂ TIBERIU-MIHAI-ANTONIU"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ]
+  },
+  "GR":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  },
+  "GJ":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"CARALICEA GHEORGHE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ]
+  },
+  "HR":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  },
+  "HD":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL RE:START ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL RE:START ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      }
+    ]
+  },
+  "IL":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"COSTEA VLAD"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ]
+  },
+  "IS":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL RE:START ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"DAVID FELICIA"
+      },
+      {
+        "party":"HOLICOV MONICA"
+      },
+      {
+        "party":"MITOŞERIU CIPRIAN OLIMPIU"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL RE:START ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      }
+    ]
+  },
+  "IF":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"MATEI SERGIU-LUCIAN"
+      },
+      {
+        "party":"ZMARANDA FLORIN"
+      },
+      {
+        "party":"ZAINEA CORNEL"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      }
+    ]
+  },
+  "MM":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      }
+    ]
+  },
+  "MH":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PESCARU NICUŞOR"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ]
+  },
+  "B":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIUNEA ROMÂNĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"GEONEA IONELA-ALINA"
+      },
+      {
+        "party":"NICOLAE VALERIU-CIOLAN"
+      },
+      {
+        "party":"ŞERBAN DANIELA"
+      },
+      {
+        "party":"OPREA GABRIEL"
+      },
+      {
+        "party":"STOCHIŢĂ AUREL-CĂTĂLIN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIUNEA ROMÂNĂ"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT AL MUNCITORILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALTERNATIVA DREAPTĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      }
+    ]
+  },
+  "MS":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"BENDORFEAN TRAIAN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL COMUNIȘTILOR"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA DREAPTĂ"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      }
+    ]
+  },
+  "NT":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      }
+    ]
+  },
+  "OT":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL RE:START ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL RE:START ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      }
+    ]
+  },
+  "PH":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"APOSTOLACHE MIHAI CRISTIAN"
+      },
+      {
+        "party":"BOGDAN DUMITRU"
+      },
+      {
+        "party":"RĂDULESCU VIRGIL-FLORIN"
+      },
+      {
+        "party":"DUŢĂ MARIA-MIHAELA"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ]
+  },
+  "SM":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      },
+      {
+        "party":"PAPICI MARCELA ANAMARIA"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
+      }
+    ]
+  },
+  "SB":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"BLOCUL UNITĂȚII NAȚIONALE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"TRĂSCĂIAN PETRU-VASILE"
+      },
+      {
+        "party":"VECERDEA MARIUS-DANIEL"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"BLOCUL UNITĂȚII NAȚIONALE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ]
+  },
+  "SV":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ICHIM COSTICĂ-ROMICĂ"
+      },
+      {
+        "party":"ZAMFIR-IGNAT ŞTEFAN-COSTIN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      }
+    ]
+  },
+  "SJ":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      }
+    ]
+  },
+  "TR":{
+    "CDEP":[
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ]
+  },
+  "TM":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ROŞU GICĂ"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ]
+  },
+  "TL":{
+    "CDEP":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      }
+    ]
+  },
+  "VS":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      }
+    ]
+  },
+  "VN":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      }
+    ]
+  },
+  "VL":{
+    "CDEP":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      },
+      {
+        "party":"BULAT FLORIN"
+      }
+    ],
+    "SENAT":[
+      {
+        "party":"PARTIDUL MIȘCAREA POPULARĂ"
+      },
+      {
+        "party":"PARTIDUL PRO ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NAȚIONAL LIBERAL"
+      },
+      {
+        "party":"PARTIDUL SOCIAL DEMOCRAT"
+      },
+      {
+        "party":"ALIANȚA USR PLUS"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"PARTIDUL NOUA ROMÂNIE"
+      },
+      {
+        "party":"PARTIDUL ECOLOGIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
+      },
+      {
+        "party":"PARTIDUL VERDE"
+      },
+      {
+        "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
+      },
+      {
+        "party":"PARTIDUL SOCIALIST ROMÂN"
+      },
+      {
+        "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  }
+}

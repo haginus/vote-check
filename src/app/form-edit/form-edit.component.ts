@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SettingsComponent } from '../settings/settings.component';
 import { SimpvPullService } from '../simpv-pull.service';
 import { ConnectionService } from 'ng-connection-service';
-import { SettingsService } from '../settings.service';
+import { SettingsService, Settings } from '../settings.service';
 
 @Component({
   selector: 'app-form-edit',
@@ -19,7 +19,7 @@ import { SettingsService } from '../settings.service';
 })
 export class FormEditComponent implements OnInit, OnDestroy {
   form: any = {
-    _a: 0, a: [], _b: 0, b: [], c: 0, d: null, e: null, f: null, g: [], type: 'P'
+    _a: 0, a: [], _b: 0, b: [], c: 0, d: null, e: null, f: null, g: [], type: 'CDEP'
   }
   deleted: boolean = false
   loading: boolean = true
@@ -312,7 +312,7 @@ export class DialogFormSimpv implements OnInit {
   constructor(private simpv: SimpvPullService, private formsService: FormsService, private settingsService: SettingsService,
     private dialog: MatDialog, private connectionService: ConnectionService) {}
   precinct : any = null;
-  settings : any;
+  settings : Settings;
   loading : boolean = true;
   online: boolean = navigator.onLine;
 
@@ -331,7 +331,7 @@ export class DialogFormSimpv implements OnInit {
 
   getPrecinctData() {
     this.loading = true;
-    this.simpv.getPrecinct(this.settings.precinct, this.settings.county).subscribe(res => {
+    this.simpv.getPrecinct(this.settings.selectedPrecinct.precinct, this.settings.selectedPrecinct.county).subscribe(res => {
       this.loading = false;
       this.precinct = res;
     })
