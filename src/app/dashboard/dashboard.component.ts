@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from './../../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { Form, FormsService } from '../forms.service';
+import { PVForm, FormsService } from '../forms.service';
 import { SettingsComponent } from '../settings/settings.component';
 
 @Component({
@@ -11,7 +11,7 @@ import { SettingsComponent } from '../settings/settings.component';
 })
 export class DashboardComponent implements OnInit {
 
-  forms : Form[];
+  forms : PVForm[];
   constructor(private formsService: FormsService, private dialog: MatDialog) { }
 
   ngOnInit(): void {

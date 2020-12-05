@@ -3,7 +3,7 @@ import {FormControl, FormControlName, FormGroup, FormGroupDirective, NgForm, Val
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsService } from '../forms.service'
+import { FormsService, PVForm } from '../forms.service'
 import { Location } from '@angular/common';
 import { observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -18,8 +18,8 @@ import { SettingsService, Settings } from '../settings.service';
   styleUrls: ['./form-edit.component.scss']
 })
 export class FormEditComponent implements OnInit, OnDestroy {
-  form: any = {
-    _a: 0, a: [], _b: 0, b: [], c: 0, d: null, e: null, f: null, g: [], type: 'CDEP'
+  form: PVForm = {
+    _a: 0, a: [], _b: 0, b: [], c: 0, d: null, e: null, f: null, g: null, h: [], type: 'CDEP'
   }
   deleted: boolean = false
   loading: boolean = true
@@ -57,14 +57,14 @@ export class FormEditComponent implements OnInit, OnDestroy {
     this.b.valueChanges.subscribe(val => {
       this.calculateB()
     });
-    this.g().valueChanges.subscribe(val => {
-      this.calculateC()
+    this.h().valueChanges.subscribe(val => {
+      this.calculateE()
     });
     
-    let gGroup = (this.formV.get('g') as FormGroup)
-    for (let index = 0; index < 30; index++) {
+    let hGroup = (this.formV.get('h') as FormGroup)
+    for (let index = 0; index < 100; index++) {
       let control = new FormControl(null, [positive])
-      gGroup.addControl('g' + (index + 1), control)
+      hGroup.addControl('h' + (index + 1), control)
     }
   }
 
@@ -82,40 +82,39 @@ export class FormEditComponent implements OnInit, OnDestroy {
     this.a1.setValue(this.form.a[0])
     this.a2.setValue(this.form.a[1])
     this.a3.setValue(this.form.a[2])
-    this.a4.setValue(this.form.a[3])
     this.b1.setValue(this.form.b[0])
     this.b2.setValue(this.form.b[1])
     this.b3.setValue(this.form.b[2])
-    this.b4.setValue(this.form.b[3])
+    this.c.setValue(this.form.c)
     this.d.setValue(this.form.d)
-    this.e.setValue(this.form.e)
     this.f.setValue(this.form.f)
-    for (let i = 0; i < 30; i++) {
-      let g = this.g(i + 1)
-      g.setValue(this.form.g[i])
+    this.g.setValue(this.form.g)
+    for (let i = 0; i < 100; i++) {
+      let h = this.h(i + 1)
+      h.setValue(this.form.h[i])
     }
     this.type.setValue(this.form.type)
     this.calculateA();
     this.calculateB();
-    this.calculateC();
+    this.calculateE();
   }
 
   calculateA() {
-    this.form._a  = this.a1.value + this.a2.value + this.a3.value + this.a4.value
+    this.form._a  = this.a1.value + this.a2.value + this.a3.value
   }
 
   calculateB() {
-    this.form._b  = this.b1.value + this.b2.value + this.b3.value + this.b4.value
+    this.form._b  = this.b1.value + this.b2.value + this.b3.value
   }
 
-  calculateC() {
+  calculateE() {
     let s = 0
 
-    for (let index = 0; index < 30; index++) {
-      const control = this.g(index + 1)
+    for (let index = 0; index < 100; index++) {
+      const control = this.h(index + 1)
       if(control) s += control.value
     }
-    this.form.c = s
+    this.form.e = s
   }
 
   showMessage(message : string) {
@@ -127,26 +126,24 @@ export class FormEditComponent implements OnInit, OnDestroy {
 
   saveForm() {
     this.loading = true;
-    this.calculateC()
+    this.calculateE()
     this.form.type = this.formV.value.type
-    this.form.a = [0, 0, 0, 0]
+    this.form.a = [0, 0, 0]
     if(this.a1.value) this.form.a[0] = this.a1.value
     if(this.a2.value) this.form.a[1] = this.a2.value
     if(this.a3.value) this.form.a[2] = this.a3.value
-    if(this.a4.value) this.form.a[3] = this.a4.value
-    this.form.b = [0, 0, 0, 0]
+    this.form.b = [0, 0, 0]
     if(this.b1.value) this.form.b[0] = this.b1.value
     if(this.b2.value) this.form.b[1] = this.b2.value
     if(this.b3.value) this.form.b[2] = this.b3.value
-    if(this.b4.value) this.form.b[3] = this.b4.value
 
+    this.form.c = this.c.value ? this.c.value : 0
     this.form.d = this.d.value ? this.d.value : 0
-    this.form.e = this.e.value ? this.e.value : 0
     this.form.f = this.f.value ? this.f.value : 0
 
-    for (let i = 0; i < 30; i++) {
-      const control = this.g(i + 1);
-      this.form.g[i] = control.value ? control.value : 0
+    for (let i = 0; i < 100; i++) {
+      const control = this.h(i + 1);
+      this.form.h[i] = control.value ? control.value : 0
       
     }
 
@@ -191,13 +188,11 @@ export class FormEditComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(precinct => {
       if(precinct) {
         this.a1.setValue(precinct.initial_count_lp)
-        this.a2.setValue(precinct.initial_count_lc)
-        this.a3.setValue(precinct.LS)
-        this.a4.setValue(precinct.UM)
+        this.a2.setValue(precinct.LS)
+        this.a3.setValue(precinct.UM)
         this.b1.setValue(precinct.LP)
-        this.b2.setValue(precinct.LC)
-        this.b3.setValue(precinct.LS)
-        this.b4.setValue(precinct.UM)
+        this.b2.setValue(precinct.LS)
+        this.b3.setValue(precinct.UM)
         this.formV.markAsTouched();
       }
     })
@@ -208,18 +203,17 @@ export class FormEditComponent implements OnInit, OnDestroy {
       'a1': new FormControl(null, [positive]),
       'a2': new FormControl(null, [positive]),
       'a3': new FormControl(null, [positive]),
-      'a4': new FormControl(null, [positive])
     }),
     'b': new FormGroup({
       'b1': new FormControl(null, [positive]),
       'b2': new FormControl(null, [positive]),
       'b3': new FormControl(null, [positive]),
-      'b4': new FormControl(null, [positive])
     }),
+    'c': new FormControl(null, [positive]),
     'd': new FormControl(null, [positive]),
-    'e': new FormControl(null, [positive]),
     'f': new FormControl(null, [positive]),
-    'g': new FormGroup({}),
+    'g': new FormControl(null, [positive]),
+    'h': new FormGroup({}),
     'type': new FormControl(this.form.type, [])
   }, { validators: foreignKeyValidator });
 
@@ -227,17 +221,16 @@ export class FormEditComponent implements OnInit, OnDestroy {
   get a1() { return this.formV.get("a.a1")}
   get a2() { return this.formV.get("a.a2")}
   get a3() { return this.formV.get("a.a3")}
-  get a4() { return this.formV.get("a.a4")}
   get b() { return this.formV.get("b") }
   get b1() { return this.formV.get("b.b1")}
   get b2() { return this.formV.get("b.b2")}
   get b3() { return this.formV.get("b.b3")}
-  get b4() { return this.formV.get("b.b4")}
+  get c() { return this.formV.get("c")}
   get d() { return this.formV.get("d")}
-  get e() { return this.formV.get("e")}
   get f() { return this.formV.get("f")}
+  get g() { return this.formV.get("g")}
   get type() { return this.formV.get("type") }
-  g(i? : number) { return i ? this.formV.get("g.g" + i) : this.formV.get("g") }
+  h(i? : number) { return i ? this.formV.get("h.h" + i) : this.formV.get("h") }
 }
 
 export const positive: ValidatorFn = (control: FormControl): ValidationErrors | null => {
@@ -249,32 +242,30 @@ export const foreignKeyValidator: ValidatorFn = (control: FormGroup): Validation
   const a1 = control.get('a.a1');
   const a2 = control.get('a.a2');
   const a3 = control.get('a.a3');
-  const a4 = control.get('a.a4');
   const b1 = control.get('b.b1');
   const b2 = control.get('b.b2');
   const b3 = control.get('b.b3');
-  const b4 = control.get('b.b4');
-  let _b = b1.value + b2.value + b3.value + b4.value
-  let _c = 0
-  for (let index = 0; index < 30; index++) {
-    const s = control.get('g.g' + (index + 1))
-    _c += s ? s.value : 0
+  let _b = b1.value + b2.value + b3.value
+  let _e = 0
+  for (let index = 0; index < 100; index++) {
+    const s = control.get('h.h' + (index + 1))
+    _e += s ? s.value : 0
   }
+  const c = control.get('c')
   const d = control.get('d')
-  const e = control.get('e')
   const f = control.get('f')
+  const g = control.get('g')
   let errors = {}
   if(a1 && b1 && a1.value < b1.value) errors['a1b1'] = true
   if(a2 && b2 && a2.value < b2.value) errors['a2b2'] = true
   if(a3 && b3 && a3.value < b3.value) errors['a3b3'] = true
-  if(a4 && b4 && a4.value < b4.value) errors['a4b4'] = true
-  if(d && !(_c <= _b - d.value)) errors['cbd'] = true
-  if(e && d && f && !(e.value >= _c + d.value + f.value)) errors['ecdf'] = true
+  if(!(c.value >= d.value + _e + f.value + g.value)) errors['cdefg'] = true
+  if(!(_e <= _b - (f.value + g.value))) errors['ebfg'] = true
   return Object.keys(errors).length ? errors : null;
 };
 
 function isIn(arr : string[], x : any) {
-  if(x.startsWith('g')) x = 'c' // if control name is g_, then we look for c errors 
+  if(x.startsWith('h')) x = 'ec' // if control name is h_, then we look for e errors 
   return arr.find(el => el.includes(x)) ? true : false
 }
 

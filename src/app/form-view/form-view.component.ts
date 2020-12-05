@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Form, FormsService } from '../forms.service';
+import { PVForm, FormsService } from '../forms.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./form-view.component.scss']
 })
 export class FormViewComponent implements OnInit {
-  form : Form
+  form : PVForm
   formId : any
   constructor(private formsService : FormsService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {

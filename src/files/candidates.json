@@ -230,7 +230,8 @@
         "party":"PARTIDUL NOUA ROMÂNIE"
       },
       {
-        "party":"BACIU VIRGIL"
+        "party":null,
+        "name":"BACIU VIRGIL"
       }
     ],
     "SENAT":[
@@ -323,7 +324,8 @@
         "party":"PARTIDUL SOCIALIST ROMÂN"
       },
       {
-        "party":"ANDRIAN TIBERIU"
+        "party":null,
+        "name":"ANDRIAN TIBERIU"
       }
     ],
     "SENAT":[
@@ -401,7 +403,8 @@
         "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
       },
       {
-        "party":"DUMA VICTOR-SEBASTIAN"
+        "party":null,
+        "name":"DUMA VICTOR-SEBASTIAN"
       }
     ],
     "SENAT":[
@@ -482,10 +485,12 @@
         "party":"ALIANȚA RENAȘTEREA NAȚIONALĂ"
       },
       {
-        "party":"CIOANCA NICOLAE-ILIE"
+        "party":null,
+        "name":"CIOANCA NICOLAE-ILIE"
       },
       {
-        "party":"RAŢIU OVIDIU-IOAN"
+        "party":null,
+        "name":"RAŢIU OVIDIU-IOAN"
       }
     ],
     "SENAT":[
@@ -647,7 +652,8 @@
         "party":"PARTIDUL NAȚIUNEA ROMÂNĂ"
       },
       {
-        "party":"ALBU ERWIN-VLAD"
+        "party":null,
+        "name":"ALBU ERWIN-VLAD"
       }
     ],
     "SENAT":[
@@ -746,10 +752,12 @@
         "party":"PARTIDUL PUTERII UMANISTE (SOCIAL-LIBERAL)"
       },
       {
-        "party":"TABARAC ADRIAN"
+        "party":null,
+        "name":"TABARAC ADRIAN"
       },
       {
-        "party":"CALU NECULAI"
+        "party":null,
+        "name":"CALU NECULAI"
       }
     ],
     "SENAT":[
@@ -995,7 +1003,8 @@
         "party":"PARTIDUL ECOLOGIST ROMÂN"
       },
       {
-        "party":"NAŞ SORIN-VALERIU"
+        "party":null,
+        "name":"NAŞ SORIN-VALERIU"
       }
     ],
     "SENAT":[
@@ -1088,7 +1097,8 @@
         "party":"PARTIDUL SOCIALIST ROMÂN"
       },
       {
-        "party":"MARTIN CORINA"
+        "party":null,
+        "name":"MARTIN CORINA"
       }
     ],
     "SENAT":[
@@ -1172,7 +1182,8 @@
         "party":"PARTIDUL ROMÂNIA MARE"
       },
       {
-        "party":"CRISTEA GEORGE"
+        "party":null,
+        "name":"CRISTEA GEORGE"
       }
     ],
     "SENAT":[
@@ -1250,7 +1261,8 @@
         "party":"PARTIDUL NOUA ROMÂNIE"
       },
       {
-        "party":"IVAN ANDREI"
+        "party":null,
+        "name":"IVAN ANDREI"
       }
     ],
     "SENAT":[
@@ -1418,7 +1430,8 @@
         "party":"PARTIDUL ECOLOGIST ROMÂN"
       },
       {
-        "party":"RADU DARIUS-CONSTANTIN"
+        "party":null,
+        "name":"RADU DARIUS-CONSTANTIN"
       }
     ],
     "SENAT":[
@@ -1574,10 +1587,12 @@
         "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
       },
       {
-        "party":"PETREA IONEL"
+        "party":null,
+        "name":"PETREA IONEL"
       },
       {
-        "party":"JALBĂ TIBERIU-MIHAI-ANTONIU"
+        "party":null,
+        "name":"JALBĂ TIBERIU-MIHAI-ANTONIU"
       }
     ],
     "SENAT":[
@@ -1748,7 +1763,8 @@
         "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
       },
       {
-        "party":"CARALICEA GHEORGHE"
+        "party":null,
+        "name":"CARALICEA GHEORGHE"
       }
     ],
     "SENAT":[
@@ -2000,7 +2016,8 @@
         "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
       },
       {
-        "party":"COSTEA VLAD"
+        "party":null,
+        "name":"COSTEA VLAD"
       }
     ],
     "SENAT":[
@@ -2090,13 +2107,16 @@
         "party":"PARTIDUL NOUA ROMÂNIE"
       },
       {
-        "party":"DAVID FELICIA"
+        "party":null,
+        "name":"DAVID FELICIA"
       },
       {
-        "party":"HOLICOV MONICA"
+        "party":null,
+        "name":"HOLICOV MONICA"
       },
       {
-        "party":"MITOŞERIU CIPRIAN OLIMPIU"
+        "party":null,
+        "name":"MITOŞERIU CIPRIAN OLIMPIU"
       }
     ],
     "SENAT":[
@@ -2195,13 +2215,16 @@
         "party":"PARTIDUL NOUA ROMÂNIE"
       },
       {
-        "party":"MATEI SERGIU-LUCIAN"
+        "party":null,
+        "name":"MATEI SERGIU-LUCIAN"
       },
       {
-        "party":"ZMARANDA FLORIN"
+        "party":null,
+        "name":"ZMARANDA FLORIN"
       },
       {
-        "party":"ZAINEA CORNEL"
+        "party":null,
+        "name":"ZAINEA CORNEL"
       }
     ],
     "SENAT":[
@@ -2384,7 +2407,8 @@
         "party":"ALIANȚA PENTRU UNIREA ROMÂNILOR"
       },
       {
-        "party":"PESCARU NICUŞOR"
+        "party":null,
+        "name":"PESCARU NICUŞOR"
       }
     ],
     "SENAT":[
@@ -2486,19 +2510,24 @@
         "party":"PARTIDUL SOCIALIST ROMÂN"
       },
       {
-        "party":"GEONEA IONELA-ALINA"
+        "party":null,
+        "name":"GEONEA IONELA-ALINA"
       },
       {
-        "party":"NICOLAE VALERIU-CIOLAN"
+        "party":null,
+        "name":"NICOLAE VALERIU-CIOLAN"
       },
       {
-        "party":"ŞERBAN DANIELA"
+        "party":null,
+        "name":"ŞERBAN DANIELA"
       },
       {
-        "party":"OPREA GABRIEL"
+        "party":null,
+        "name":"OPREA GABRIEL"
       },
       {
-        "party":"STOCHIŢĂ AUREL-CĂTĂLIN"
+        "party":null,
+        "name":"STOCHIŢĂ AUREL-CĂTĂLIN"
       }
     ],
     "SENAT":[
@@ -2597,7 +2626,8 @@
         "party":"PARTIDUL ECOLOGIST ROMÂN"
       },
       {
-        "party":"BENDORFEAN TRAIAN"
+        "party":null,
+        "name":"BENDORFEAN TRAIAN"
       }
     ],
     "SENAT":[
@@ -2852,16 +2882,20 @@
         "party":"PARTIDUL SOCIALIST ROMÂN"
       },
       {
-        "party":"APOSTOLACHE MIHAI CRISTIAN"
+        "party":null,
+        "name":"APOSTOLACHE MIHAI CRISTIAN"
       },
       {
-        "party":"BOGDAN DUMITRU"
+        "party":null,
+        "name":"BOGDAN DUMITRU"
       },
       {
-        "party":"RĂDULESCU VIRGIL-FLORIN"
+        "party":null,
+        "name":"RĂDULESCU VIRGIL-FLORIN"
       },
       {
-        "party":"DUŢĂ MARIA-MIHAELA"
+        "party":null,
+        "name":"DUŢĂ MARIA-MIHAELA"
       }
     ],
     "SENAT":[
@@ -2939,7 +2973,8 @@
         "party":"PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE"
       },
       {
-        "party":"PAPICI MARCELA ANAMARIA"
+        "party":null,
+        "name":"PAPICI MARCELA ANAMARIA"
       }
     ],
     "SENAT":[
@@ -3023,10 +3058,12 @@
         "party":"PARTIDUL ECOLOGIST ROMÂN"
       },
       {
-        "party":"TRĂSCĂIAN PETRU-VASILE"
+        "party":null,
+        "name":"TRĂSCĂIAN PETRU-VASILE"
       },
       {
-        "party":"VECERDEA MARIUS-DANIEL"
+        "party":null,
+        "name":"VECERDEA MARIUS-DANIEL"
       }
     ],
     "SENAT":[
@@ -3113,10 +3150,12 @@
         "party":"PARTIDUL NOUA ROMÂNIE"
       },
       {
-        "party":"ICHIM COSTICĂ-ROMICĂ"
+        "party":null,
+        "name":"ICHIM COSTICĂ-ROMICĂ"
       },
       {
-        "party":"ZAMFIR-IGNAT ŞTEFAN-COSTIN"
+        "party":null,
+        "name":"ZAMFIR-IGNAT ŞTEFAN-COSTIN"
       }
     ],
     "SENAT":[
@@ -3338,7 +3377,8 @@
         "party":"PARTIDUL ECOLOGIST ROMÂN"
       },
       {
-        "party":"ROŞU GICĂ"
+        "party":null,
+        "name":"ROŞU GICĂ"
       }
     ],
     "SENAT":[
@@ -3638,7 +3678,8 @@
         "party":"PARTIDUL ROMÂNIA MARE"
       },
       {
-        "party":"BULAT FLORIN"
+        "party":null,
+        "name":"BULAT FLORIN"
       }
     ],
     "SENAT":[
@@ -3680,6 +3721,64 @@
       },
       {
         "party":"PARTIDUL ROMÂNIA MARE"
+      }
+    ]
+  },
+  "MINORITATI":{
+    "CDEP":[
+      {
+        "party":"ASOCIAȚIA PARTIDA ROMILOR “PRO-EUROPA”"
+      },
+      {
+        "party":"UNIUNEA POLONEZILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"ASOCIAȚIA MACEDONENILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA CULTURALĂ A RUTENILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"COMUNITATEA RUȘILOR LIPOVENI DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA CROAȚILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"FEDERAȚIA COMUNITĂȚILOR EVREIEȘTI DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA ELENĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA BULGARĂ DIN BANAT-ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA ARMENILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ A TĂTARILOR TURCO-MUSULMANI DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATĂ TURCĂ DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA UCRAINENILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"UNIUNEA DEMOCRATICĂ A SLOVACILOR ȘI CEHILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"ASOCIAȚIA LIGA ALBANEZILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"ASOCIAȚIA ITALIENILOR DIN ROMÂNIA – RO.AS.IT."
+      },
+      {
+        "party":"UNIUNEA SÂRBILOR DIN ROMÂNIA"
+      },
+      {
+        "party":"FORUMUL DEMOCRAT AL GERMANILOR DIN ROMÂNIA"
       }
     ]
   }

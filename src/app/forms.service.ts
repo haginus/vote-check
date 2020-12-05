@@ -11,7 +11,7 @@ import { SettingsService } from './settings.service';
 export class FormsService {
   constructor(private storage: StorageMap, private settingsService: SettingsService) { }
 
-  createForm(form: Form) {
+  createForm(form: PVForm) {
     form.timestamp = new Date().getTime();
     return this.getForms().pipe(
       switchMap(forms => {
@@ -23,7 +23,7 @@ export class FormsService {
     )
   }
 
-  editForm(id: number, form:Form) {
+  editForm(id: number, form:PVForm) {
     return this.getForms().pipe(
       switchMap(forms => {
         if(!checkIndex(forms, id)) 
@@ -49,19 +49,19 @@ export class FormsService {
     )
   }
 
-  getForms() : Observable<Form[]> {
-    return this.storage.get<Form[]>('forms').pipe(
+  getForms() : Observable<PVForm[]> {
+    return this.storage.get<PVForm[]>('forms').pipe(
       map(forms => forms === undefined ? [] : forms)
-    ) as Observable<Form[]>
+    ) as Observable<PVForm[]>
   }
 
-  watchForms() : Observable<Form[]> {
+  watchForms() : Observable<PVForm[]> {
     return this.storage.watch('forms').pipe(
       map(forms => forms === undefined ? [] : forms)
-    ) as Observable<Form[]>
+    ) as Observable<PVForm[]>
   }
 
-  getForm(id: number) : Observable<Form> {
+  getForm(id: number) : Observable<PVForm> {
     return this.getForms().pipe(
       map(forms => {
         if(!checkIndex(forms, id))
@@ -76,7 +76,15 @@ export class FormsService {
       map(settings => {
         let result = { CDEP: [], SENAT: [] }
         try {
-          const candidatesInCounty = candidates[settings.selectedPrecinct.county];
+          let candidatesInCounty = candidates[settings.selectedPrecinct.county];
+          const minorities = candidates.MINORITATI;
+          candidatesInCounty.CDEP = candidatesInCounty.CDEP.concat(minorities.CDEP).sort((a, b) => {
+            if(a.party != null && b.party != null)
+              return 0;
+            else if(a.party != null && b.party == null)
+              return -1;
+            return 0;
+          });
           result = { CDEP: candidatesInCounty.CDEP, SENAT: candidatesInCounty.SENAT };
         } catch(e) {}
         return result;
@@ -85,28 +93,28 @@ export class FormsService {
   }
 }
 
-const checkIndex = (arr : Form[], i : number) => { return 0 <= i && i < arr.length }
+const checkIndex = (arr : PVForm[], i : number) => { return 0 <= i && i < arr.length }
 
-export interface Form {
+export interface PVForm {
   timestamp?: number
   type: string
   a: number[]
   /*
   a1: numarul total de alegatori din lista permanenta
-  a2: numarul total de alegatori din copia de pe lista electorala complementara
-  a3: numarul total de alegatori din listele suplimentare
-  a4: numarul total de alegatori urna speciala
+  a2: numarul total de alegatori din listele suplimentare
+  a3: numarul total de alegatori urna speciala
   */
   b: number[]
   /*
   b1: numarul total de alegatori PREZENTI din lista permanenta
-  b2: numarul total de alegatori PREZENTI din copia de pe lista electorala complementara
-  b3: numarul total de alegatori PREZENTI din listele suplimentare
-  b4: numarul total de alegatori PREZENTI urna speciala
+  b2: numarul total de alegatori PREZENTI din listele suplimentare
+  b3: numarul total de alegatori PREZENTI urna speciala
   */
-  c: number // suma voturilor valabil exprimate
-  d: number // buletine de vot nule
-  e: number // buletine de vot primite
-  f: number // buletine de vot anulate
-  g: number[] // voturile candidatilor
+  c: number // Numărul buletinelor de vot primite
+  d: number // Numărul buletinelor de vot neîntrebuințate și anulate
+  e: number // Numărul total al voturilor valabil exprimate 
+  f: number // Numărul voturilor nule
+  g: number // Numărul voturilor albe (buletine de vot pe care nu s-a aplicat ștampila „VOTAT”)
+  h: number[] // voturile candidatilor,
+  [x: string]: any 
 }

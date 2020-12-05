@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-const prepositions = ['A', 'Din', 'Și', 'Cu', 'De', 'La', 'Fără', 'Despre', 'În', 'Între', 'Pe', 'Până', 'Prin']
+const prepositions = ['A', 'Din', 'Și', 'Cu', 'De', 'La', 'Fără', 'Despre', 'În', 'Între', 'Pe', 'Până', 'Prin', 'Al']
 
 @Pipe({
   name: 'name'
