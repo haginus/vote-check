@@ -49,7 +49,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
         complete: () => this.loading = false
       })
     })
-    this.formsService.getCandidates().subscribe(candidates => this.candidates = candidates)
+    this.formsService.getCandidates().subscribe(candidates => {this.candidates = candidates; console.log(candidates)})
 
     this.a.valueChanges.subscribe(val => {
       this.calculateA()
@@ -140,6 +140,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
     this.form.c = this.c.value ? this.c.value : 0
     this.form.d = this.d.value ? this.d.value : 0
     this.form.f = this.f.value ? this.f.value : 0
+    this.form.g = this.g.value ? this.g.value : 0
 
     for (let i = 0; i < 100; i++) {
       const control = this.h(i + 1);

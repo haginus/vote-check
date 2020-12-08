@@ -76,7 +76,7 @@ export class FormsService {
       map(settings => {
         let result = { CDEP: [], SENAT: [] }
         try {
-          let candidatesInCounty = candidates[settings.selectedPrecinct.county];
+          let candidatesInCounty = {...candidates[settings.selectedPrecinct.county]};
           const minorities = candidates.MINORITATI;
           candidatesInCounty.CDEP = candidatesInCounty.CDEP.concat(minorities.CDEP).sort((a, b) => {
             if(a.party != null && b.party != null)
