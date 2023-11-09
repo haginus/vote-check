@@ -24,7 +24,7 @@ export class SimpvPullService {
       map(res => res['precinct']),
       catchError(this.handleError<Object[]>('getPrecincts', []))
       );
-      
+
   }
 
   getPrecinct(precintNo: number, county: string, timestamp?: number) {
@@ -45,4 +45,4 @@ export class SimpvPullService {
   }
 }
 
-const presenceUrl = 'https://3dtosxvp1d.execute-api.eu-central-1.amazonaws.com/simpv'
+const presenceUrl = 'https://us-central1-hns-mainland.cloudfunctions.net/simpv';
