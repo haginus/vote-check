@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { FormEditComponent } from './pages/form-edit/form-edit.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -83,6 +83,13 @@ import { FormSimpvDialogComponent } from './components/form-simpv-dialog/form-si
       enabled: environment.production,
     }),
   ],
-  providers: [SetupGuard, provideHttpClient(withInterceptorsFromDi())],
+  providers: [
+    SetupGuard,
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' }
+    }
+  ],
 })
 export class AppModule {}

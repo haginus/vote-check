@@ -10,9 +10,8 @@ export class SimpvPullService {
 
   constructor(private http: HttpClient) { }
 
-  getCountyData(county: string, timestamp?: number) {
-    county = county.toLowerCase()
-    if(!timestamp) timestamp = new Date().getTime()
+  getCountyData(county: string, timestamp = Date.now()) {
+    county = county.toLowerCase();
     return this.http.get(`${presenceUrl}?county=${county}&timestamp=${timestamp}`).pipe(
       retry(3),
       catchError(this.handleError<Object>('getCountyData', {precinct: []}))

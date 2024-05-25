@@ -1,27 +1,28 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .form-edit-card mat-form-field {
-    width: 100%;
+  width: 100%;
+  margin-bottom: 24px;
 }
 
-.mat-form-field-subscript-wrapper {
-    position: relative!important;
+mat-card-subtitle {
+  margin-bottom: 16px;
 }
 
 .form-edit-card {
-    margin: 12px;
+  margin: 12px;
 }
 
 .form-message {
-    padding: 16px;
+  padding: 16px;
 }
 
 .valid {
-    color: #009688;
+  color: #009688;
 }
 
 .invalid {
-    color: #F44336;
+  color: #F44336;
 }

@@ -7,6 +7,7 @@ import { FormEditComponent } from './pages/form-edit/form-edit.component';
 import { FormsService } from './services/forms.service';
 import { SettingsService } from './services/settings.service';
 import { SetupComponent } from './pages/setup/setup.component';
+import { FormResolver } from './resolvers/form.resolver';
 
 @Injectable()
 export class SetupGuard implements CanActivate {
@@ -34,7 +35,14 @@ const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [SetupGuard] },
   { path: 'setup', component: SetupComponent },
   //{ path: 'form/:id/view', component: FormViewComponent, data: {title: 'Vizionare PV'} },
-  { path: 'form/:id/edit', component: FormEditComponent, canActivate: [SetupGuard] },
+  {
+    path: 'form/:id/edit',
+    component: FormEditComponent,
+    canActivate: [SetupGuard],
+    resolve: {
+      form: FormResolver,
+    }
+  },
   { path: 'form/create', component: FormEditComponent, canActivate: [SetupGuard] }
 ];
 
