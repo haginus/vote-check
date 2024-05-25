@@ -20,6 +20,7 @@ export class SetupGuard implements CanActivate {
               return true;
             } else {
               this.router.navigate(['/setup']);
+              return false;
             }
           }),
           catchError((err) => {
@@ -39,7 +40,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

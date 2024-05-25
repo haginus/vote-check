@@ -42,7 +42,7 @@ export class SettingsComponent implements OnInit {
     let counties = COUNTIES
     this.counties = Object.entries(counties);
 
-    this.connectionService.monitor().subscribe(online => {
+    this.connectionService.monitor().subscribe(({ hasInternetAccess: online }) => {
       if(online == true && !this.online) {
         this.getCountyPrecincts();
       }
@@ -86,7 +86,7 @@ export class SettingsComponent implements OnInit {
     })
   }
 
-  
+
 
   getCountyPrecincts() {
     if(!this.settings.selectedPrecinct.county)
@@ -106,7 +106,7 @@ export class SettingsComponent implements OnInit {
 
     const filterValue = normalize(value.toString());
 
-    return this.precincts.filter(precinct => 
+    return this.precincts.filter(precinct =>
       normalize(precinct.no).indexOf(filterValue) === 0 ||
       normalize(precinct.name).includes(filterValue) ||
       normalize(precinct.uatName).includes(filterValue )
@@ -120,7 +120,7 @@ export class SettingsComponent implements OnInit {
     this.settingsService.saveSettings(this.settings).subscribe(_ => {})
   }
 
-  
+
 }
 
 const normalize = (str: string) => {

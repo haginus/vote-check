@@ -1,5 +1,5 @@
 export const environment = {
-  appVersion: require('../../package.json').version + '-dev',
+  appVersion: "" + '-dev',
   electionType: "parliament",
   electionName: "Alegeri parlamentare 2020",
   production: false

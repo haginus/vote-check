@@ -60,7 +60,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
     this.h().valueChanges.subscribe(val => {
       this.calculateE()
     });
-    
+
     let hGroup = (this.formV.get('h') as FormGroup)
     for (let index = 0; index < 100; index++) {
       let control = new FormControl(null, [positive])
@@ -100,11 +100,11 @@ export class FormEditComponent implements OnInit, OnDestroy {
   }
 
   calculateA() {
-    this.form._a  = this.a1.value + this.a2.value + this.a3.value
+    this.form['_a']  = this.a1.value + this.a2.value + this.a3.value
   }
 
   calculateB() {
-    this.form._b  = this.b1.value + this.b2.value + this.b3.value
+    this.form['_b']  = this.b1.value + this.b2.value + this.b3.value
   }
 
   calculateE() {
@@ -145,12 +145,12 @@ export class FormEditComponent implements OnInit, OnDestroy {
     for (let i = 0; i < 100; i++) {
       const control = this.h(i + 1);
       this.form.h[i] = control.value ? control.value : 0
-      
+
     }
 
     let form = {... this.form }
-    delete form._a
-    delete form._b
+    delete form['_a']
+    delete form['_b']
     if(this.formId == 'new') {
       this.formsService.createForm(form).subscribe(id => {
         this.formId = id;
@@ -166,7 +166,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
         this.loading = false;
         this.showMessage('Proces-verbal salvat.');
       })
-      
+
     }
   }
 
@@ -266,7 +266,7 @@ export const foreignKeyValidator: ValidatorFn = (control: FormGroup): Validation
 };
 
 function isIn(arr : string[], x : any) {
-  if(x.startsWith('h')) x = 'ec' // if control name is h_, then we look for e errors 
+  if(x.startsWith('h')) x = 'ec' // if control name is h_, then we look for e errors
   return arr.find(el => el.includes(x)) ? true : false
 }
 
@@ -281,19 +281,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-// Dialog Form Exit 
+// Dialog Form Exit
 @Component({
   selector: 'dialog-form-exit',
   templateUrl: '../dialog-templates/dialog-form-exit.html',
 })
-export class DialogFormExit {} 
+export class DialogFormExit {}
 
-// Dialog Form Delete 
+// Dialog Form Delete
 @Component({
   selector: 'dialog-form-delete',
   templateUrl: '../dialog-templates/dialog-form-delete.html',
 })
-export class DialogFormDelete {} 
+export class DialogFormDelete {}
 
 // Dialog Form SIMPV
 @Component({
@@ -309,8 +309,8 @@ export class DialogFormSimpv implements OnInit {
   online: boolean = navigator.onLine;
 
   ngOnInit() {
-    this.connectionService.monitor().subscribe(online => {
-      if(online == true && !this.online) 
+    this.connectionService.monitor().subscribe(({ hasInternetAccess: online }) => {
+      if(online == true && !this.online)
         this.getPrecinctData();
       this.online = online
     });
@@ -348,4 +348,4 @@ export class DialogFormSimpv implements OnInit {
       });
     })
   }
-} 
+}

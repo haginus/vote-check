@@ -65,7 +65,7 @@
         </table>
         <span><b>g. </b> Numărul voturilor valabil exprimate obținute de fiecare candidat</span>
         <table>
-            <tr *ngFor="let candidate of form.g; let i = index">
+            <tr *ngFor="let candidate in form.g; let i = index">
                 <td *ngIf="form.type == 'P'">{{candidate.name}}</td>
                 <td>{{candidate.party}}</td>
                 <td>{{i + 1}}</td>

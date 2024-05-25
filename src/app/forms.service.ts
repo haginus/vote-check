@@ -26,7 +26,7 @@ export class FormsService {
   editForm(id: number, form:PVForm) {
     return this.getForms().pipe(
       switchMap(forms => {
-        if(!checkIndex(forms, id)) 
+        if(!checkIndex(forms, id))
           throw 'INDEX_OUT_OF_RANGE';
         forms[id] = form;
         return this.storage.set('forms', forms);
@@ -50,7 +50,7 @@ export class FormsService {
   }
 
   getForms() : Observable<PVForm[]> {
-    return this.storage.get<PVForm[]>('forms').pipe(
+    return this.storage.get<PVForm[]>('forms', undefined).pipe(
       map(forms => forms === undefined ? [] : forms)
     ) as Observable<PVForm[]>
   }
@@ -112,9 +112,9 @@ export interface PVForm {
   */
   c: number // Numărul buletinelor de vot primite
   d: number // Numărul buletinelor de vot neîntrebuințate și anulate
-  e: number // Numărul total al voturilor valabil exprimate 
+  e: number // Numărul total al voturilor valabil exprimate
   f: number // Numărul voturilor nule
   g: number // Numărul voturilor albe (buletine de vot pe care nu s-a aplicat ștampila „VOTAT”)
   h: number[] // voturile candidatilor,
-  [x: string]: any 
+  [x: string]: any
 }

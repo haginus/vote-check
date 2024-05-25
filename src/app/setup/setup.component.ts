@@ -15,7 +15,7 @@ export class SetupComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private dialog: MatDialog, private router: Router, private connectionService: ConnectionService) { }
   ngOnInit(): void {
-    this.connectionService.monitor().subscribe(online => this.online = online);
+    this.connectionService.monitor().subscribe(({ hasInternetAccess: online }) => this.online = online);
   }
 
   ngAfterViewInit() {
