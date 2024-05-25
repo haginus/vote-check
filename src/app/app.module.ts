@@ -7,7 +7,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { FormViewComponent } from './form-view/form-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import {
@@ -47,7 +46,6 @@ import { TaskSectionComponent } from './tasks/task-section/task-section.componen
 @NgModule({
   declarations: [
     AppComponent,
-    FormViewComponent,
     DashboardComponent,
     FormEditComponent,
     DialogInfo,

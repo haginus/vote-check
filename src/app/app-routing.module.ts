@@ -4,7 +4,6 @@ import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormEditComponent } from './form-edit/form-edit.component';
-import { FormViewComponent } from './form-view/form-view.component';
 import { FormsService } from './forms.service';
 import { SettingsService } from './settings.service';
 import { SetupComponent } from './setup/setup.component';
