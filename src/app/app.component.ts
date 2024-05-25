@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsService } from './forms.service';
+import { FormsService } from './services/forms.service';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,13 @@ import { FormsService } from './forms.service';
 export class AppComponent {
   title = this.activeRoute.snapshot.params['title']
   showInfo = true
-  
+
   constructor(private formsService: FormsService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.title = this.activeRoute.snapshot.data['title'];
   }
-  
+
 }
 
 

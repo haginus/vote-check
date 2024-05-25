@@ -1,16 +1,14 @@
-import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {FormControl, FormControlName, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsService, PVForm } from '../forms.service'
+import { FormsService, PVForm } from '../../services/forms.service'
 import { Location } from '@angular/common';
-import { observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SettingsComponent } from '../settings/settings.component';
-import { SimpvPullService } from '../simpv-pull.service';
-import { ConnectionService } from 'ng-connection-service';
-import { SettingsService, Settings } from '../settings.service';
+import { FormSimpvDialogComponent } from '../../components/form-simpv-dialog/form-simpv-dialog.component';
+import { FormDeleteDialogComponent } from '../../components/form-delete-dialog/form-delete-dialog.component';
+import { FormExitDialogComponent } from '../../components/form-exit-dialog/form-exit-dialog.component';
 
 @Component({
   selector: 'app-form-edit',
@@ -70,7 +68,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if(this.formV.touched && !this.deleted) {
-      const dialogRef = this.dialog.open(DialogFormExit);
+      const dialogRef = this.dialog.open(FormExitDialogComponent);
       dialogRef.afterClosed().subscribe(result => {
         if(result) this.saveForm();
       })
@@ -171,7 +169,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
   }
 
   askDeleteForm() {
-    const dialogRef = this.dialog.open(DialogFormDelete);
+    const dialogRef = this.dialog.open(FormDeleteDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       if(result) this.deleteForm();
     });
@@ -185,7 +183,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
   }
 
   simpvAutocomplete() {
-    const dialogRef = this.dialog.open(DialogFormSimpv);
+    const dialogRef = this.dialog.open(FormSimpvDialogComponent);
     dialogRef.afterClosed().subscribe(precinct => {
       if(precinct) {
         this.a1.setValue(precinct.initial_count_lp)
@@ -278,74 +276,5 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective): boolean {
     const foreignInvalidity = form.form.errors && isIn(Object.keys(form.form.errors), getControlName(control, form.directives))
     return control && (control.invalid || foreignInvalidity) //&& (control.dirty || control.touched)
-  }
-}
-
-// Dialog Form Exit
-@Component({
-  selector: 'dialog-form-exit',
-  templateUrl: '../dialog-templates/dialog-form-exit.html',
-})
-export class DialogFormExit {}
-
-// Dialog Form Delete
-@Component({
-  selector: 'dialog-form-delete',
-  templateUrl: '../dialog-templates/dialog-form-delete.html',
-})
-export class DialogFormDelete {}
-
-// Dialog Form SIMPV
-@Component({
-  selector: 'dialog-form-simpv',
-  templateUrl: '../dialog-templates/dialog-form-simpv.html',
-})
-export class DialogFormSimpv implements OnInit {
-  constructor(private simpv: SimpvPullService, private formsService: FormsService, private settingsService: SettingsService,
-    private dialog: MatDialog, private connectionService: ConnectionService) {}
-  precinct : any = null;
-  settings : Settings;
-  loading : boolean = true;
-  online: boolean = navigator.onLine;
-
-  ngOnInit() {
-    this.connectionService.monitor().subscribe(({ hasInternetAccess: online }) => {
-      if(online == true && !this.online)
-        this.getPrecinctData();
-      this.online = online
-    });
-    this.settingsService.getSettings().subscribe(res => {
-      this.settings = res;
-      if(this.online) this.getPrecinctData();
-      else this.loading = false;
-    })
-  }
-
-  getPrecinctData() {
-    this.loading = true;
-    this.simpv.getPrecinct(this.settings.selectedPrecinct.precinct, this.settings.selectedPrecinct.county).subscribe(res => {
-      this.loading = false;
-      this.precinct = res;
-    })
-  }
-  openSettings() {
-    const dialogRef = this.dialog.open(SettingsComponent)
-    dialogRef.afterClosed().subscribe((res) => {
-      if(!res) {
-        this.loading = false;
-        return;
-      }
-      this.loading = true;
-      this.settingsService.getSettings().subscribe(res => {
-        if(res != this.settings) {
-          this.settings = res;
-          if(this.online) this.getPrecinctData();
-          else {
-            this.loading = false;
-            this.precinct = null;
-          }
-        } else this.loading = false;
-      });
-    })
   }
 }

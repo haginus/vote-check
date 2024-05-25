@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import candidates from '../files/candidates.json'
+import candidates from '../../files/candidates.json'
 import { SettingsService } from './settings.service';
 
 @Injectable({

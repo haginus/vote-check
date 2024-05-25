@@ -2,11 +2,11 @@ import { Injectable, NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormEditComponent } from './form-edit/form-edit.component';
-import { FormsService } from './forms.service';
-import { SettingsService } from './settings.service';
-import { SetupComponent } from './setup/setup.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { FormEditComponent } from './pages/form-edit/form-edit.component';
+import { FormsService } from './services/forms.service';
+import { SettingsService } from './services/settings.service';
+import { SetupComponent } from './pages/setup/setup.component';
 
 @Injectable()
 export class SetupGuard implements CanActivate {

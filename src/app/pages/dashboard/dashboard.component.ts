@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from './../../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { PVForm, FormsService } from '../forms.service';
-import { SettingsComponent } from '../settings/settings.component';
+import { PVForm, FormsService } from '../../services/forms.service';
+import { SettingsComponent } from '../../components/settings/settings.component';
+import { InfoDialogComponent } from '../../components/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openInfoDialog() {
-    this.dialog.open(DialogInfo);
+    this.dialog.open(InfoDialogComponent);
   }
 
   openSettingsDialog() {
@@ -30,13 +30,3 @@ export class DashboardComponent implements OnInit {
 
 }
 
-
-// Dialog Info
-@Component({
-  selector: 'dialog-info',
-  templateUrl: '../dialog-templates/dialog-info.html',
-})
-export class DialogInfo {
-  appVersion : string = environment.appVersion
-  electionName : string = environment.electionName
-} 

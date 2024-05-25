@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ConnectionService } from 'ng-connection-service';
-import { SettingsComponent } from '../settings/settings.component';
+import { SettingsComponent } from '../../components/settings/settings.component';
 
 @Component({
   selector: 'app-setup',

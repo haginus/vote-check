@@ -3,10 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ConnectionService } from 'ng-connection-service';
 import { Observable, of, scheduled } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { FormsService } from '../forms.service';
-import { SettingsService, Settings, defaultSettings } from '../settings.service';
-import { SimpvPullService } from '../simpv-pull.service';
-import COUNTIES from '../../files/counties.json'
+import { FormsService } from '../../services/forms.service';
+import { SettingsService, Settings, defaultSettings } from '../../services/settings.service';
+import { SimpvPullService } from '../../services/simpv-pull.service';
+import COUNTIES from '../../../files/counties.json'
 
 @Component({
   selector: 'app-settings',
