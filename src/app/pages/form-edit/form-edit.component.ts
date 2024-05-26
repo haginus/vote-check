@@ -22,14 +22,15 @@ import { CandidatesService } from '../../services/candidates.service';
 import { getElection } from '../../../elections/elections';
 import { v4 as uuidv4 } from 'uuid';
 import { FormData } from '../../resolvers/form.resolver';
-import { Subscription } from 'rxjs';
+import { Subscription, firstValueFrom } from 'rxjs';
+import { CanDeactivate } from '../../guards/can-deactivate.guard';
 
 @Component({
   selector: 'app-form-edit',
   templateUrl: './form-edit.component.html',
   styleUrls: ['./form-edit.component.scss'],
 })
-export class FormEditComponent implements OnInit, OnDestroy {
+export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
 
   loading: boolean = false;
   candidates: Candidate[] = [];
@@ -77,19 +78,28 @@ export class FormEditComponent implements OnInit, OnDestroy {
     this.calculateSubscription.unsubscribe();
   }
 
+  async canDeactivate() {
+    if (this.formGroup.pristine) {
+      return true;
+    }
+    const dialogRef = this.dialog.open(FormExitDialogComponent);
+    const wantsToSave = await firstValueFrom(dialogRef.afterClosed());
+    if(wantsToSave === undefined) {
+      return false;
+    } else {
+      if(wantsToSave) {
+        this.saveForm();
+      }
+      return true;
+    }
+  }
+
   computeFields() {
     const fields = this.election.type.formStructure.sections.flatMap(section => section.fields);
     fields.forEach(field => {
       if(field.type !== 'computed') return;
       const value = field.computeFn(this.formGroup);
       this.formGroup.get(field.id)?.setValue(value, { emitEvent: false });
-    });
-  }
-
-  showMessage(message: string) {
-    this.snackBar.open(message, null, {
-      duration: 3000,
-      horizontalPosition: 'start',
     });
   }
 
@@ -107,8 +117,9 @@ export class FormEditComponent implements OnInit, OnDestroy {
       : this.formsService.createForm(form);
 
     action.subscribe(() => {
-      this.showMessage('Proces verbal salvat.');
+      this.snackBar.open('Proces verbal salvat.');
       this.existingForm = form;
+      this.formGroup.markAsPristine();
     });
   }
 

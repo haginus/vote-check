@@ -1,8 +1,9 @@
 <h2 mat-dialog-title>Salvați modificările?</h2>
 <mat-dialog-content class="mat-typography">
-  <p>Ați efectuat modificări la acest proces verbal.<br>Doriți să salvați modificările?</p>
+  <p>Ați efectuat modificări la acest proces-verbal.<br>Doriți să salvați modificările?</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Nu</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Da</button>
+  <button mat-button [mat-dialog-close]="undefined">Înapoi</button>
+  <button mat-button [mat-dialog-close]="false">Renunțați la modificări</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Salvați modificările</button>
 </mat-dialog-actions>

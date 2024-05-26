@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule, SetupGuard } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -86,7 +86,6 @@ import { FormCreateDialogComponent } from './components/form-create-dialog/form-
     }),
   ],
   providers: [
-    SetupGuard,
     provideHttpClient(withInterceptorsFromDi()),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
