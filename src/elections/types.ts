@@ -34,6 +34,7 @@ export interface FormStructure {
   }[];
   candidateSectionKey: string;
   validator: (form: FormGroup) => ValidationErrors | null;
+  simpvPullStrategy?: (form: FormGroup, simpvPrecinct: any) => Precint;
 }
 
 export interface ElectionType {

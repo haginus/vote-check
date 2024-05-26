@@ -1,32 +1,48 @@
 <form [formGroup]="settingsForm">
-    <h1 mat-dialog-title>Setări</h1>
-    <div mat-dialog-content>
-        <mat-form-field appearance="outline">
-            <mat-label>Circumscripție electorală</mat-label>
-            <mat-select formControlName="county">
-                <mat-option *ngFor="let county of counties" [value]="county[0]" >{{county[1]}}</mat-option>
-            </mat-select>
-            <mat-hint>Alegeți circumscripția electorală în care se află secția dvs.</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Numărul secției</mat-label>
-            <input matInput type="text" formControlName="precinct" [matAutocomplete]="auto">
-            <mat-progress-spinner class="loading-spinner" mode="indeterminate"
-            [diameter]="16" *ngIf="precinct.disabled && online && settings?.selectedPrecinct?.county"></mat-progress-spinner>
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let precinct of filteredPrecincts | async" [value]="precinct.no">
-                    <div class="precinct-info">
-                        <div class="precinct-name"><b>Secția Nr. {{ precinct.no }}</b> ({{ precinct.uatName | titlecase }})</div>
-                        <div class="precinct-details">{{ precinct.name }}</div>
-                    </div>
-                </mat-option>
-            </mat-autocomplete>
-            <mat-hint>Căutați secția după nume sau număr.</mat-hint>
-        </mat-form-field>
-        <div class="error" *ngIf="!online && precincts.length == 0">Este nevoie de o conexiune la internet pentru a obține date despre secții!</div>
-    </div>
-    <div mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Anulați</button>
-        <button mat-button [mat-dialog-close]="settings" [disabled]="disabled" (click)="saveSettings()">Salvați</button>
-    </div>
+  <h1 mat-dialog-title>
+    Setări
+    @if(data?.form) {
+      (pentru acest P.V.)
+    }
+  </h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Circumscripție electorală</mat-label>
+      <mat-select formControlName="county">
+        <mat-option *ngFor="let county of counties" [value]="county[0]">{{ county[1] }}</mat-option>
+      </mat-select>
+      <mat-hint>Alegeți circumscripția electorală în care se află secția dvs.</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Numărul secției</mat-label>
+      <input matInput type="text" formControlName="precinctSearch" [matAutocomplete]="auto">
+      @if(loadingPrecincts) {
+        <mat-progress-spinner class="loading-spinner" mode="indeterminate" [diameter]="16"></mat-progress-spinner>
+      }
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let precinct of filteredPrecincts | async" [value]="precinct.number">
+          <div class="precinct-info">
+            <div class="precinct-name"><b>Secția Nr. {{ precinct.number }}</b> ({{ precinct.uatName | titlecase }})</div>
+            <div class="precinct-details">{{ precinct.name }}</div>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+      <mat-hint>Căutați secția după nume sau număr.</mat-hint>
+    </mat-form-field>
+    @if(!online) {
+      <div class="error">
+        Este nevoie de o conexiune la internet pentru a obține date despre secții!
+      </div>
+    }
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Anulați</button>
+    <button
+      mat-button
+      [disabled]="settingsForm.invalid || loadingPrecincts"
+      (click)="saveSettings()"
+    >
+      Salvați
+    </button>
+  </div>
 </form>

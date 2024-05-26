@@ -10,24 +10,24 @@ export class SimpvPullService {
 
   constructor(private http: HttpClient) { }
 
-  getCountyData(county: string, timestamp = Date.now()) {
+  getCountyData(electionId: string, county: string, timestamp = Date.now()) {
     county = county.toLowerCase();
-    return this.http.get(`${presenceUrl}?county=${county}&timestamp=${timestamp}`).pipe(
-      retry(3),
+    return this.http.get(`${presenceUrl}?electionId=${electionId}&county=${county}&timestamp=${timestamp}`).pipe(
+      retry(1),
       catchError(this.handleError<Object>('getCountyData', {precinct: []}))
     );
   }
 
-  getPrecincts(county: string, timestamp?: number) : Observable<Object[]> {
-    return this.getCountyData(county, timestamp).pipe(
+  getPrecincts(electionId: string, county: string, timestamp?: number) : Observable<Object[]> {
+    return this.getCountyData(electionId, county, timestamp).pipe(
       map(res => res['precinct']),
       catchError(this.handleError<Object[]>('getPrecincts', []))
       );
 
   }
 
-  getPrecinct(precintNo: number, county: string, timestamp?: number) {
-    return this.getPrecincts(county, timestamp).pipe(
+  getPrecinct(electionId: string, precintNo: number, county: string, timestamp?: number) {
+    return this.getPrecincts(electionId, county, timestamp).pipe(
       map(precincts => {
         precintNo -= 1
         if(!(0 <= precintNo && precintNo < precincts.length))

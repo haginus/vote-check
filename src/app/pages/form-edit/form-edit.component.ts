@@ -17,13 +17,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormSimpvDialogComponent } from '../../components/form-simpv-dialog/form-simpv-dialog.component';
 import { FormDeleteDialogComponent } from '../../components/form-delete-dialog/form-delete-dialog.component';
 import { FormExitDialogComponent } from '../../components/form-exit-dialog/form-exit-dialog.component';
-import { Candidate } from '../../../elections/types';
+import { Candidate, Precint } from '../../../elections/types';
 import { CandidatesService } from '../../services/candidates.service';
 import { getElection } from '../../../elections/elections';
 import { v4 as uuidv4 } from 'uuid';
 import { FormData } from '../../resolvers/form.resolver';
 import { Subscription, firstValueFrom } from 'rxjs';
 import { CanDeactivate } from '../../guards/can-deactivate.guard';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-form-edit',
@@ -39,7 +40,7 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
   existingForm?: PVForm = this.routeFormData.form;
   election = this.routeFormData.election
   poll = this.routeFormData.poll;
-  precinct = { county: 'CT', uatName: 'Municipiul Constanța', number: 1 };
+  precinct!: Precint;
   formGroup: FormGroup;
   calculateSubscription!: Subscription;
 
@@ -49,10 +50,12 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private settingsService: SettingsService,
   ) {}
 
   async ngOnInit() {
+    this.precinct = this.existingForm?.precinct || (await firstValueFrom(this.settingsService.getSettings())).selectedPrecinct;
     this.candidates = await this.candidateService.getCandidates(this.election.id, this.poll.id, this.precinct);
     const formStructure = this.election.type.formStructure;
     const fields = formStructure.sections.flatMap(section => section.fields);
@@ -104,14 +107,8 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
   }
 
   saveForm() {
-    const form: PVForm = {
-      id: this.existingForm?.id || uuidv4(),
-      timestamp: Date.now(),
-      electionId: this.election.id,
-      pollId: this.poll.id,
-      precinct: this.precinct,
-      values: this.formGroup.value,
-    }
+    const form = this.getPvForm();
+
     const action = this.existingForm
       ? this.formsService.editForm(form.id, form)
       : this.formsService.createForm(form);
@@ -123,17 +120,35 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
     });
   }
 
-  askDeleteForm() {
-    const dialogRef = this.dialog.open(FormDeleteDialogComponent);
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) this.deleteForm();
-    });
+  async deleteForm() {
+    if(!await firstValueFrom(this.dialog.open(FormDeleteDialogComponent).afterClosed())) return;
+    await firstValueFrom(this.formsService.deleteForm(this.existingForm!.id));
+    this.router.navigate(['/']);
   }
 
-  deleteForm() {
-    this.formsService.deleteForm(this.existingForm!.id).subscribe((_) => {
-      this.router.navigate(['/']);
+  async autocompleteFromSimpv() {
+    const simpvPullStrategy = this.election.type.formStructure.simpvPullStrategy;
+    if(!simpvPullStrategy) return;
+    const dialogRef = this.dialog.open(FormSimpvDialogComponent, {
+      data: {
+        form: this.getPvForm(),
+      },
     });
+    const simpvResult = await firstValueFrom(dialogRef.afterClosed());
+    if(!simpvResult) return;
+    this.precinct = simpvPullStrategy(this.formGroup, simpvResult);
+    this.formGroup.markAsDirty();
+  }
+
+  private getPvForm(): PVForm {
+    return {
+      id: this.existingForm?.id || uuidv4(),
+      timestamp: Date.now(),
+      electionId: this.election.id,
+      pollId: this.poll.id,
+      precinct: this.precinct,
+      values: this.formGroup.value,
+    };
   }
 
   getFieldCrossErrorDescription(fieldName: string) {

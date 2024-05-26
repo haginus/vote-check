@@ -6,7 +6,7 @@
     <span>{{ existingForm ? 'Editare' : 'Adăugare'}} P.V.</span>
     <span class="spacer"></span>
     @if(existingForm) {
-      <button mat-icon-button matTooltip="Ștergeți P.V." (click)="askDeleteForm()">
+      <button mat-icon-button matTooltip="Ștergeți P.V." (click)="deleteForm()">
         <mat-icon>delete</mat-icon>
       </button>
     }
@@ -22,14 +22,19 @@
           <mat-card-header>
             <mat-card-title>
               Proces-verbal pentru {{ election.type.name }} - {{ poll.name }}
+              @if(precinct) {
+                (SV {{ precinct.number }})
+              }
             </mat-card-title>
             <mat-card-subtitle [class]="formGroup.invalid ? 'invalid' : 'valid'">
               Procesul-verbal este {{formGroup.invalid ? 'invalid' : 'valid'}}.
             </mat-card-subtitle>
             <span class="spacer"></span>
-            <button mat-icon-button matTooltip="Autocompletați date din SIMPV">
-              <mat-icon>cloud_download</mat-icon>
-            </button>
+            @if(election.type.formStructure.simpvPullStrategy) {
+              <button mat-icon-button matTooltip="Autocompletați date din SIMPV" (click)="autocompleteFromSimpv()">
+                <mat-icon>cloud_download</mat-icon>
+              </button>
+            }
           </mat-card-header>
         </mat-card>
         @for(section of election.type.formStructure.sections; track $index) {

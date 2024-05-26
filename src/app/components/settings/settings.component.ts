@@ -1,128 +1,167 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConnectionService } from 'ng-connection-service';
-import { Observable, of, scheduled } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { FormsService } from '../../services/forms.service';
-import { SettingsService, Settings, defaultSettings } from '../../services/settings.service';
+import { Observable, combineLatest, firstValueFrom } from 'rxjs';
+import { catchError, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { PVForm } from '../../services/forms.service';
+import {
+  SettingsService,
+  Settings,
+  defaultSettings,
+} from '../../services/settings.service';
 import { SimpvPullService } from '../../services/simpv-pull.service';
-import COUNTIES from '../../../files/counties.json'
+import COUNTIES from '../../../files/counties.json';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { environment } from '../../../environments/environment';
+import { Precint } from '../../../elections/types';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-
-  constructor(private simpv: SimpvPullService, private forms: FormsService, private connectionService: ConnectionService, private settingsService: SettingsService) {
-    this.filteredPrecincts = this.settingsForm.get('precinct').valueChanges
-      .pipe(
-        startWith(''),
-        map(precinct => precinct ? this._filterPrecincts(precinct) : this.precincts.slice())
-      );
-  }
-
-  settings : Settings;
-  online : boolean = navigator.onLine;
-  disabled = true
-  counties = []
-  precincts = []
-  filteredPrecincts : Observable<any>
-
-  settingsForm = new FormGroup({
-    'county': new FormControl(null),
-    'precinct': new FormControl({value: null, disabled: true}),
-  });
-
-  get county() { return this.settingsForm.get("county") }
-  get precinct() { return this.settingsForm.get("precinct") }
-
-  ngOnInit(): void {
-    let counties = COUNTIES
-    this.counties = Object.entries(counties);
-
-    this.connectionService.monitor().subscribe(({ hasInternetAccess: online }) => {
-      if(online == true && !this.online) {
-        this.getCountyPrecincts();
-      }
-      if(online) {
-        this.county.enable();
-        this.precinct.enable();
-      }
-      this.online = online
-    });
-
-    this.settingsService.getSettings().subscribe(res => {
-      if(res == undefined) {
-        this.settings = defaultSettings;
-      } else {
-        this.settings = res;
-        this.county.setValue(this.settings.selectedPrecinct.county);
-        this.precinct.setValue(this.settings.selectedPrecinct.number);
-        if(this.online)
-          this.getCountyPrecincts();
-        else {
-          this.county.disable();
-          this.precinct.disable();
+  constructor(
+    @Inject(MAT_DIALOG_DATA) protected data: SettingsDialogData | undefined,
+    private readonly dialogRef: MatDialogRef<SettingsComponent>,
+    private readonly simpv: SimpvPullService,
+    private readonly connectionService: ConnectionService,
+    private readonly settingsService: SettingsService,
+    private readonly snackBar: MatSnackBar,
+  ) {
+    this.filteredPrecincts = combineLatest([
+      this.precinctSearch.valueChanges.pipe(startWith('')),
+      this.precincts$,
+    ]).pipe(
+      takeUntilDestroyed(),
+      map(([precinctSearch, precincts]) => {
+        const filtered = precinctSearch ? this._filterPrecincts(precinctSearch, precincts) : precincts;
+        const precinct = filtered.find(precinct => precinct.number == +precinctSearch);
+        if(precinct) {
+          this.precinct.setValue(precinct);
         }
-      }
-    })
-
-    this.county.valueChanges.subscribe(value => {
-      if(this.settings.selectedPrecinct.county != value || value == null) {
-        this.settings.selectedPrecinct.county = value;
-        this.getCountyPrecincts();
-        this.settings.selectedPrecinct.number = null;
-        this.precinct.setValue(null);
-      }
-    })
-
-    this.precinct.valueChanges.subscribe(value => {
-      const val = Number(value)
-      if(val > 0 && val <= this.precincts.length)
-        this.disabled = false;
-      else this.disabled = true;
-    })
-  }
-
-
-
-  getCountyPrecincts() {
-    if(!this.settings.selectedPrecinct.county)
-      return;
-    this.precinct.disable();
-    this.simpv.getPrecincts(this.settings.selectedPrecinct.county).subscribe(res => {
-      res = res.map((precinct, precinctNo) => {
-        return { name: precinct['precinct']['name'].toLowerCase(), uatName: precinct['uat']['name'].toLowerCase(), no: (precinctNo + 1).toString() }
-      })
-      this.precincts = res;
-      this.precinct.setValue(this.settings.selectedPrecinct.number);
-      this.precinct.enable();
-    });
-  }
-
-  _filterPrecincts(value : string) {
-
-    const filterValue = normalize(value.toString());
-
-    return this.precincts.filter(precinct =>
-      normalize(precinct.no).indexOf(filterValue) === 0 ||
-      normalize(precinct.name).includes(filterValue) ||
-      normalize(precinct.uatName).includes(filterValue )
+        return filtered;
+      }),
     );
   }
 
-  saveSettings() {
-    this.settings.selectedPrecinct.county = this.county.value;
-    this.settings.selectedPrecinct.number = Number(this.precinct.value);
-    this.settings.selectedPrecinct.uatName = normalize(this.precincts[this.settings.selectedPrecinct.number].uatName).toUpperCase();
-    this.settingsService.saveSettings(this.settings).subscribe(_ => {})
+  electionId = this.data?.form.electionId || environment.currentElections[0].id;
+  settings: Settings;
+  online: boolean = navigator.onLine;
+  loadingPrecincts = false;
+  counties = [];
+  filteredPrecincts: Observable<any>;
+
+  settingsForm = new FormGroup({
+    county: new FormControl<string>(null, { validators: [Validators.required] }),
+    precinct: new FormControl<Precint>(null, { validators: [Validators.required] }),
+    precinctSearch: new FormControl<string>(null, { validators: [Validators.required, Validators.min(1)] }),
+  });
+
+  get county() {
+    return this.settingsForm.get('county');
   }
 
+  get precinct() {
+    return this.settingsForm.get('precinct');
+  }
 
+  get precinctSearch() {
+    return this.settingsForm.get('precinctSearch');
+  }
+
+  precincts$ = this.county.valueChanges.pipe(
+    tap(() => {
+      this.loadingPrecincts = true;
+      this.precinctSearch.disable();
+    }),
+    switchMap((county) => this.simpv.getPrecincts(this.electionId, county)),
+    map(result => result.map((precinct, precinctNo) => ({
+      name: precinct['precinct']['name'].toLowerCase(),
+      uatName: precinct['uat']['name'].toLowerCase(),
+      number: (precinctNo + 1),
+    }))),
+    tap(precincts => {
+      if(this.precinct.value?.county !== this.county.value) {
+        this.precinctSearch.setValue(null);
+        this.precinct.setValue(null);
+      }
+      this.precinctSearch.addValidators([Validators.max(precincts.length)]);
+      this.loadingPrecincts = false;
+      this.precinctSearch.enable();
+      if(precincts.length === 0) {
+        this.precinctSearch.disable();
+        this.precinct.setValue(null);
+      }
+    }),
+    catchError((e) => {
+      console.error(e);
+      this.loadingPrecincts = false;
+      this.precinct.setValue(null);
+      return [];
+    }),
+  );
+
+  async ngOnInit() {
+    let counties = COUNTIES;
+    this.counties = Object.entries(counties);
+
+    if(this.data?.form) {
+      this.electionId = this.data.form.electionId;
+      this.settings = {
+        selectedPrecinct: this.data.form.precinct,
+      };
+    } else {
+      const settings = await firstValueFrom(this.settingsService.getSettings());
+      this.settings = settings || defaultSettings;
+    }
+
+    setTimeout(() => {
+      this.county.setValue(this.settings.selectedPrecinct.county);
+      this.precinct.setValue(this.settings.selectedPrecinct);
+      this.precinctSearch.setValue(this.settings.selectedPrecinct.number + '');
+    }, 100);
+  }
+
+  _filterPrecincts(value: string, precincts: any[]) {
+    const filterValue = normalize(value.toString());
+
+    return precincts.filter(
+      (precinct) =>
+        normalize(precinct.number.toString()).indexOf(filterValue) === 0 ||
+        normalize(precinct.name).includes(filterValue) ||
+        normalize(precinct.uatName).includes(filterValue)
+    );
+  }
+
+  async saveSettings() {
+    const precinct = this.precinct.value;
+    this.settings.selectedPrecinct = {
+      county: this.county.value,
+      uatName: precinct.uatName.toLocaleUpperCase(),
+      number: precinct.number,
+    };
+    try {
+      if(!this.data?.form) {
+        await firstValueFrom(this.settingsService.saveSettings(this.settings));
+      }
+      this.dialogRef.close(this.settings);
+      this.snackBar.open('Setările au fost salvate.');
+    } catch (e) {
+      console.error(e);
+    }
+  }
+}
+
+interface SettingsDialogData {
+  form?: PVForm;
 }
 
 const normalize = (str: string) => {
-  return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+};

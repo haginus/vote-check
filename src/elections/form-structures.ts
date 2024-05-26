@@ -137,4 +137,17 @@ export const withWhiteVotesStructure: FormStructure = {
     }
     return Object.keys(errors).length > 0 ? errors : null;
   },
+  simpvPullStrategy: (formGroup, simpvPrecinct) => {
+    formGroup.get('a1')!.setValue(simpvPrecinct.initial_count_lp);
+    formGroup.get('a2')!.setValue(simpvPrecinct.LS);
+    formGroup.get('a3')!.setValue(simpvPrecinct.UM);
+    formGroup.get('b1')!.setValue(simpvPrecinct.LP);
+    formGroup.get('b2')!.setValue(simpvPrecinct.LS);
+    formGroup.get('b3')!.setValue(simpvPrecinct.UM);
+    return {
+      county: simpvPrecinct['county']['code'],
+      number: +simpvPrecinct['precinct']['nr'],
+      uatName: simpvPrecinct['uat']['name'],
+    };
+  },
 };

@@ -23,6 +23,7 @@ const routes: Routes = [
     path: 'form/create',
     component: FormEditComponent,
     canActivate: [setupGuard],
+    canDeactivate: [CanDeactivateGuard],
     resolve: {
       formData: FormResolver,
     }
