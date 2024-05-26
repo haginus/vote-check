@@ -13,7 +13,6 @@ export const setupGuard: CanActivateFn = async (route: ActivatedRouteSnapshot, s
     }
     return true;
   } catch (err) {
-    router.createUrlTree(['/setup']);
-    return false;
+    return router.createUrlTree(['/setup']);
   }
 }
