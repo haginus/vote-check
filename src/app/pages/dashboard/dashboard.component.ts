@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PVForm, FormsService } from '../../services/forms.service';
+import { FormsService } from '../../services/forms.service';
 import { SettingsComponent } from '../../components/settings/settings.component';
 import { InfoDialogComponent } from '../../components/info-dialog/info-dialog.component';
+import { FormCreateDialogComponent } from '../../components/form-create-dialog/form-create-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  forms : PVForm[];
+  forms$ = this.formsService.watchForms();
   constructor(private formsService: FormsService, private dialog: MatDialog) { }
 
-  ngOnInit(): void {
-    this.formsService.watchForms().subscribe(res => {
-      this.forms = res;
-    })
+  createForm() {
+    this.dialog.open(FormCreateDialogComponent);
   }
 
   openInfoDialog() {

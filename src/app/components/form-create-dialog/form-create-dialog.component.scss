@@ -1,0 +1,11 @@
+mat-dialog-content {
+  padding-top: 8px!important;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field + mat-form-field {
+  margin-top: 16px;
+}

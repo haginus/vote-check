@@ -6,6 +6,11 @@ export const elections: Election[] = [
     id: "parlamentare06122020",
     type: getElectionType('PARLIAMENTARY'),
     date: new Date()
+  },
+  {
+    id: "prezidentiale15092024",
+    type: getElectionType('PRESIDENTIAL'),
+    date: new Date(),
   }
 ];
 

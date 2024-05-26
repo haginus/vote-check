@@ -13,7 +13,7 @@ import { FormEditComponent } from './pages/form-edit/form-edit.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -37,11 +37,13 @@ import { InfoDialogComponent } from './components/info-dialog/info-dialog.compon
 import { FormExitDialogComponent } from './components/form-exit-dialog/form-exit-dialog.component';
 import { FormDeleteDialogComponent } from './components/form-delete-dialog/form-delete-dialog.component';
 import { FormSimpvDialogComponent } from './components/form-simpv-dialog/form-simpv-dialog.component';
+import { FormCreateDialogComponent } from './components/form-create-dialog/form-create-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    FormCreateDialogComponent,
     FormEditComponent,
     InfoDialogComponent,
     FormExitDialogComponent,
@@ -89,7 +91,8 @@ import { FormSimpvDialogComponent } from './components/form-simpv-dialog/form-si
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline', subscriptSizing: 'dynamic' }
-    }
+    },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 4000, horizontalPosition: 'start' } },
   ],
 })
 export class AppModule {}

@@ -41,7 +41,7 @@ export class FormSimpvDialogComponent implements OnInit {
     this.loading = true;
     this.simpv
       .getPrecinct(
-        this.settings.selectedPrecinct.precinct,
+        this.settings.selectedPrecinct.number,
         this.settings.selectedPrecinct.county
       )
       .subscribe((res) => {

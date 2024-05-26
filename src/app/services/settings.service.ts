@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
 import { JSONSchema } from '@ngx-pwa/local-storage';
+import { Precint } from '../../elections/types';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,6 @@ export class SettingsService {
     return this.storage.get<Settings>('settings', schema).pipe(
       tap((settings) => {
         if (settings == undefined) throw 'settingsUndefined';
-        if (settings.electionType != environment.electionType)
-          throw 'electionType';
       }),
       catchError(this.handleError('getSettings'))
     );
@@ -54,37 +52,29 @@ export class SettingsService {
 }
 
 export interface Settings {
-  electionType: string;
-  selectedPrecinct: {
-    county: string;
-    precinct: number;
-    uatName?: string;
-  };
+  selectedPrecinct: Precint;
 }
 
 export const defaultSettings: Settings = {
-  electionType: environment.electionType,
   selectedPrecinct: {
-    county: null,
-    precinct: null,
+    county: null!,
+    uatName: null!,
+    number: null!,
   },
 };
 
 const schema: JSONSchema = {
   type: 'object',
-  required: ['electionType', 'selectedPrecinct'],
+  required: ['selectedPrecinct'],
   properties: {
-    electionType: {
-      type: 'string',
-    },
     selectedPrecinct: {
       type: 'object',
-      required: ['county', 'precinct'],
+      required: ['county', 'number', 'uatName'],
       properties: {
         county: {
           type: 'string',
         },
-        precinct: {
+        number: {
           type: 'integer',
         },
         uatName: {

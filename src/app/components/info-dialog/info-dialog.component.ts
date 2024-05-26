@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './info-dialog.component.html',
 })
 export class InfoDialogComponent {
-  appVersion: string = environment.appVersion;
-  electionName: string = environment.electionName;
+  appVersion = environment.appVersion;
+  electionName = environment.currentElections.map(election => election.type.name).join(', ');
+  electionYear = environment.currentElections[0].date.getFullYear();
 }

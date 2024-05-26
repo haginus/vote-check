@@ -59,7 +59,7 @@ export class SettingsComponent implements OnInit {
       } else {
         this.settings = res;
         this.county.setValue(this.settings.selectedPrecinct.county);
-        this.precinct.setValue(this.settings.selectedPrecinct.precinct);
+        this.precinct.setValue(this.settings.selectedPrecinct.number);
         if(this.online)
           this.getCountyPrecincts();
         else {
@@ -73,7 +73,7 @@ export class SettingsComponent implements OnInit {
       if(this.settings.selectedPrecinct.county != value || value == null) {
         this.settings.selectedPrecinct.county = value;
         this.getCountyPrecincts();
-        this.settings.selectedPrecinct.precinct = null;
+        this.settings.selectedPrecinct.number = null;
         this.precinct.setValue(null);
       }
     })
@@ -97,7 +97,7 @@ export class SettingsComponent implements OnInit {
         return { name: precinct['precinct']['name'].toLowerCase(), uatName: precinct['uat']['name'].toLowerCase(), no: (precinctNo + 1).toString() }
       })
       this.precincts = res;
-      this.precinct.setValue(this.settings.selectedPrecinct.precinct);
+      this.precinct.setValue(this.settings.selectedPrecinct.number);
       this.precinct.enable();
     });
   }
@@ -115,8 +115,8 @@ export class SettingsComponent implements OnInit {
 
   saveSettings() {
     this.settings.selectedPrecinct.county = this.county.value;
-    this.settings.selectedPrecinct.precinct = Number(this.precinct.value);
-    this.settings.selectedPrecinct.uatName = normalize(this.precincts[this.settings.selectedPrecinct.precinct].uatName).toUpperCase();
+    this.settings.selectedPrecinct.number = Number(this.precinct.value);
+    this.settings.selectedPrecinct.uatName = normalize(this.precincts[this.settings.selectedPrecinct.number].uatName).toUpperCase();
     this.settingsService.saveSettings(this.settings).subscribe(_ => {})
   }
 

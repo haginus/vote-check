@@ -21,6 +21,8 @@ import { Candidate } from '../../../elections/types';
 import { CandidatesService } from '../../services/candidates.service';
 import { getElection } from '../../../elections/elections';
 import { v4 as uuidv4 } from 'uuid';
+import { FormData } from '../../resolvers/form.resolver';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-edit',
@@ -32,12 +34,13 @@ export class FormEditComponent implements OnInit, OnDestroy {
   loading: boolean = false;
   candidates: Candidate[] = [];
   matcher = new MyErrorStateMatcher();
-  election = getElection('parlamentare06122020');
-  poll = this.election.type.polls[0];
-  electionType = this.election.type;
+  routeFormData = this.route.snapshot.data['formData'] as FormData;
+  existingForm?: PVForm = this.routeFormData.form;
+  election = this.routeFormData.election
+  poll = this.routeFormData.poll;
   precinct = { county: 'CT', uatName: 'Municipiul Constanța', number: 1 };
-  existingForm?: PVForm = this.route.snapshot.data['form'];
   formGroup: FormGroup;
+  calculateSubscription!: Subscription;
 
   constructor(
     private readonly formsService: FormsService,
@@ -50,7 +53,7 @@ export class FormEditComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.candidates = await this.candidateService.getCandidates(this.election.id, this.poll.id, this.precinct);
-    const formStructure = this.electionType.formStructure;
+    const formStructure = this.election.type.formStructure;
     const fields = formStructure.sections.flatMap(section => section.fields);
     const candidateFields = this.candidates.map((candidate, index) => ({
       id: formStructure.candidateSectionKey + (index + 1),
@@ -65,21 +68,23 @@ export class FormEditComponent implements OnInit, OnDestroy {
       { validators: formStructure.validator }
     );
     this.computeFields();
-    this.formGroup.valueChanges.subscribe(() => {
+    this.calculateSubscription = this.formGroup.valueChanges.subscribe(() => {
       this.computeFields();
     });
   }
 
+  ngOnDestroy() {
+    this.calculateSubscription.unsubscribe();
+  }
+
   computeFields() {
-    const fields = this.electionType.formStructure.sections.flatMap(section => section.fields);
+    const fields = this.election.type.formStructure.sections.flatMap(section => section.fields);
     fields.forEach(field => {
       if(field.type !== 'computed') return;
       const value = field.computeFn(this.formGroup);
       this.formGroup.get(field.id)?.setValue(value, { emitEvent: false });
     });
   }
-
-  ngOnDestroy() {}
 
   showMessage(message: string) {
     this.snackBar.open(message, null, {

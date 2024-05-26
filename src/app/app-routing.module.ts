@@ -34,16 +34,22 @@ export class SetupGuard implements CanActivate {
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [SetupGuard] },
   { path: 'setup', component: SetupComponent },
-  //{ path: 'form/:id/view', component: FormViewComponent, data: {title: 'Vizionare PV'} },
   {
     path: 'form/:id/edit',
     component: FormEditComponent,
     canActivate: [SetupGuard],
     resolve: {
-      form: FormResolver,
+      formData: FormResolver,
     }
   },
-  { path: 'form/create', component: FormEditComponent, canActivate: [SetupGuard] }
+  {
+    path: 'form/create',
+    component: FormEditComponent,
+    canActivate: [SetupGuard],
+    resolve: {
+      formData: FormResolver,
+    }
+  }
 ];
 
 @NgModule({
