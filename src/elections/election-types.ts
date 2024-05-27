@@ -1,7 +1,7 @@
 import { withWhiteVotesStructure } from './form-structures';
 import { CandidateScope, ElectionType } from './types';
 
-export const electionTypes: ElectionType[] = [
+export const electionTypes = [
   {
     id: 'PRESIDENTIAL',
     name: 'Alegeri prezidențiale',
@@ -32,6 +32,18 @@ export const electionTypes: ElectionType[] = [
     ],
   },
   {
+    id: "EUROPEAN",
+    name: "Alegeri europarlamentare",
+    formStructure: withWhiteVotesStructure,
+    polls: [
+      {
+        id: 'PE',
+        name: 'Parlamentul European',
+        candidateScope: CandidateScope.Country,
+      },
+    ],
+  },
+  {
     id: 'LOCAL',
     name: 'Alegeri locale',
     formStructure: withWhiteVotesStructure,
@@ -58,8 +70,20 @@ export const electionTypes: ElectionType[] = [
       },
     ],
   },
-];
+  {
+    id: 'REFERENDUM',
+    name: 'Referendum',
+    formStructure: withWhiteVotesStructure,
+    polls: [
+      {
+        id: 'R',
+        name: 'Întrebarea 1',
+        candidateScope: CandidateScope.Country,
+      },
+    ],
+  },
+] as const satisfies ElectionType[];
 
-export function getElectionType(id: string) {
+export function getElectionType(id: typeof electionTypes[number]['id']) {
   return electionTypes.find(et => et.id === id);
 }

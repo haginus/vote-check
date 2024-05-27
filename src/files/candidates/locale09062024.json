@@ -1,0 +1,26 @@
+{
+  "CJ": {
+    "COUNTY": {
+      "CT": []
+    }
+  },
+  "PCJ": {
+    "COUNTY": {
+      "CT": []
+    }
+  },
+  "CL": {
+    "LOCALITY": {
+      "CT": {
+        "MUNICIPIUL CONSTANTA": []
+      }
+    }
+  },
+  "P": {
+    "LOCALITY": {
+      "CT": {
+        "MUNICIPIUL CONSTANTA": []
+      }
+    }
+  }
+}

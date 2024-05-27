@@ -4,10 +4,8 @@ import {
   FormControlName,
   FormGroup,
   FormGroupDirective,
-  NgForm,
   ValidationErrors,
   ValidatorFn,
-  Validators,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,13 +16,10 @@ import { FormSimpvDialogComponent } from '../../components/form-simpv-dialog/for
 import { FormDeleteDialogComponent } from '../../components/form-delete-dialog/form-delete-dialog.component';
 import { FormExitDialogComponent } from '../../components/form-exit-dialog/form-exit-dialog.component';
 import { Candidate, Precint } from '../../../elections/types';
-import { CandidatesService } from '../../services/candidates.service';
-import { getElection } from '../../../elections/elections';
 import { v4 as uuidv4 } from 'uuid';
 import { FormData } from '../../resolvers/form.resolver';
 import { Subscription, firstValueFrom } from 'rxjs';
 import { CanDeactivate } from '../../guards/can-deactivate.guard';
-import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-form-edit',
@@ -34,53 +29,43 @@ import { SettingsService } from '../../services/settings.service';
 export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
 
   loading: boolean = false;
-  candidates: Candidate[] = [];
   matcher = new MyErrorStateMatcher();
   routeFormData = this.route.snapshot.data['formData'] as FormData;
   existingForm?: PVForm = this.routeFormData.form;
   election = this.routeFormData.election
   poll = this.routeFormData.poll;
-  precinct!: Precint;
+  precinct: Precint = this.routeFormData.precinct;
+  candidates: Candidate[] = this.routeFormData.candidates;
   formGroup: FormGroup;
   calculateSubscription!: Subscription;
 
   constructor(
     private readonly formsService: FormsService,
-    private readonly candidateService: CandidatesService,
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private settingsService: SettingsService,
   ) {}
 
   async ngOnInit() {
-    try {
-      this.precinct = this.existingForm?.precinct || (await firstValueFrom(this.settingsService.getSettings())).selectedPrecinct;
-      this.candidates = await this.candidateService.getCandidates(this.election.id, this.poll.id, this.precinct);
-      const formStructure = this.election.type.formStructure;
-      const fields = formStructure.sections.flatMap(section => section.fields);
-      const candidateFields = this.candidates.map((candidate, index) => ({
-        id: formStructure.candidateSectionKey + (index + 1),
-        type: 'input',
-        title: candidate.candidate,
-      }));
-      this.formGroup = new FormGroup(
-        [...fields, ...candidateFields].reduce((acc, field) => ({
-          ...acc,
-          [field.id]: new FormControl<number>(this.existingForm?.values[field.id]!, [positive])
-        }), {}),
-        { validators: formStructure.validator }
-      );
+    const formStructure = this.election.type.formStructure;
+    const fields = formStructure.sections.flatMap(section => section.fields);
+    const candidateFields = this.candidates.map((candidate, index) => ({
+      id: formStructure.candidateSectionKey + (index + 1),
+      type: 'input',
+      title: candidate.candidate,
+    }));
+    this.formGroup = new FormGroup(
+      [...fields, ...candidateFields].reduce((acc, field) => ({
+        ...acc,
+        [field.id]: new FormControl<number>(this.existingForm?.values[field.id]!, [positive])
+      }), {}),
+      { validators: formStructure.validator }
+    );
+    this.computeFields();
+    this.calculateSubscription = this.formGroup.valueChanges.subscribe(() => {
       this.computeFields();
-      this.calculateSubscription = this.formGroup.valueChanges.subscribe(() => {
-        this.computeFields();
-      });
-    } catch (e) {
-      console.error(e);
-      this.snackBar.open('Eroare la încărcarea datelor.');
-      this.router.navigate(['/']);
-    }
+    });
   }
 
   ngOnDestroy() {
