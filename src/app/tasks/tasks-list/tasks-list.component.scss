@@ -1,24 +1,25 @@
 .chapter-title {
-    line-height: 24px;
-    margin-left: 16px;
+  line-height: 24px;
+  margin-left: 16px;
 }
 
 mat-list-item:hover {
-    background-color: rgba(0,0,0,.04);;
+  cursor: pointer;
+  background-color: rgba(0,0,0,.04);;
 }
 
 .task-section {
-    cursor: pointer;
-    .section-title {
-        flex: 1;
-        .optional {
-            color: #616161;
-            font-size: 14px;
-            margin-left: 6px;
-        }
+  cursor: pointer;
+  .section-title {
+    flex: 1;
+    .optional {
+      color: #616161;
+      font-size: 14px;
+      margin-left: 6px;
     }
+  }
 
-    .section-icon {
-        color: #388E3C;
-    }
+  .section-icon {
+    color: #388E3C;
+  }
 }

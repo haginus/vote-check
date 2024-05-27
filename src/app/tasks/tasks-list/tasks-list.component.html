@@ -1,21 +1,27 @@
 <mat-accordion>
-  <mat-expansion-panel hideToggle *ngFor="let chapter of tasks; let chapterIndex = index">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <app-progress [diameter]="24" [progress]="progress[chapterIndex].progress"></app-progress>
-        <span class="chapter-title">{{chapter.chapterName}}</span>
-      </mat-panel-title>
-      <span>{{chapter.sections.length}} secțiuni</span>
-    </mat-expansion-panel-header>
-    <mat-list>
-      <mat-list-item *ngFor="let section of chapter.sections; let sectionIndex = index" class="task-section" (click)="openSection(chapterIndex, sectionIndex)">
-          <span class="section-title">
-            <span>{{section.sectionName}}</span>
-            <span *ngIf="section.isOptional" class="optional">(Opțional)</span>
-          </span>
-          <app-progress [diameter]="24" [progress]="progress[chapterIndex].sections[sectionIndex]"></app-progress>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
+  @for(chapter of tasks; track $index; let chapterIndex = $index) {
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <app-progress [diameter]="24" [progress]="progress[chapterIndex].progress"></app-progress>
+          <span class="chapter-title">{{chapter.chapterName}}</span>
+        </mat-panel-title>
+        <span>{{chapter.sections.length}} secțiuni</span>
+      </mat-expansion-panel-header>
+      <mat-list>
+        @for(section of chapter.sections; track $index) {
+          <mat-list-item class="task-section" (click)="openSection(chapterIndex, $index)">
+            <div class="section-title" matListItemTitle>
+              <span>{{ section.sectionName }}</span>
+              @if(section.isOptional) {
+                <span class="optional">(Opțional)</span>
+              }
+            </div>
+            <app-progress matListItemIcon matSuffix [diameter]="24" [progress]="progress[chapterIndex].sections[$index]"></app-progress>
+          </mat-list-item>
+        }
+      </mat-list>
+    </mat-expansion-panel>
+  }
 </mat-accordion>
 

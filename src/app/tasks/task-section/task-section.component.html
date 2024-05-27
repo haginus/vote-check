@@ -1,17 +1,33 @@
-<h1 mat-dialog-title>{{section.sectionName}}</h1>
+<h1 mat-dialog-title>{{ section.sectionName }}</h1>
 <div mat-dialog-content>
-    <div *ngFor="let content of section.content" class="section-container">
-        <div class="section-text" *ngIf="content.text">{{content.text}}</div>
-        <div *ngIf="content.type == 'list'">
-            <div *ngFor="let task of content.tasks; let i = index" class="task-container">
-                <mat-checkbox [(ngModel)]="task.checked" class="multiline">{{task.taskName}}</mat-checkbox>
-                <div class="tip-container">
-                    <div class="task-tip" *ngIf="task.tip || task.tipLink ">
-                        <span>{{task.tip}} </span>
-                        <a [routerLink]="[ task.tipLink.link ]" *ngIf="task.tipLink" mat-dialog-close>{{task.tipLink.linkText}}</a>
-                    </div>
-                </div>
-            </div>
+  @for(content of section.content; track $index) {
+    <div class="section-container">
+      @if(content.text) {
+        <div class="section-text">
+          {{ content.text }}
         </div>
+      }
+      @if(content.type === 'list') {
+        @for(task of content.tasks; track $index) {
+          <div class="task-container">
+            <mat-checkbox [(ngModel)]="task.checked" class="multiline">
+              {{ task.taskName }}
+            </mat-checkbox>
+            <div class="tip-container">
+              @if(task.tip || task.tipLink) {
+                <div class="task-tip">
+                  <span>{{ task.tip }}</span>
+                  @if(task.tipLink) {
+                    <a [routerLink]="[ task.tipLink.link ]" mat-dialog-close>
+                      {{ task.tipLink.linkText }}
+                    </a>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      }
     </div>
+  }
 </div>

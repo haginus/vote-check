@@ -12,8 +12,8 @@ export class TasksListComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private tasksService: TasksService) { }
 
-  tasks : TaskChapter[] = []
-  progress = []
+  tasks: TaskChapter[] = [];
+  progress: { progress: number; sections: number[]; }[] = [];
 
   ngOnInit(): void {
     this.tasksService.getTasks().subscribe(tasks => {

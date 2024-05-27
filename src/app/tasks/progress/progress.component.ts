@@ -9,9 +9,9 @@ export class ProgressComponent implements OnInit {
 
   constructor() { }
 
-  @Input('diameter') diameter : number;
-  @Input('progress') progress : number;
-  ngOnInit(): void {
-  }
+  @Input('diameter') diameter: number;
+  @Input('progress') progress: number;
+
+  ngOnInit(): void {}
 
 }
