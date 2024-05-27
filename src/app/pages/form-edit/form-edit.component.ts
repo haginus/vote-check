@@ -55,34 +55,40 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
   ) {}
 
   async ngOnInit() {
-    this.precinct = this.existingForm?.precinct || (await firstValueFrom(this.settingsService.getSettings())).selectedPrecinct;
-    this.candidates = await this.candidateService.getCandidates(this.election.id, this.poll.id, this.precinct);
-    const formStructure = this.election.type.formStructure;
-    const fields = formStructure.sections.flatMap(section => section.fields);
-    const candidateFields = this.candidates.map((candidate, index) => ({
-      id: formStructure.candidateSectionKey + (index + 1),
-      type: 'input',
-      title: candidate.candidate,
-    }));
-    this.formGroup = new FormGroup(
-      [...fields, ...candidateFields].reduce((acc, field) => ({
-        ...acc,
-        [field.id]: new FormControl<number>(this.existingForm?.values[field.id]!, [positive])
-      }), {}),
-      { validators: formStructure.validator }
-    );
-    this.computeFields();
-    this.calculateSubscription = this.formGroup.valueChanges.subscribe(() => {
+    try {
+      this.precinct = this.existingForm?.precinct || (await firstValueFrom(this.settingsService.getSettings())).selectedPrecinct;
+      this.candidates = await this.candidateService.getCandidates(this.election.id, this.poll.id, this.precinct);
+      const formStructure = this.election.type.formStructure;
+      const fields = formStructure.sections.flatMap(section => section.fields);
+      const candidateFields = this.candidates.map((candidate, index) => ({
+        id: formStructure.candidateSectionKey + (index + 1),
+        type: 'input',
+        title: candidate.candidate,
+      }));
+      this.formGroup = new FormGroup(
+        [...fields, ...candidateFields].reduce((acc, field) => ({
+          ...acc,
+          [field.id]: new FormControl<number>(this.existingForm?.values[field.id]!, [positive])
+        }), {}),
+        { validators: formStructure.validator }
+      );
       this.computeFields();
-    });
+      this.calculateSubscription = this.formGroup.valueChanges.subscribe(() => {
+        this.computeFields();
+      });
+    } catch (e) {
+      console.error(e);
+      this.snackBar.open('Eroare la încărcarea datelor.');
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnDestroy() {
-    this.calculateSubscription.unsubscribe();
+    this.calculateSubscription?.unsubscribe();
   }
 
   async canDeactivate() {
-    if (this.formGroup.pristine) {
+    if (!this.formGroup || this.formGroup.pristine) {
       return true;
     }
     const dialogRef = this.dialog.open(FormExitDialogComponent);
