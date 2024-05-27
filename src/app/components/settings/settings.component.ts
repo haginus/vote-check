@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConnectionService } from 'ng-connection-service';
-import { Observable, combineLatest, firstValueFrom } from 'rxjs';
+import { Observable, combineLatest, firstValueFrom, of } from 'rxjs';
 import { catchError, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { PVForm } from '../../services/forms.service';
@@ -57,7 +57,7 @@ export class SettingsComponent implements OnInit {
   settingsForm = new FormGroup({
     county: new FormControl<string>(null, { validators: [Validators.required] }),
     precinct: new FormControl<Precint>(null, { validators: [Validators.required] }),
-    precinctSearch: new FormControl<string>(null, { validators: [Validators.required, Validators.min(1)] }),
+    precinctSearch: new FormControl<string>(null),
   });
 
   get county() {
@@ -77,7 +77,7 @@ export class SettingsComponent implements OnInit {
       this.loadingPrecincts = true;
       this.precinctSearch.disable();
     }),
-    switchMap((county) => this.simpv.getPrecincts(this.electionId, county)),
+    switchMap((county) => county ? this.simpv.getPrecincts(this.electionId, county) : of([])),
     map(result => result.map((precinct, precinctNo) => ({
       name: precinct['precinct']['name'].toLowerCase(),
       uatName: precinct['uat']['name'].toLowerCase(),
@@ -88,7 +88,11 @@ export class SettingsComponent implements OnInit {
         this.precinctSearch.setValue(null);
         this.precinct.setValue(null);
       }
-      this.precinctSearch.addValidators([Validators.max(precincts.length)]);
+      this.precinctSearch.setValidators([
+        Validators.required,
+        Validators.min(1),
+        Validators.max(precincts.length)
+      ]);
       this.loadingPrecincts = false;
       this.precinctSearch.enable();
       if(precincts.length === 0) {
@@ -121,7 +125,7 @@ export class SettingsComponent implements OnInit {
     setTimeout(() => {
       this.county.setValue(this.settings.selectedPrecinct.county);
       this.precinct.setValue(this.settings.selectedPrecinct);
-      this.precinctSearch.setValue(this.settings.selectedPrecinct.number + '');
+      this.precinctSearch.setValue((this.settings.selectedPrecinct.number || '') + '');
     }, 100);
   }
 

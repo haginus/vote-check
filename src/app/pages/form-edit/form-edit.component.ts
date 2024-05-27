@@ -123,7 +123,9 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
   async deleteForm() {
     if(!await firstValueFrom(this.dialog.open(FormDeleteDialogComponent).afterClosed())) return;
     await firstValueFrom(this.formsService.deleteForm(this.existingForm!.id));
+    this.formGroup.markAsPristine();
     this.router.navigate(['/']);
+    this.snackBar.open('Proces verbal șters.');
   }
 
   async autocompleteFromSimpv() {
