@@ -7,6 +7,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { getElection } from "../../elections/elections";
 import { SettingsService } from "../services/settings.service";
 import { CandidatesService } from "../services/candidates.service";
+import { getAvailablePolls } from "../../elections/election-types";
 
 export interface FormData {
   election: Election;
@@ -42,7 +43,7 @@ export const FormResolver: ResolveFn<FormData | null> = async (route: ActivatedR
     precinct = (await firstValueFrom(settingsService.getSettings())).selectedPrecinct;
   }
   const election = getElection(electionId as any);
-  const poll = election?.type.polls.find(p => p.id === pollId);
+  const poll = election ? getAvailablePolls(election.type, precinct).find(p => p.id === pollId) : undefined;
   if (!election || !poll) {
     snackBar.open('Scrutin necunoscut.');
     router.navigate(['/']);

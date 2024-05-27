@@ -11,7 +11,7 @@
   <mat-form-field>
     <mat-label>Tip</mat-label>
     <mat-select formControlName="poll">
-      @for(poll of createForm.get('election').value.type.polls; track poll.id) {
+      @for(poll of polls$ | async; track poll.id) {
         <mat-option [value]="poll">{{ poll.name }}</mat-option>
       }
     </mat-select>
@@ -24,7 +24,7 @@
     [disabled]="createForm.invalid"
     mat-dialog-close
     [routerLink]="['/form', 'create']"
-    [queryParams]="{ electionId: createForm.get('election').value.id, pollId: createForm.get('poll').value.id }"
+    [queryParams]="{ electionId: createForm.get('election').value.id, pollId: createForm.get('poll').value?.id }"
   >
     Adăugați
   </button>

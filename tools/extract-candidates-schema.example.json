@@ -17,13 +17,25 @@
     },
     {
       "id": "CJ",
-      "cellValues": ["CONSILIU JUDEŢEAN", "CONSILIU GENERAL"],
+      "cellValues": ["CONSILIU JUDEŢEAN"],
       "candidateScope": "COUNTY",
       "candidateType": "party"
     },
     {
       "id": "PCJ",
       "cellValues": ["PRESEDINTE CONSILIU JUDEŢEAN", "PRIMAR GENERAL"],
+      "candidateScope": "COUNTY",
+      "candidateType": "person"
+    },
+    {
+      "id": "CG",
+      "cellValues": ["CONSILIU GENERAL"],
+      "candidateScope": "COUNTY",
+      "candidateType": "party"
+    },
+    {
+      "id": "PG",
+      "cellValues": ["PRIMAR GENERAL"],
       "candidateScope": "COUNTY",
       "candidateType": "person"
     }

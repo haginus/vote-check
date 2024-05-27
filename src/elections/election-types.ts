@@ -1,5 +1,5 @@
 import { withWhiteVotesStructure } from './form-structures';
-import { CandidateScope, ElectionType } from './types';
+import { CandidateScope, ElectionType, Precint } from './types';
 
 export const electionTypes = [
   {
@@ -52,11 +52,13 @@ export const electionTypes = [
         id: 'CJ',
         name: 'Consiliul Județean',
         candidateScope: CandidateScope.County,
+        availableFor: (precint) => precint.county !== 'B',
       },
       {
         id: 'PCJ',
         name: 'Președinte Consiliu Județean',
         candidateScope: CandidateScope.County,
+        availableFor: (precint) => precint.county !== 'B',
       },
       {
         id: 'CL',
@@ -67,6 +69,18 @@ export const electionTypes = [
         id: 'P',
         name: 'Primar',
         candidateScope: CandidateScope.Locality
+      },
+      {
+        id: 'CG',
+        name: 'Consiliul General',
+        candidateScope: CandidateScope.County,
+        availableFor: (precint) => precint.county === 'B',
+      },
+      {
+        id: 'PG',
+        name: 'Primar General',
+        candidateScope: CandidateScope.County,
+        availableFor: (precint) => precint.county === 'B',
       },
     ],
   },
@@ -86,4 +100,8 @@ export const electionTypes = [
 
 export function getElectionType(id: typeof electionTypes[number]['id']) {
   return electionTypes.find(et => et.id === id);
+}
+
+export function getAvailablePolls(electionType: ElectionType, precint: Precint) {
+  return electionType.polls.filter(poll => !poll.availableFor || poll.availableFor(precint));
 }

@@ -15,6 +15,7 @@ export interface Poll {
   id: string;
   name: string;
   candidateScope: CandidateScope;
+  availableFor?: (precint: Precint) => boolean;
 }
 
 type FormField = (
