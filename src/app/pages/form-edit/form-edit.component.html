@@ -23,7 +23,7 @@
             <mat-card-title>
               Proces-verbal pentru {{ election.type.name }} - {{ poll.name }}
               @if(precinct) {
-                (SV {{ precinct.number }})
+                (S.V. {{ precinct.county }}-{{ precinct.number }})
               }
             </mat-card-title>
             <mat-card-subtitle [class]="formGroup.invalid ? 'invalid' : 'valid'">

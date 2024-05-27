@@ -12,24 +12,26 @@
   <div class="scroll">
     <div class="home-section">
       <h6>Procese-verbale</h6>
-      @for(form of forms$ | async; track form.id) {
-        <mat-card class="form-card">
-          <mat-card-header>
-            <mat-card-title>{{ form.pollId }} / SV {{ form.precinct.number }}</mat-card-title>
-            <mat-card-subtitle>{{ form.timestamp | date:'dd.MM.yyyy HH:mm' }}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-actions>
-            <button mat-icon-button [routerLink]="['/form', form.id, 'edit']">
-              <mat-icon>arrow_forward</mat-icon>
-            </button>
-          </mat-card-actions>
-        </mat-card>
-      }
-      <div>
-        <button mat-button mat-stroked-button (click)="createForm()">
-          Creați P.V.
-        </button>
+      <div class="form-cards">
+        @for(form of forms$ | async; track form.id) {
+          <mat-card class="form-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{ form.pollId }} / S.V. {{ form.precinct.county }}-{{ form.precinct.number }}
+              </mat-card-title>
+              <mat-card-subtitle>{{ form.timestamp | date:'dd.MM.yyyy HH:mm' }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+              <button mat-icon-button [routerLink]="['/form', form.id, 'edit']">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
       </div>
+      <button mat-button mat-stroked-button (click)="createForm()">
+        Creați P.V.
+      </button>
     </div>
     <div class="home-section">
       <h6>Sarcini</h6>

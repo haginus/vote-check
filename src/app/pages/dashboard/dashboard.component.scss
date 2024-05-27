@@ -1,22 +1,28 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .home-section {
-    padding: 12px 16px;
+  padding: 12px 16px;
+}
+
+.form-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .form-card {
-    display: inline-block;
-    padding: 12px;
-    margin: 0px 12px 12px 0px;
-}
+  display: inline-block;
+  padding: 12px;
+  width: calc(33.3333% - 12px);
 
-.form-card:last-of-type {
-    margin-right: 0px;
-}
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
-.form-card mat-card-actions {
-    text-align: right;
-    padding: 0;
+  @media (min-width: 769px) and (max-width: 1024px) {
+    width: calc(50% - 6px);
+  }
 }
