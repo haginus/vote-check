@@ -1,0 +1,40 @@
+{
+  "inputFile": "Candidaturi_locale_2024.xlsx",
+  "outputFile": "candidates.json",
+  "independentColumnValue": "CANDIDAT INDEPENDENT",
+  "polls": [
+    {
+      "id": "CL",
+      "cellValues": ["CONSILIERI LOCALI"],
+      "candidateScope": "LOCALITY",
+      "candidateType": "party"
+    },
+    {
+      "id": "P",
+      "cellValues": ["PRIMARI"],
+      "candidateScope": "LOCALITY",
+      "candidateType": "person"
+    },
+    {
+      "id": "CJ",
+      "cellValues": ["CONSILIU JUDEŢEAN", "CONSILIU GENERAL"],
+      "candidateScope": "COUNTY",
+      "candidateType": "party"
+    },
+    {
+      "id": "PCJ",
+      "cellValues": ["PRESEDINTE CONSILIU JUDEŢEAN", "PRIMAR GENERAL"],
+      "candidateScope": "COUNTY",
+      "candidateType": "person"
+    }
+  ],
+  "columns": {
+    "poll": 10,
+    "county": 2,
+    "uatName": 4,
+    "ballotPosition": 6,
+    "party": 5,
+    "candidateName1": 8,
+    "candidateName2": 9
+  }
+}
