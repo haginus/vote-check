@@ -1,5 +1,28 @@
 {
   "PE": {
-    "COUNTRY": []
+    "COUNTRY": [
+      { "candidate": "ALIANȚA ELECTORALĂ PSD PNL" },
+      { "candidate": "PARTIDUL S.O.S. ROMÂNIA" },
+      { "candidate": "ALIANȚA DREAPTA UNITĂ USR-PMP-FORȚA DREPTEI" },
+      { "candidate": "ROMÂNIA SOCIALISTĂ" },
+      { "candidate": "ALIANȚA AUR" },
+      { "candidate": "PARTIDUL ALTERNATIVA DREAPTĂ" },
+      { "candidate": "PARTIDUL DIASPORA UNITĂ" },
+      { "candidate": "PARTIDUL UMANIST SOCIAL LIBERAL" },
+      { "candidate": "PARTIDUL REÎNNOIM PROIECTUL EUROPEAN AL ROMÂNIEI" },
+      { "candidate": "PARTIDUL OAMENILOR LIBERI" },
+      { "candidate": "UNIUNEA DEMOCRATĂ MAGHIARĂ DIN ROMÂNIA" },
+      { "candidate": "PARTIDUL ROMÂNIA MARE" },
+      { "candidate": "PARTIDUL NOUA ROMÂNIE" },
+      { "candidate": "PARTIDUL PATRIOȚILOR" },
+      { "candidate": "PARTIDUL NAȚIONAL ȚĂRĂNESC MANIU-MIHALACHE" },
+      { "candidate": "JURMA PAUL-OCTAVIAN" },
+      { "candidate": "PÎRVĂNESCU PAULA-MARINELA" },
+      { "candidate": "GHEORGHE VLAD-DAN" },
+      { "candidate": "MUSTĂȚEA ILIE-CĂTĂLIN" },
+      { "candidate": "ȘTEFĂNUȚĂ NICOLAE-BOGDĂNEL" },
+      { "candidate": "MÎNDRU PETRU" },
+      { "candidate": "ȘOȘOACĂ DUMITRU-SILVESTRU" }
+    ]
   }
 }
