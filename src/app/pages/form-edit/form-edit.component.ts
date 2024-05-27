@@ -28,7 +28,6 @@ import { CanDeactivate } from '../../guards/can-deactivate.guard';
 })
 export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
 
-  loading: boolean = false;
   matcher = new MyErrorStateMatcher();
   routeFormData = this.route.snapshot.data['formData'] as FormData;
   existingForm?: PVForm = this.routeFormData.form;
