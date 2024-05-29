@@ -49,8 +49,11 @@ export const FormResolver: ResolveFn<FormData | null> = async (route: ActivatedR
     router.navigate(['/']);
     return null;
   }
-  candidates = await candidatesService.getCandidates(election.id, poll.id, precinct);
-  if(candidates.length === 0) {
+  const hasCandidates = !!election.type.formStructure.candidateSectionKey;
+  candidates = hasCandidates
+    ? await candidatesService.getCandidates(election.id, poll.id, precinct)
+    : [];
+  if(hasCandidates && candidates.length === 0) {
     snackBar.open('Candidații pentru această circumscripție electorală nu au putut fi încărcați.');
   }
   return { election, poll, precinct, candidates, form };

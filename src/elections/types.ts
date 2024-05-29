@@ -33,7 +33,7 @@ export interface FormStructure {
     subtitle?: string;
     fields: FormField[];
   }[];
-  candidateSectionKey: string;
+  candidateSectionKey?: string;
   validator: (form: FormGroup) => ValidationErrors | null;
   simpvPullStrategy?: (form: FormGroup, simpvPrecinct: any) => Precint;
 }

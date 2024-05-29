@@ -1,11 +1,11 @@
-import { withWhiteVotesStructure } from './form-structures';
+import { europeansStructure, localsStructure, parliamentStructure, presidentialsStructure, referendumStructure } from './form-structures';
 import { CandidateScope, ElectionType, Precint } from './types';
 
 export const electionTypes = [
   {
     id: 'PRESIDENTIAL',
     name: 'Alegeri prezidențiale',
-    formStructure: withWhiteVotesStructure,
+    formStructure: presidentialsStructure,
     polls: [
       {
         id: 'P',
@@ -17,7 +17,7 @@ export const electionTypes = [
   {
     id: 'PARLIAMENTARY',
     name: 'Alegeri parlamentare',
-    formStructure: withWhiteVotesStructure,
+    formStructure: parliamentStructure,
     polls: [
       {
         id: 'CDEP',
@@ -34,7 +34,7 @@ export const electionTypes = [
   {
     id: "EUROPEAN",
     name: "Alegeri europarlamentare",
-    formStructure: withWhiteVotesStructure,
+    formStructure: europeansStructure,
     polls: [
       {
         id: 'PE',
@@ -46,7 +46,7 @@ export const electionTypes = [
   {
     id: 'LOCAL',
     name: 'Alegeri locale',
-    formStructure: withWhiteVotesStructure,
+    formStructure: localsStructure,
     polls: [
       {
         id: 'CJ',
@@ -87,7 +87,7 @@ export const electionTypes = [
   {
     id: 'REFERENDUM',
     name: 'Referendum',
-    formStructure: withWhiteVotesStructure,
+    formStructure: referendumStructure,
     polls: [
       {
         id: 'R',
