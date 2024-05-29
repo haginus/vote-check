@@ -4,6 +4,7 @@ import { FormsService } from '../../services/forms.service';
 import { SettingsComponent } from '../../components/settings/settings.component';
 import { InfoDialogComponent } from '../../components/info-dialog/info-dialog.component';
 import { FormCreateDialogComponent } from '../../components/form-create-dialog/form-create-dialog.component';
+import { getElection } from '../../../elections/elections';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,6 +26,10 @@ export class DashboardComponent {
 
   openSettingsDialog() {
     this.dialog.open(SettingsComponent)
+  }
+
+  getElection(id: string) {
+    return getElection(id as any);
   }
 
 }
