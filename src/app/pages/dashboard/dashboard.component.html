@@ -36,9 +36,13 @@
         Creați P.V.
       </button>
     </div>
-    <div class="home-section">
-      <h6>Sarcini</h6>
-      <app-tasks-list></app-tasks-list>
-    </div>
+      <div class="home-section">
+        <h6>Sarcini</h6>
+        @defer {
+          <app-tasks-list></app-tasks-list>
+        } @loading(after 100ms; minimum 1s) {
+          <mat-progress-spinner mode="indeterminate" [diameter]="32"></mat-progress-spinner>
+        }
+      </div>
   </div>
 </div>

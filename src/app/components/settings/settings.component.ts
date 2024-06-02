@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConnectionService } from 'ng-connection-service';
 import { Observable, combineLatest, firstValueFrom, of } from 'rxjs';
-import { catchError, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { PVForm } from '../../services/forms.service';
 import {
@@ -12,15 +12,41 @@ import {
 } from '../../services/settings.service';
 import { SimpvPullService } from '../../services/simpv-pull.service';
 import COUNTIES from '../../../files/counties.json';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { environment } from '../../../environments/environment';
 import { Precint } from '../../../elections/types';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AsyncPipe, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
+    TitleCasePipe,
+    AsyncPipe,
+  ],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' }
+    },
+  ]
 })
 export class SettingsComponent implements OnInit {
   constructor(
@@ -49,7 +75,9 @@ export class SettingsComponent implements OnInit {
 
   electionId = this.data?.form.electionId || environment.currentElections[0].id;
   settings: Settings;
-  online: boolean = navigator.onLine;
+  isOffline$ = this.connectionService.monitor().pipe(
+    map((res) => !res.hasNetworkConnection)
+  );
   loadingPrecincts = false;
   counties = [];
   filteredPrecincts: Observable<any>;
@@ -72,12 +100,16 @@ export class SettingsComponent implements OnInit {
     return this.settingsForm.get('precinctSearch');
   }
 
-  precincts$ = this.county.valueChanges.pipe(
+  precincts$ = combineLatest([
+    this.isOffline$,
+    this.county.valueChanges
+  ]).pipe(
+    filter(([isOffline]) => !isOffline),
     tap(() => {
       this.loadingPrecincts = true;
       this.precinctSearch.disable();
     }),
-    switchMap((county) => county ? this.simpv.getPrecincts(this.electionId, county) : of([])),
+    switchMap(([_, county]) => county ? this.simpv.getPrecincts(this.electionId, county) : of([])),
     map(result => result.map((precinct, precinctNo) => ({
       name: precinct['precinct']['name'].toLowerCase(),
       uatName: precinct['uat']['name'].toLowerCase(),

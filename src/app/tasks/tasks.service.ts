@@ -5,7 +5,7 @@ import { map, switchMap } from 'rxjs/operators';
 import INITIAL_TASKS from './../../files/tasks.json'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class TasksService {
 

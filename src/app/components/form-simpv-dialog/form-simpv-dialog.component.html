@@ -1,12 +1,34 @@
 <h2 mat-dialog-title>Obțineți date din SIMPV</h2>
 <mat-dialog-content class="mat-typography">
-  <p>Autocompletați în procesul-verbal datele despre numărul total de alegători și numărul alegătorilor care s-au prezentat la urne.</p>
-  <p *ngIf="!loading && precinct"><b>Datele vor fi obținute pentru secția nr. {{precinct.precinct.nr}} ({{precinct.precinct.name | titlecase}}), {{ precinct.uat.name | titlecase }}.</b></p>
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-  <p *ngIf="!loading && !precinct && !online" style="color: red;">Este nevoie de conexiune la internet pentru această funcție!</p>
+  <p>
+    Autocompletați în procesul-verbal datele despre numărul total de alegători
+    și numărul alegătorilor care s-au prezentat la urne.
+  </p>
+  @if(loading) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  } @else {
+    @if(!isOnline) {
+      <p style="color: red;">Este nevoie de conexiune la internet pentru această funcție!</p>
+    } @else {
+      @if(precinct) {
+        <p>
+          <b>
+            Datele vor fi obținute pentru secția nr. {{ precinct.precinct.nr }} ({{ precinct.precinct.name | titlecase }}),
+            {{ precinct.uat.name | titlecase }}.
+          </b>
+        </p>
+      } @else {
+        <p style="color: red;">A apărut o eroare în comunicarea cu SIMPV.</p>
+      }
+    }
+  }
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Anulare</button>
-  <button mat-button (click)="openSettings()" [disabled]="loading || !online">Schimbați secția</button>
-  <button mat-button [mat-dialog-close]="precinct" [disabled]="!precinct" cdkFocusInitial>Obțineți</button>
+  <button mat-button (click)="openSettings()" [disabled]="loading || !isOnline">
+    Schimbați secția
+  </button>
+  <button mat-button [mat-dialog-close]="precinct" [disabled]="!precinct || loading" cdkFocusInitial>
+    Obțineți
+  </button>
 </mat-dialog-actions>

@@ -1,17 +1,27 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { SimpvPullService } from '../../services/simpv-pull.service';
-import { Settings, SettingsService } from '../../services/settings.service';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Settings } from '../../services/settings.service';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConnectionService } from 'ng-connection-service';
 import { SettingsComponent } from '../settings/settings.component';
 import { PVForm } from '../../services/forms.service';
-import { firstValueFrom } from 'rxjs';
+import { Subscription, firstValueFrom } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-form-simpv-dialog',
   templateUrl: './form-simpv-dialog.component.html',
+  standalone: true,
+  imports: [
+    MatDialogModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    TitleCasePipe,
+  ]
 })
-export class FormSimpvDialogComponent implements OnInit {
+export class FormSimpvDialogComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { form: PVForm },
     private simpv: SimpvPullService,
@@ -20,16 +30,21 @@ export class FormSimpvDialogComponent implements OnInit {
   ) {}
   precinct: any = null;
   loading: boolean = true;
-  online: boolean = navigator.onLine;
+  isOnline: boolean = navigator.onLine;
+  onlineSubscription!: Subscription;
 
   ngOnInit() {
-    this.connectionService
-      .monitor()
-      .subscribe(({ hasNetworkConnection: online }) => {
-        if (online == true && !this.online) this.getPrecinctData();
-        this.online = online;
-      });
+    this.onlineSubscription = this.connectionService.monitor().subscribe(({ hasNetworkConnection }) => {
+      if (hasNetworkConnection == true && !this.isOnline) {
+        this.getPrecinctData();
+      }
+      this.isOnline = hasNetworkConnection;
+    });
     this.getPrecinctData();
+  }
+
+  ngOnDestroy() {
+    this.onlineSubscription.unsubscribe();
   }
 
   async getPrecinctData() {

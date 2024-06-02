@@ -34,11 +34,6 @@ body {
 
 .mat-toolbar {
   border-bottom: 1px solid #E0E0E0;
-  background: white;
-}
-
-.mat-form-field-subscript-wrapper {
-  position: relative !important;
 }
 
 button[mat-icon-button] {
@@ -60,36 +55,6 @@ button[mat-icon-button] {
 .mat-icon {
   font-family: 'Material Icons Outlined';
   font-size: 24px;
-}
-
-.progress-spinner {
-  position: relative;
-
-  .main-spinner,
-  .placeholder-spinner {
-    position: absolute;
-    z-index: 1;
-  }
-
-  .main-spinner {
-    z-index: 2;
-  }
-
-  .main-spinner.low circle {
-    stroke: #F44336 !important;
-  }
-
-  .main-spinner.mid circle {
-    stroke: #FF9800 !important;
-  }
-
-  .main-spinner.high circle {
-    stroke: #388E3C !important;
-  }
-
-  .placeholder-spinner circle {
-    stroke: #E0E0E0 !important;
-  }
 }
 
 mat-checkbox.multiline {

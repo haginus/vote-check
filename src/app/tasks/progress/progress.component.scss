@@ -1,7 +1,3 @@
-mat-icon {
-  color: #388E3C;
-}
-
 @keyframes appear {
   from {
     opacity: 0.5;
@@ -12,6 +8,42 @@ mat-icon {
   }
 }
 
-.progress-spinner * {
-  animation: appear 0.2s ease;
+.app-progress-spinner {
+  position: relative;
+
+  mat-icon {
+    color: #388E3C;
+  }
+
+  .main-spinner,
+  .placeholder-spinner,
+  mat-icon {
+    animation: appear 0.2s ease;
+  }
+
+  .main-spinner,
+  .placeholder-spinner {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .main-spinner {
+    z-index: 2;
+  }
+
+  .main-spinner.low circle {
+    stroke: #F44336 !important;
+  }
+
+  .main-spinner.mid circle {
+    stroke: #FF9800 !important;
+  }
+
+  .main-spinner.high circle {
+    stroke: #388E3C !important;
+  }
+
+  .placeholder-spinner circle {
+    stroke: #E0E0E0 !important;
+  }
 }

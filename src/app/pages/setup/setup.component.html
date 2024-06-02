@@ -1,16 +1,21 @@
 <div class="fullscreen">
-    <div class="container">
-        <div class="mat-display-2 title">VoteCheck</div>
-        <div class="image-container">
-            <img class="logo" src="/assets/icons/logo.png"/>
-        </div>
-        
-        <p>Urmați pașii privind organizarea secției de vot și completați procesele-verbale utilizând această aplicație.
-        Toate datele introduse sunt stocate exclusiv pe dispozitivul dumneavoastră.</p>
-        <div class="spacer"></div>
-        <div class="actions">
-            <div class="error" *ngIf="!online">Este nevoie de o conexiune activă la internet!</div>
-            <button mat-raised-button color="warn" [disabled]="!online" (click)="openSettings()">Configurați</button>
-        </div>
+  <div class="container">
+    <div class="mat-display-2 title">VoteCheck</div>
+    <div class="image-container">
+      <img class="logo" src="/assets/icons/logo.png" />
     </div>
+    <p>
+      Urmați pașii privind organizarea secției de vot și completați procesele-verbale utilizând această aplicație.
+      Toate datele introduse sunt stocate exclusiv pe dispozitivul dumneavoastră.
+    </p>
+    <div class="spacer"></div>
+    <div class="actions">
+      @if(!(hasNetworkConnection$ | async)) {
+        <div class="error">Este nevoie de o conexiune activă la internet!</div>
+      }
+      <button mat-raised-button color="warn" [disabled]="!(hasNetworkConnection$ | async)" (click)="openSettings()">
+        Configurați
+      </button>
+    </div>
+  </div>
 </div>

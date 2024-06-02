@@ -1,15 +1,36 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormsService } from '../../services/forms.service';
 import { SettingsComponent } from '../../components/settings/settings.component';
 import { InfoDialogComponent } from '../../components/info-dialog/info-dialog.component';
 import { FormCreateDialogComponent } from '../../components/form-create-dialog/form-create-dialog.component';
 import { getElection } from '../../../elections/elections';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { TasksListComponent } from '../../tasks/tasks-list/tasks-list.component';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  standalone: true,
+  imports: [
+    RouterModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    TasksListComponent,
+    AsyncPipe,
+    DatePipe,
+  ],
 })
 export class DashboardComponent {
 

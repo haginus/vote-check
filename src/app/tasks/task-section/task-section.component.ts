@@ -1,13 +1,21 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Task, TaskSection } from '../tasks.service';
 import { Router } from '@angular/router';
 import { FormCreateDialogComponent } from '../../components/form-create-dialog/form-create-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-section',
   templateUrl: './task-section.component.html',
-  styleUrls: ['./task-section.component.scss']
+  styleUrls: ['./task-section.component.scss'],
+  standalone: true,
+  imports: [
+    MatDialogModule,
+    MatCheckboxModule,
+    FormsModule,
+  ]
 })
 export class TaskSectionComponent implements OnInit {
 

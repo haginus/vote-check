@@ -1,15 +1,38 @@
 import { Component, inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Election, Poll, Precint } from '../../../elections/types';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Election, Poll } from '../../../elections/types';
 import { getAvailablePolls } from '../../../elections/election-types';
 import { SettingsService } from '../../services/settings.service';
-import { combineLatest, firstValueFrom, map, startWith, tap } from 'rxjs';
+import { combineLatest, map, startWith, tap } from 'rxjs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-form-create-dialog',
   templateUrl: './form-create-dialog.component.html',
-  styleUrl: './form-create-dialog.component.scss'
+  styleUrl: './form-create-dialog.component.scss',
+  standalone: true,
+  imports: [
+    RouterModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    AsyncPipe,
+    DatePipe,
+  ],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' }
+    },
+  ]
 })
 export class FormCreateDialogComponent {
 

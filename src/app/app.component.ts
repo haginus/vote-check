@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { FormsService } from './services/forms.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+  ]
 })
 export class AppComponent {
   title = this.activeRoute.snapshot.params['title']

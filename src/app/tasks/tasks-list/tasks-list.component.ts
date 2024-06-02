@@ -1,16 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TaskSectionComponent } from '../task-section/task-section.component';
 import { Task, TaskChapter, TasksService } from '../tasks.service';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { ProgressComponent } from '../progress/progress.component';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tasks-list',
   templateUrl: './tasks-list.component.html',
-  styleUrls: ['./tasks-list.component.scss']
+  styleUrls: ['./tasks-list.component.scss'],
+  standalone: true,
+  imports: [
+    MatDialogModule,
+    MatExpansionModule,
+    MatListModule,
+    ProgressComponent,
+  ]
 })
 export class TasksListComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private tasksService: TasksService) { }
+  constructor(
+    private dialog: MatDialog,
+    private tasksService: TasksService
+  ) {}
 
   tasks: TaskChapter[] = [];
   progress: { progress: number; sections: number[]; }[] = [];
@@ -19,18 +33,16 @@ export class TasksListComponent implements OnInit {
     this.tasksService.getTasks().subscribe(tasks => {
       this.tasks = tasks;
       this.calculateProgress();
-    })
+    });
   }
 
-  openSection(chapter: number, section: number): void {
+  async openSection(chapter: number, section: number) {
     const dialogRef = this.dialog.open(TaskSectionComponent, {
       data: this.tasks[chapter].sections[section]
-    })
-
-    dialogRef.afterClosed().subscribe(_ => {
-      this.tasksService.setTasks(this.tasks).subscribe(_ => {});
-      this.calculateProgress()
     });
+    await firstValueFrom(dialogRef.afterClosed());
+    await firstValueFrom(this.tasksService.setTasks(this.tasks));
+    this.calculateProgress();
   }
 
   private calculateProgress() {

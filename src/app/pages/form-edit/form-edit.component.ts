@@ -4,12 +4,13 @@ import {
   FormControlName,
   FormGroup,
   FormGroupDirective,
+  ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormsService, PVForm } from '../../services/forms.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormSimpvDialogComponent } from '../../components/form-simpv-dialog/form-simpv-dialog.component';
@@ -20,11 +21,34 @@ import { v4 as uuidv4 } from 'uuid';
 import { FormData } from '../../resolvers/form.resolver';
 import { Subscription, firstValueFrom } from 'rxjs';
 import { CanDeactivate } from '../../guards/can-deactivate.guard';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-form-edit',
   templateUrl: './form-edit.component.html',
   styleUrls: ['./form-edit.component.scss'],
+  standalone: true,
+  imports: [
+    RouterModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' }
+    },
+  ]
 })
 export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
 

@@ -9,7 +9,9 @@
     <mat-form-field appearance="outline">
       <mat-label>Circumscripție electorală</mat-label>
       <mat-select formControlName="county">
-        <mat-option *ngFor="let county of counties" [value]="county[0]">{{ county[1] }}</mat-option>
+        @for(county of counties; track county[0]) {
+          <mat-option [value]="county[0]">{{ county[1] }}</mat-option>
+        }
       </mat-select>
       <mat-hint>Alegeți circumscripția electorală în care se află secția dvs.</mat-hint>
     </mat-form-field>
@@ -20,16 +22,18 @@
         <mat-progress-spinner class="loading-spinner" mode="indeterminate" [diameter]="16"></mat-progress-spinner>
       }
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let precinct of filteredPrecincts | async" [value]="precinct.number">
-          <div class="precinct-info">
-            <div class="precinct-name"><b>Secția Nr. {{ precinct.number }}</b> ({{ precinct.uatName | titlecase }})</div>
-            <div class="precinct-details">{{ precinct.name }}</div>
-          </div>
-        </mat-option>
+        @for(precinct of filteredPrecincts | async; track precinct.number) {
+          <mat-option [value]="precinct.number">
+            <div class="precinct-info">
+              <div class="precinct-name"><b>Secția Nr. {{ precinct.number }}</b> ({{ precinct.uatName | titlecase }})</div>
+              <div class="precinct-details">{{ precinct.name }}</div>
+            </div>
+          </mat-option>
+        }
       </mat-autocomplete>
       <mat-hint>Căutați secția după nume sau număr.</mat-hint>
     </mat-form-field>
-    @if(!online) {
+    @if(isOffline$ | async) {
       <div class="error">
         Este nevoie de o conexiune la internet pentru a obține date despre secții!
       </div>
