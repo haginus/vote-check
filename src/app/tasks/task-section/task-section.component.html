@@ -18,7 +18,7 @@
                 <div class="task-tip">
                   <span>{{ task.tip }}</span>
                   @if(task.tipLink) {
-                    <a [routerLink]="[ task.tipLink.link ]" mat-dialog-close>
+                    <a (click)="tipLinkClicked(task.tipLink)" mat-dialog-close>
                       {{ task.tipLink.linkText }}
                     </a>
                   }

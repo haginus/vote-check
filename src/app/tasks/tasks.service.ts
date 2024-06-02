@@ -40,14 +40,16 @@ const isValid = (_tasks: any) => {
   try {
     let tasks = JSON.parse(JSON.stringify(_tasks))
 
-    for(let taskChapter of tasks) 
-      for(let section of taskChapter.sections)
-        for(let content of section.content)
-          for(let task of content.tasks)
-            if(task.checked === true || task.checked === false)
-              task.checked = false;
-            else return false;
-    
+    for(let taskChapter of tasks) {
+      for(let section of taskChapter.sections) {
+        for(let content of section.content) {
+          for(let task of content.tasks) {
+            delete task.checked;
+          }
+        }
+      }
+    }
+
     if(JSON.stringify(initial_tasks) == JSON.stringify(tasks)) {
       return true;
     }
@@ -66,12 +68,13 @@ export interface TaskChapter {
 }
 
 export interface Task {
-  taskName: string,
-  checked: boolean,
-  tip?: string,
+  taskName: string;
+  checked: boolean;
+  tip?: string;
   tipLink?: {
-    linkText: string,
-    link: string
+    linkText: string;
+    link?: string;
+    action?: string;
   }
 }
 
