@@ -431,7 +431,18 @@ export const europeansStructure: FormStructure = {
     }
     return Object.keys(errors).length > 0 ? errors : null;
   },
-  // TODO: simpvPullStrategy
+  simpvPullStrategy: (formGroup, simpvPrecinct) => {
+    formGroup.get('a1')!.setValue(simpvPrecinct.initial_count_lp);
+    formGroup.get('a2')!.setValue(simpvPrecinct.UM);
+    formGroup.get('b1')!.setValue(simpvPrecinct.LP);
+    formGroup.get('b2')!.setValue(simpvPrecinct.UM);
+    formGroup.get('b3')!.setValue(simpvPrecinct.LS);
+    return {
+      county: simpvPrecinct['county']['code'],
+      number: +simpvPrecinct['precinct']['nr'],
+      uatName: simpvPrecinct['uat']['name'],
+    };
+  },
 };
 
 export const presidentialsStructure: FormStructure = {
