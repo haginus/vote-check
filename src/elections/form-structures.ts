@@ -1,5 +1,54 @@
 import { FormStructure } from "./types";
 
+type FormGroupValue = Record<string, number>;
+
+export interface ValidationError {
+  type: 'error' | 'warning';
+  constraint: string;
+  message: string;
+}
+
+interface AssertConstraintOptions {
+  key: string;
+  constraint: string;
+  error: {
+    condition: (formGroupValue: FormGroupValue) => boolean;
+    message: string;
+  }
+  warning?: {
+    condition: (formGroupValue: FormGroupValue) => boolean;
+    message: string;
+  }
+}
+
+class Validator {
+
+  private validationErrors: Record<string, ValidationError> = {};
+
+  constructor(private formGroupValue: Record<string, number>) {}
+
+  assertConstraint({ key, constraint, error, warning }: AssertConstraintOptions): void {
+    const isError = error.condition(this.formGroupValue);
+    const isWarning = warning && warning.condition(this.formGroupValue);
+    if(isError || isWarning) {
+      this.addRecord(key, constraint, isError ? 'error' : 'warning', isError ? error.message : warning!.message);
+    }
+  }
+
+  getAllErrors() {
+    return Object.keys(this.validationErrors) ? this.validationErrors : null;
+  }
+
+  private addRecord(key: string, constraint: string, type: 'error' | 'warning', message: string) {
+    this.validationErrors[key] = {
+      type,
+      constraint,
+      message: `${type === 'error' ? 'Constrângere nerespectată' : 'Atenționare'}: ${constraint}; ${message}`
+    }
+  }
+
+}
+
 export const parliamentStructure: FormStructure = {
   sections: [
     {
@@ -118,24 +167,56 @@ export const parliamentStructure: FormStructure = {
   ],
   candidateSectionKey: 'h',
   validator: (formGroup) => {
-    let errors: Record<string, string> = {};
-    const value = formGroup.value;
-    if(value.a1 < value.b1) {
-      errors['a1_b1'] = 'Constrângere nerespectată: a1 ≥ b1 (Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.a2 < value.b2) {
-      errors['a2_b2'] = 'Constrângere nerespectată: a2 ≥ b2 (Numărul de votanți prezenți pe lista suplimentară nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.a3 < value.b3) {
-      errors['a3_b3'] = 'Constrângere nerespectată: a3 ≥ b3 (Numărul de votanți prezenți pe lista pentru urnă specială nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.c < value.d + value.e + value.f + value.g) {
-      errors['c_d_e_f_g'] = 'Constrângere nerespectată: c ≥ d + e + f + g (Numărul de buletine de vot primite nu poate fi mai mic decât cele anulate însumate cu cele intrate în urne)';
-    }
-    if(value.e > value.b - (value.f + value.g)) {
-      errors['e_b_f_g'] = 'Constrângere nerespectată: e ≤ [b - (f + g)] (Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule/albe)';
-    }
-    return Object.keys(errors).length > 0 ? errors : null;
+    const validator = new Validator(formGroup.value);
+    validator.assertConstraint({
+      key: 'a1_b1',
+      constraint: 'a1 ≥ b1',
+      error: {
+        condition: (value) => value['a1'] < value['b1'],
+        message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'a2_b2',
+      constraint: 'a2 ≥ b2',
+      error: {
+        condition: (value) => value['a2'] < value['b2'],
+        message: 'Numărul de votanți prezenți pe lista suplimentară nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'a3_b3',
+      constraint: 'a3 ≥ b3',
+      error: {
+        condition: (value) => value['a3'] < value['b3'],
+        message: 'Numărul de votanți prezenți pe lista pentru urnă specială nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'c_d_e_f_g',
+      constraint: 'c ≥ d + e + f + g',
+      error: {
+        condition: (value) => value['c'] < value['d'] + value['e'] + value['f'] + value['g'],
+        message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele anulate însumate cu cele intrate în urnă.'
+      },
+      warning: {
+        condition: (value) => value['c'] > value['d'] + value['e'] + value['f'] + value['g'],
+        message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele anulate însumate cu cele intrate în urnă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'e_b_f_g',
+      constraint: 'e ≤ [b - (f + g)]',
+      error: {
+        condition: (value) => value['e'] > value['b'] - (value['f'] + value['g']),
+        message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule/albe.'
+      },
+      warning: {
+        condition: (value) => value['e'] < value['b'] - (value['f'] + value['g']),
+        message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule/albe.'
+      }
+    });
+    return validator.getAllErrors();
   },
   simpvPullStrategy: (formGroup, simpvPrecinct) => {
     formGroup.get('a1')!.setValue(simpvPrecinct.initial_count_lp);
@@ -270,27 +351,64 @@ export const localsStructure: FormStructure = {
   ],
   candidateSectionKey: 'g',
   validator: (formGroup) => {
-    let errors: Record<string, string> = {};
-    const value = formGroup.value;
-    if(value.a1 < value.b1) {
-      errors['a1_b1'] = 'Constrângere nerespectată: a1 ≥ b1 (Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.a2 < value.b2) {
-      errors['a2_b2'] = 'Constrângere nerespectată: a2 ≥ b2 (Numărul de votanți prezenți pe lista complementară nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.a3 < value.b3) {
-      errors['a3_b3'] = 'Constrângere nerespectată: a3 ≥ b3 (Numărul de votanți prezenți pe lista suplimentară nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.a4 < value.b4) {
-      errors['a4_b4'] = 'Constrângere nerespectată: a4 ≥ b4 (Numărul de votanți prezenți pe lista pentru urnă specială nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.c > value.b - value.d) {
-      errors['c_b_d'] = 'Constrângere nerespectată: c ≤ b - d (Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule)';
-    }
-    if(value.e < value.c + value.d + value.f) {
-      errors['e_c_d_f'] = 'Constrângere nerespectată: e ≥ c + d + f (Numărul de buletine de vot primite nu poate fi mai mic decât cele intrate în urnă însumate cu cele anulate)';
-    }
-    return Object.keys(errors).length > 0 ? errors : null;
+    const validator = new Validator(formGroup.value);
+    validator.assertConstraint({
+      key: 'a1_b1',
+      constraint: 'a1 ≥ b1',
+      error: {
+        condition: (value) => value['a1'] < value['b1'],
+        message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'a2_b2',
+      constraint: 'a2 ≥ b2',
+      error: {
+        condition: (value) => value['a2'] < value['b2'],
+        message: 'Numărul de votanți prezenți pe lista complementară nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'a3_b3',
+      constraint: 'a3 ≥ b3',
+      error: {
+        condition: (value) => value['a3'] < value['b3'],
+        message: 'Numărul de votanți prezenți pe lista suplimentară nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'a4_b4',
+      constraint: 'a4 ≥ b4',
+      error: {
+        condition: (value) => value['a4'] < value['b4'],
+        message: 'Numărul de votanți prezenți pe lista pentru urnă specială nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'c_b_d',
+      constraint: 'c ≤ b - d',
+      error: {
+        condition: (value) => value['c'] > value['b'] - value['d'],
+        message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule.'
+      },
+      warning: {
+        condition: (value) => value['c'] < value['b'] - value['d'],
+        message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'e_c_d_f',
+      constraint: 'e ≥ c + d + f',
+      error: {
+        condition: (value) => value['e'] < value['c'] + value['d'] + value['f'],
+        message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele intrate în urnă însumate cu cele anulate.'
+      },
+      warning: {
+        condition: (value) => value['e'] > value['c'] + value['d'] + value['f'],
+        message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele intrate în urnă însumate cu cele anulate.'
+      }
+    });
+    return validator.getAllErrors();
   },
   simpvPullStrategy: (formGroup, simpvPrecinct) => {
     formGroup.get('a1')!.setValue(simpvPrecinct.initial_count_lp);
@@ -415,21 +533,48 @@ export const europeansStructure: FormStructure = {
   ],
   candidateSectionKey: 'g',
   validator: (formGroup) => {
-    let errors: Record<string, string> = {};
-    const value = formGroup.value;
-    if(value.a1 < value.b1) {
-      errors['a1_b1'] = 'Constrângere nerespectată: a1 ≥ b1 (Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.a2 < value.b2) {
-      errors['a2_b2'] = 'Constrângere nerespectată: a2 ≥ b2 (Numărul de votanți prezenți pe lista specială nu poate fi mai mare decât cei înscriși pe această listă)';
-    }
-    if(value.c < value.d + value.e + value.f) {
-      errors['c_d_e_f'] = 'Constrângere nerespectată: c ≥ d + e + f (Numărul de buletine de vot primite nu poate fi mai mic decât cele anulate însumate cu cele intrate în urnă)';
-    }
-    if(value.e > value.b - value.f) {
-      errors['e_b_f'] = 'Constrângere nerespectată: e ≤ b - f (Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule)';
-    }
-    return Object.keys(errors).length > 0 ? errors : null;
+    const validator = new Validator(formGroup.value);
+    validator.assertConstraint({
+      key: 'a1_b1',
+      constraint: 'a1 ≥ b1',
+      error: {
+        condition: (value) => value['a1'] < value['b1'],
+        message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'a2_b2',
+      constraint: 'a2 ≥ b2',
+      error: {
+        condition: (value) => value['a2'] < value['b2'],
+        message: 'Numărul de votanți prezenți pe lista specială nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'c_d_e_f',
+      constraint: 'c ≥ d + e + f',
+      error: {
+        condition: (value) => value['c'] < value['d'] + value['e'] + value['f'],
+        message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele anulate însumate cu cele intrate în urnă.'
+      },
+      warning: {
+        condition: (value) => value['c'] > value['d'] + value['e'] + value['f'],
+        message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele anulate însumate cu cele intrate în urnă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'e_b_f',
+      constraint: 'e ≤ b - f',
+      error: {
+        condition: (value) => value['e'] > value['b'] - value['f'],
+        message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule.'
+      },
+      warning: {
+        condition: (value) => value['e'] < value['b'] - value['f'],
+        message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule.'
+      }
+    });
+    return validator.getAllErrors();
   },
   simpvPullStrategy: (formGroup, simpvPrecinct) => {
     formGroup.get('a1')!.setValue(simpvPrecinct.initial_count_lp);
@@ -530,18 +675,40 @@ export const presidentialsStructure: FormStructure = {
   ],
   candidateSectionKey: 'g',
   validator: (formGroup) => {
-    let errors: Record<string, string> = {};
-    const value = formGroup.value;
-    if(value.a < value.b1) {
-      errors['a_b1'] = 'Constrângere nerespectată: a ≥ b1 (Numărul de votanți prezenți pe lista permanentă nu poate fi mai mic decât cei înscriși pe această listă)';
-    }
-    if(value.c > value.b - value.d) {
-      errors['c_b_d'] = 'Constrângere nerespectată: c ≤ b - d (Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule)';
-    }
-    if(value.e < value.c + value.d + value.f) {
-      errors['e_c_d_f'] = 'Constrângere nerespectată: e ≥ c + d + f (Numărul de buletine de vot primite nu poate fi mai mic decât cele intrate în urnă însumate cu cele anulate)';
-    }
-    return Object.keys(errors).length > 0 ? errors : null;
+    const validator = new Validator(formGroup.value);
+    validator.assertConstraint({
+      key: 'a_b1',
+      constraint: 'a ≥ b1',
+      error: {
+        condition: (value) => value['a'] < value['b1'],
+        message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'c_b_d',
+      constraint: 'c ≤ b - d',
+      error: {
+        condition: (value) => value['c'] > value['b'] - value['d'],
+        message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule.'
+      },
+      warning: {
+        condition: (value) => value['c'] < value['b'] - value['d'],
+        message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule.'
+      }
+    });
+    validator.assertConstraint({
+      key: 'e_c_d_f',
+      constraint: 'e ≥ c + d + f',
+      error: {
+        condition: (value) => value['e'] < value['c'] + value['d'] + value['f'],
+        message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele intrate în urnă însumate cu cele anulate.'
+      },
+      warning: {
+        condition: (value) => value['e'] > value['c'] + value['d'] + value['f'],
+        message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele intrate în urnă însumate cu cele anulate.'
+      }
+    });
+    return validator.getAllErrors();
   },
   // TODO: simpvPullStrategy
 }
@@ -616,15 +783,16 @@ export const referendumStructure: FormStructure = {
     }
   ],
   validator: (formGroup) => {
-    let errors: Record<string, string> = {};
-    const value = formGroup.value;
-    Object.keys(value).forEach(key => {
-      value[key] = +value[key];
+    const validator = new Validator(formGroup.value);
+    validator.assertConstraint({
+      key: '2_5_6_7',
+      constraint: '2 = 5 + 6 + 7',
+      error: {
+        condition: (value) => value['2'] !== value['5'] + value['6'] + value['7'],
+        message: 'Numărul de participanți trebuie să fie egal cu numărul de voturi exprimate.'
+      }
     });
-    if(value['2'] != value['5'] + value['6'] + value['7']) {
-      errors['2_5_6_7'] = 'Constrângere nerespectată: 2 = 5 + 6 + 7 (Numărul de participanți trebuie să fie egal cu numărul de voturi exprimate)';
-    }
-    return Object.keys(errors).length > 0 ? errors : null;
+    return validator.getAllErrors();
   },
   // TODO: simpvPullStrategy
 }

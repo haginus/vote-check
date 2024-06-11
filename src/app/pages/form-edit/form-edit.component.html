@@ -17,23 +17,60 @@
   <div class="scroll">
     @if(formGroup) {
       <form [formGroup]="formGroup">
-        <mat-card class="form-edit-card mat-elevation-z2">
+        <mat-card class="header-card mat-elevation-z2">
           <mat-card-header>
             <mat-card-title>
-              Proces-verbal pentru {{ election.type.name }} - {{ poll.name }}
-              @if(precinct) {
-                (S.V. {{ precinct.county }}-{{ precinct.number }})
+              <div>
+                Proces-verbal pentru {{ election.type.name }} - {{ poll.name }}
+                @if(precinct) {
+                  (S.V. {{ precinct.county }}-{{ precinct.number }})
+                }
+              </div>
+              @if(election.type.formStructure.simpvPullStrategy) {
+                <button mat-icon-button matTooltip="Autocompletați date din SIMPV" (click)="autocompleteFromSimpv()">
+                  <mat-icon>cloud_download</mat-icon>
+                </button>
               }
             </mat-card-title>
-            <mat-card-subtitle [class]="formGroup.invalid ? 'invalid' : 'valid'">
-              Procesul-verbal este {{formGroup.invalid ? 'invalid' : 'valid'}}.
+            <mat-card-subtitle>
+              <div class="errors-summary">
+                @if(formGroup.valid) {
+                  <div class="label valid">Procesul-verbal este valid.</div>
+                } @else {
+                  <div
+                    class="label"
+                    [class]="{ warning: formHasWarnings(), invalid: formHasErrors() }"
+                  >
+                    @if(formHasWarnings() && formHasErrors()) {
+                      Procesul-verbal conține erori și atenționări.
+                    } @else if(formHasErrors()) {
+                      Procesul-verbal conține erori.
+                    } @else {
+                      Procesul-verbal este valid cu atenționări.
+                    }
+                  </div>
+                  <button mat-icon-button (click)="showErrors = !showErrors">
+                    @if(showErrors) {
+                      <mat-icon>expand_less</mat-icon>
+                    } @else {
+                      <mat-icon>expand_more</mat-icon>
+                    }
+                  </button>
+                }
+              </div>
+              @if(showErrors) {
+                <div class="error-list">
+                  @for(error of formGroup.errors | keyvalue; track $index) {
+                    <div
+                      class="error-item"
+                      [class]="{ invalid: !isWarning(error.value), warning: isWarning(error.value) }"
+                    >
+                      {{ getErrorMessage(error.value) }}
+                    </div>
+                  }
+                </div>
+              }
             </mat-card-subtitle>
-            <span class="spacer"></span>
-            @if(election.type.formStructure.simpvPullStrategy) {
-              <button mat-icon-button matTooltip="Autocompletați date din SIMPV" (click)="autocompleteFromSimpv()">
-                <mat-icon>cloud_download</mat-icon>
-              </button>
-            }
           </mat-card-header>
         </mat-card>
         @for(section of election.type.formStructure.sections; track $index) {
@@ -44,7 +81,7 @@
             </mat-card-header>
             <mat-card-content>
               @for(field of section.fields; track field.id) {
-                <mat-form-field>
+                <mat-form-field [class]="{ 'field-has-warnings': hasFieldCrossWarnings(field.id) }">
                   <mat-label>
                     {{ field.title }} {{ field.type === 'computed' ? '| Se completează automat' : ''}}
                   </mat-label>

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import {
   FormControl,
   FormControlName,
@@ -27,6 +27,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { KeyValuePipe } from '@angular/common';
+import { ValidationError } from '../../../elections/form-structures';
 
 @Component({
   selector: 'app-form-edit',
@@ -42,6 +44,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    KeyValuePipe,
   ],
   providers: [
     {
@@ -61,6 +64,7 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
   candidates: Candidate[] = this.routeFormData.candidates;
   formGroup: FormGroup;
   calculateSubscription!: Subscription;
+  showErrors = false;
 
   constructor(
     private readonly formsService: FormsService,
@@ -93,6 +97,13 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
 
   ngOnDestroy() {
     this.calculateSubscription?.unsubscribe();
+  }
+
+  @HostListener('window:wheel', ['$event'])
+  onScroll(event: Event) {
+    if(document.activeElement.tagName === 'INPUT') {
+      (document.activeElement as HTMLInputElement).blur();
+    }
   }
 
   async canDeactivate() {
@@ -168,8 +179,42 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
   }
 
   getFieldCrossErrorDescription(fieldName: string) {
-    const error = getFieldCrossError(this.formGroup.errors, fieldName);
-    return error ? error[1] : null;
+    const error = getFieldCrossErrors(this.formGroup.errors, fieldName)[0];
+    return error ? error[1].message : null;
+  }
+
+  hasFieldCrossWarnings(fieldName: string) {
+    const crossErrors = getFieldCrossErrors(this.formGroup.errors, fieldName).map(([_, error]) => error);
+    return crossErrors.some(error => this.isWarning(error)) && !crossErrors.some(error => !this.isWarning(error));
+  }
+
+  getErrorMessage(error: any) {
+    if(typeof error === 'string') {
+      return error;
+    }
+    return error.message;
+  }
+
+  isWarning(error: any) {
+    return error.type === 'warning';
+  }
+
+  getFormErrors() {
+    const errors = Object.values(this.formGroup.errors || {});
+    return errors.filter(error => !this.isWarning(error));
+  }
+
+  getFormWarnings() {
+    const errors = Object.values(this.formGroup.errors || {});
+    return errors.filter(error => this.isWarning(error));
+  }
+
+  formHasWarnings() {
+    return this.getFormWarnings().length;
+  }
+
+  formHasErrors() {
+    return this.getFormErrors().length;
   }
 }
 
@@ -179,10 +224,10 @@ export const positive: ValidatorFn = (
   return Number(control.value) < 0 ? { negative: true } : null;
 };
 
-function getFieldCrossError(formErrors: ValidationErrors | null, fieldName: any) {
+function getFieldCrossErrors(formErrors: ValidationErrors | null, fieldName: any) {
   const errors = Object.entries(formErrors || {});
   /** Error ids are of form `field1_field2..._fieldN` */
-  return errors.find(([key]) => key.split('_').some(field => field === fieldName));
+  return errors.filter(([key]) => key.split('_').some(field => field === fieldName));
 }
 
 function getControlName(
@@ -196,10 +241,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective): boolean {
     const foreignInvalidity =
       form.form.errors &&
-      !!getFieldCrossError(
+      getFieldCrossErrors(
         form.form.errors,
         getControlName(control, form.directives)
-      );
-    return control && (control.invalid || foreignInvalidity); //&& (control.dirty || control.touched)
+      ).length > 0;
+    return control && (control.invalid || foreignInvalidity);
   }
 }

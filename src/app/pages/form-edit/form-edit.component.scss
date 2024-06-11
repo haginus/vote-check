@@ -2,6 +2,42 @@
   flex: 1 1 auto;
 }
 
+.header-card {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  mat-card-header::ng-deep .mat-mdc-card-header-text {
+    width: 100%;
+  }
+
+  mat-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  mat-card-subtitle {
+    margin-bottom: 8px;
+  }
+
+  .errors-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+  }
+
+  .error-list {
+    font-weight: normal;
+    margin-bottom: 12px;
+
+    .error-item {
+      margin-bottom: 6px;
+    }
+  }
+}
+
 .form-edit-card mat-form-field {
   width: 100%;
   margin-bottom: 24px;
@@ -12,17 +48,29 @@ mat-card-subtitle {
 }
 
 .form-edit-card {
-  margin: 12px;
-}
-
-.form-message {
-  padding: 16px;
+  margin: 12px 0;
 }
 
 .valid {
   color: #009688;
 }
 
+.warning {
+  color: #FF8F00;
+}
+
 .invalid {
-  color: #F44336;
+  color: #ba1a1a;
+}
+
+mat-form-field.field-has-warnings::ng-deep {
+  mat-label, mat-error {
+    color: #FF6F00;
+  }
+
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #FF6F00!important;
+  }
 }
