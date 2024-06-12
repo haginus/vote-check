@@ -8,6 +8,7 @@ import { first, map, timeout } from 'rxjs/operators';
 export class AppUpdatesService {
 
   constructor(appRef: ApplicationRef, updates: SwUpdate, private snackBar: MatSnackBar) {
+    if(!updates.isEnabled) return;
     const appIsStable$ = appRef.isStable.pipe(first(isStable => isStable === true));
     const everyThirtyMinutes$ = interval(30 * 60 * 1000);
     const everyThirtyMinutesOnceAppIsStable$ = concat(appIsStable$, everyThirtyMinutes$);
