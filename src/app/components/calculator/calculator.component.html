@@ -28,6 +28,8 @@
                   min="0"
                   matInput
                   [formControlName]="field.id"
+                  inputmode="numeric"
+                  pattern="[0-9]*"
                   (blur)="onFieldBlur(field.id, $event)"
                 />
               </mat-form-field>
