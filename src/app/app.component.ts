@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { FormsService } from './services/forms.service';
+import { AppUpdatesService } from './services/app-updates.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,10 @@ import { FormsService } from './services/forms.service';
   ]
 })
 export class AppComponent {
-  title = this.activeRoute.snapshot.params['title']
-  showInfo = true
+  title = this.activeRoute.snapshot.params['title'];
+  showInfo = true;
 
-  constructor(private formsService: FormsService, private activeRoute: ActivatedRoute) { }
+  constructor(private activeRoute: ActivatedRoute, updates: AppUpdatesService) { }
 
   ngOnInit() {
     this.title = this.activeRoute.snapshot.data['title'];
