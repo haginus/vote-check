@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { AppUpdatesService } from './services/app-updates.service';
+import { Dialog } from '@angular/cdk/dialog';
+import { getBarColor, setBarColor, shadeColor } from './lib/utils';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +15,15 @@ import { AppUpdatesService } from './services/app-updates.service';
   ]
 })
 export class AppComponent {
-  title = this.activeRoute.snapshot.params['title'];
-  showInfo = true;
 
-  constructor(private activeRoute: ActivatedRoute, updates: AppUpdatesService) { }
-
-  ngOnInit() {
-    this.title = this.activeRoute.snapshot.data['title'];
+  constructor(dialog: Dialog, updates: AppUpdatesService) {
+    setBarColor("#fdfbff");
+    dialog.afterOpened.subscribe(async (dialogRef) => {
+      const barColor = getBarColor();
+      setBarColor(shadeColor(barColor, -32));
+      await firstValueFrom(dialogRef.closed);
+      setBarColor(barColor);
+    });
   }
 
 }

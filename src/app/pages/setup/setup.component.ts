@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Observable, map } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AsyncPipe } from '@angular/common';
+import { setBarColor } from '../../lib/utils';
 
 @Component({
   selector: 'app-setup',
@@ -36,11 +37,11 @@ export class SetupComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    document.getElementsByTagName("body")[0].style.backgroundColor = "#2196F3"; // iOS fallback
+    setBarColor("#2196F3");
   }
 
   ngOnDestroy() {
-    document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+    setBarColor("#ffffff");
   }
 
   openSettings() {

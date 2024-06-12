@@ -6,6 +6,7 @@ body {
 body {
   margin: 0;
   -webkit-tap-highlight-color: transparent !important;
+  transition: background-color 50ms;
 }
 
 @font-face {
@@ -44,6 +45,7 @@ button[mat-icon-button] {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-color: #fff;
 }
 
 .scroll-container .scroll {
