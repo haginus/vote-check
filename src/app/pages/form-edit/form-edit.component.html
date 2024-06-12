@@ -5,6 +5,9 @@
     </button>
     <span>{{ existingForm ? 'Editare' : 'Adăugare'}} P.V.</span>
     <span class="spacer"></span>
+    <button mat-icon-button matTooltip="Calculator" (click)="openCalculator()">
+      <mat-icon>calculate</mat-icon>
+    </button>
     @if(existingForm) {
       <button mat-icon-button matTooltip="Ștergeți P.V." (click)="deleteForm()">
         <mat-icon>delete</mat-icon>

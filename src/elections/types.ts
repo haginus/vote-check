@@ -18,6 +18,17 @@ export interface Poll {
   availableFor?: (precint: Precint) => boolean;
 }
 
+export enum FieldMeaning {
+  RegisteredVoters = 'registeredVoters',
+  RegisteredVotersTotal = 'registeredVotersTotal',
+  ParticipatingVoters = 'participatingVoters',
+  ParticipatingVotersTotal = 'participatingVotersTotal',
+  ReceivedBallots = 'receivedBallots',
+  SpoiledBallots = 'spoiledBallots',
+  ValidVotes = 'validVotes',
+  InvalidVotes = 'invalidVotes',
+}
+
 type FormField = (
   | { type: 'computed'; computeFn: (form: FormGroup) => any }
   | { type: 'input'; }
@@ -25,6 +36,7 @@ type FormField = (
   id: string;
   title: string;
   hint?: string;
+  meaning: FieldMeaning;
 }
 
 export interface FormStructure {

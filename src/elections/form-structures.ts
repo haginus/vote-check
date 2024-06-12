@@ -1,4 +1,4 @@
-import { FormStructure } from "./types";
+import { FieldMeaning, FormStructure } from "./types";
 
 type FormGroupValue = Record<string, number>;
 
@@ -63,24 +63,28 @@ export const parliamentStructure: FormStructure = {
           },
           title: 'Toate listele',
           hint: 'a. Numărul total al alegătorilor prevăzuți în listele electorale existente în secția de votare; a = a1 + a2 + a3',
+          meaning: FieldMeaning.RegisteredVotersTotal,
         },
         {
           id: 'a1',
           type: 'input',
           title: 'a1. Lista permanentă',
           hint: 'a1. Numărul total al alegătorilor potrivit listei electorale permanente',
+          meaning: FieldMeaning.RegisteredVoters,
         },
         {
           id: 'a2',
           type: 'input',
           title: 'a2. Lista suplimentară',
           hint: 'a2. Numărul total al alegătorilor potrivit listei electorale suplimentare',
+          meaning: FieldMeaning.RegisteredVoters,
         },
         {
           id: 'a3',
           type: 'input',
           title: 'a3. Listă urnă specială',
           hint: 'a3. Numărul total al alegătorilor în cazul cărora s-a folosit urna specială',
+          meaning: FieldMeaning.RegisteredVoters,
         },
       ]
     },
@@ -96,24 +100,28 @@ export const parliamentStructure: FormStructure = {
           },
           title: 'b. Toate listele',
           hint: 'b. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în listele electorale existente în secția de votare; b = b1 + b2 + b3',
+          meaning: FieldMeaning.ParticipatingVotersTotal,
         },
         {
           id: 'b1',
           type: 'input',
           title: 'b1. Lista permanentă',
           hint: 'b1. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în lista electorală permanentă',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b2',
           type: 'input',
           title: 'b2. Lista suplimentară',
           hint: 'b2. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în lista electorală suplimentară',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b3',
           type: 'input',
           title: 'b3. Listă urnă specială',
           hint: 'b3. Numărul total al alegătorilor care s-au prezentat la urne, în cazul cărora s-a folosit urna specială',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
       ]
     },
@@ -126,12 +134,14 @@ export const parliamentStructure: FormStructure = {
           type: 'input',
           title: 'c. Buletine de vot primite',
           hint: 'c. Numărul buletinelor de vot primite',
+          meaning: FieldMeaning.ReceivedBallots,
         },
         {
           id: 'd',
           type: 'input',
           title: 'd. Buletine de vot anulate',
           hint: 'd. Numărul buletinelor de vot întrebuințate și anulate',
+          meaning: FieldMeaning.SpoiledBallots,
         }
       ],
     },
@@ -148,19 +158,22 @@ export const parliamentStructure: FormStructure = {
             return hKeys.reduce((acc, key) => acc + value[key], 0);
           },
           title: 'e. Voturi valabil exprimate',
-          hint: 'e. Numărul total al voturilor valabil exprimate'
+          hint: 'e. Numărul total al voturilor valabil exprimate',
+          meaning: FieldMeaning.ValidVotes,
         },
         {
           id: 'f',
           type: 'input',
           title: 'f. Voturi nule',
-          hint: 'f. Numărul voturilor nule'
+          hint: 'f. Numărul voturilor nule',
+          meaning: FieldMeaning.InvalidVotes,
         },
         {
           id: 'g',
           type: 'input',
           title: 'g. Voturi albe',
-          hint: 'g. Numărul voturilor albe (buletine de vot pe care nu s-a aplicat ștampila "VOTAT")'
+          hint: 'g. Numărul voturilor albe (buletine de vot pe care nu s-a aplicat ștampila "VOTAT")',
+          meaning: FieldMeaning.InvalidVotes,
         },
       ],
     }
@@ -247,30 +260,35 @@ export const localsStructure: FormStructure = {
           },
           title: 'Toate listele',
           hint: 'a. Numărul total al alegătorilor prevăzuți în listele electorale existente în secția de votare; a = a1 + a2 + a3 + a4',
+          meaning: FieldMeaning.RegisteredVotersTotal,
         },
         {
           id: 'a1',
           type: 'input',
           title: 'a1. Lista permanentă',
           hint: 'a1. Numărul total al alegătorilor potrivit listei electorale permanente; a1 ≥ b1',
+          meaning: FieldMeaning.RegisteredVoters,
         },
         {
           id: 'a2',
           type: 'input',
           title: 'a2. Lista complementară',
           hint: 'a2. Numărul total al alegătorilor potrivit copiei de pe lista electorală complementară; a2 ≥ b2',
+          meaning: FieldMeaning.RegisteredVoters,
         },
         {
           id: 'a3',
           type: 'input',
           title: 'a3. Lista suplimentară',
           hint: 'a3. Numărul total al alegătorilor potrivit listei electorale suplimentare; a3 ≥ b3',
+          meaning: FieldMeaning.RegisteredVoters,
         },
         {
           id: 'a4',
           type: 'input',
           title: 'a4. Listă urnă specială',
           hint: 'a4. Numărul total al alegătorilor în cazul cărora s-a folosit urna specială; a4 ≥ b4',
+          meaning: FieldMeaning.RegisteredVoters,
         },
       ]
     },
@@ -286,30 +304,35 @@ export const localsStructure: FormStructure = {
           },
           title: 'b. Toate listele',
           hint: 'b. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în listele electorale existente în secția de votare; b = b1 + b2 + b3 + b4',
+          meaning: FieldMeaning.ParticipatingVotersTotal,
         },
         {
           id: 'b1',
           type: 'input',
           title: 'b1. Lista permanentă',
           hint: 'b1. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în lista electorală permanentă',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b2',
           type: 'input',
           title: 'b2. Lista complementară',
           hint: 'b2. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în copia de pe lista electorală complementară',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b3',
           type: 'input',
           title: 'b3. Lista suplimentară',
           hint: 'b3. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în lista electorală suplimentară',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b4',
           type: 'input',
           title: 'b4. Listă urnă specială',
           hint: 'b4. Numărul total al alegătorilor care s-au prezentat la urne, în cazul cărora s-a folosit urna specială',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
       ]
     },
@@ -327,24 +350,28 @@ export const localsStructure: FormStructure = {
           },
           title: 'c. Voturi valabil exprimate',
           hint: 'c. Numărul total al voturilor valabil exprimate; c ≤ b - d',
+          meaning: FieldMeaning.ValidVotes,
         },
         {
           id: 'd',
           type: 'input',
           title: 'd. Voturi nule',
           hint: 'd. Numărul voturilor nule',
+          meaning: FieldMeaning.InvalidVotes,
         },
         {
           id: 'e',
           type: 'input',
           title: 'e. Buletine de vot primite',
           hint: 'e. Numărul buletinelor de vot primite; e ≥ c + d + f',
+          meaning: FieldMeaning.ReceivedBallots,
         },
         {
           id: 'f',
           type: 'input',
           title: 'f. Buletine de vot anulate',
           hint: 'f. Numărul buletinelor de vot întrebuințate și anulate',
+          meaning: FieldMeaning.SpoiledBallots,
         }
       ]
     }
@@ -441,18 +468,21 @@ export const europeansStructure: FormStructure = {
           },
           title: 'Toate listele',
           hint: 'a. Numărul total al alegătorilor înscriși în lista electorală permanentă și în copia de pe lista electorală specială; a = a1 + a2',
+          meaning: FieldMeaning.RegisteredVotersTotal,
         },
         {
           id: 'a1',
           type: 'input',
           title: 'a1. Lista permanentă',
           hint: 'a1. Numărul total al alegătorilor înscriși în lista electorală permanentă; a1 ≥ b1',
+          meaning: FieldMeaning.RegisteredVoters,
         },
         {
           id: 'a2',
           type: 'input',
           title: 'a2. Lista specială',
           hint: 'a2. Numărul total al alegătorilor înscriși în copia de pe lista electorală specială; a2 ≥ b2',
+          meaning: FieldMeaning.RegisteredVoters,
         },
       ]
     },
@@ -468,24 +498,28 @@ export const europeansStructure: FormStructure = {
           },
           title: 'b. Toate listele',
           hint: 'b. Numărul total al alegătorilor înscriși în listele electorale existente la secţia de votare, care s-au prezentat la urne; b = b1 + b2 + b3',
+          meaning: FieldMeaning.ParticipatingVotersTotal,
         },
         {
           id: 'b1',
           type: 'input',
           title: 'b1. Lista permanentă',
           hint: 'b1. Numărul total al alegătorilor înscriși în lista electorală permanentă, care s-au prezentat la urne',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b2',
           type: 'input',
           title: 'b2. Lista specială',
           hint: 'b2. Numărul total al alegătorilor înscriși în copia de pe lista electorală specială, care s-au prezentat la urne',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b3',
           type: 'input',
           title: 'b3. Listă suplimetară',
           hint: 'b3. Numărul total al alegătorilor înscriși în lista electorală suplimentară, care s-au prezentat la urne',
+          meaning: FieldMeaning.ParticipatingVoters,
         }
       ]
     },
@@ -498,12 +532,14 @@ export const europeansStructure: FormStructure = {
           type: 'input',
           title: 'c. Buletine de vot primite',
           hint: 'c. Numărul buletinelor de vot primite; c ≥ d + e + f',
+          meaning: FieldMeaning.ReceivedBallots,
         },
         {
           id: 'd',
           type: 'input',
           title: 'd. Buletine de vot anulate',
           hint: 'd. Numărul buletinelor de vot întrebuințate și anulate',
+          meaning: FieldMeaning.SpoiledBallots,
         }
       ],
     },
@@ -521,12 +557,14 @@ export const europeansStructure: FormStructure = {
           },
           title: 'e. Voturi valabil exprimate',
           hint: 'e. Numărul voturilor valabil exprimate; e ≤ b - f',
+          meaning: FieldMeaning.ValidVotes,
         },
         {
           id: 'f',
           type: 'input',
           title: 'f. Voturi nule',
-          hint: 'f. Numărul voturilor nule'
+          hint: 'f. Numărul voturilor nule',
+          meaning: FieldMeaning.InvalidVotes,
         },
       ],
     }
@@ -601,6 +639,7 @@ export const presidentialsStructure: FormStructure = {
           type: 'input',
           title: 'a. Lista permanentă',
           hint: 'a. Numărul total al alegătorilor prevăzut în lista electorală permanentă existentă în secția de votare; a ≥ b1',
+          meaning: FieldMeaning.RegisteredVoters,
         },
       ]
     },
@@ -616,24 +655,28 @@ export const presidentialsStructure: FormStructure = {
           },
           title: 'b. Toate listele',
           hint: 'b. Numărul total al alegătorilor care s-au prezentat la urne; b = b1 + b2 + b3',
+          meaning: FieldMeaning.ParticipatingVotersTotal,
         },
         {
           id: 'b1',
           type: 'input',
           title: 'b1. Lista permanentă',
           hint: 'b1. Numărul total al alegătorilor care s-au prezentat la urne, înscriși în lista electorală permanentă',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b2',
           type: 'input',
           title: 'b2. Lista suplimentară',
           hint: 'b2. Numărul total al alegătorilor care s-au prezentat la urne și nu sunt cuprinși în lista electorală permanentă, înscriși în lista electorală suplimentară',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
         {
           id: 'b3',
           type: 'input',
           title: 'b3. Listă urnă specială',
           hint: 'b3. Numărul total al alegătorilor care au votat utilizând urna specială, înscriși în extrasul din listele electorale',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
       ],
     },
@@ -651,24 +694,28 @@ export const presidentialsStructure: FormStructure = {
           },
           title: 'c. Voturi valabil exprimate',
           hint: 'c. Numărul total al voturilor valabil exprimate; c ≤ b - d',
+          meaning: FieldMeaning.ValidVotes,
         },
         {
           id: 'd',
           type: 'input',
           title: 'd. Voturi nule',
           hint: 'd. Numărul voturilor nule',
+          meaning: FieldMeaning.InvalidVotes,
         },
         {
           id: 'e',
           type: 'input',
           title: 'e. Buletine de vot primite',
           hint: 'e. Numărul buletinelor de vot primite; e ≥ c + d + f',
+          meaning: FieldMeaning.ReceivedBallots,
         },
         {
           id: 'f',
           type: 'input',
           title: 'f. Buletine de vot anulate',
           hint: 'f. Numărul buletinelor de vot întrebuințate și anulate',
+          meaning: FieldMeaning.SpoiledBallots,
         }
       ]
     }
@@ -724,6 +771,7 @@ export const referendumStructure: FormStructure = {
           type: 'input',
           title: '1. Lista pentru referendum',
           hint: '1. Numărul persoanelor înscrise în lista pentru referendum',
+          meaning: FieldMeaning.RegisteredVoters,
         },
       ]
     },
@@ -736,6 +784,7 @@ export const referendumStructure: FormStructure = {
           type: 'input',
           title: '2. Numărul participanților',
           hint: '2. Numărul participanților; 2 = 5 + 6 + 7',
+          meaning: FieldMeaning.ParticipatingVoters,
         },
       ]
     },
@@ -748,12 +797,14 @@ export const referendumStructure: FormStructure = {
           type: 'input',
           title: '3. Buletine de vot primite',
           hint: '3. Numărul buletinelor de vot primite pentru a fi întrebuinţate',
+          meaning: FieldMeaning.ReceivedBallots,
         },
         {
           id: '4',
           type: 'input',
           title: '4. Buletine de vot anulate',
           hint: '4. Numărul de buletine de vot rămase neîntrebuinţate',
+          meaning: FieldMeaning.SpoiledBallots,
         }
       ],
     },
@@ -766,18 +817,21 @@ export const referendumStructure: FormStructure = {
           type: 'input',
           title: '5. Voturi la răspunsul "DA"',
           hint: '5. Numărul voturilor valabil exprimate la răspunsul "DA"',
+          meaning: FieldMeaning.ValidVotes,
         },
         {
           id: '6',
           type: 'input',
           title: '6. Voturi la răspunsul "NU"',
           hint: '6. Numărul voturilor valabil exprimate la răspunsul "NU"',
+          meaning: FieldMeaning.ValidVotes,
         },
         {
           id: '7',
           type: 'input',
           title: '7. Voturi nule',
           hint: '7. Numărul voturilor nule',
+          meaning: FieldMeaning.InvalidVotes,
         },
       ],
     }

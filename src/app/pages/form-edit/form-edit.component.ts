@@ -28,7 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { KeyValuePipe } from '@angular/common';
-import { ValidationError } from '../../../elections/form-structures';
+import { CalculatorComponent, CalculatorData } from '../../components/calculator/calculator.component';
 
 @Component({
   selector: 'app-form-edit',
@@ -215,6 +215,15 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
 
   formHasErrors() {
     return this.getFormErrors().length;
+  }
+
+  openCalculator() {
+    this.dialog.open<CalculatorComponent, CalculatorData>(CalculatorComponent, {
+      data: {
+        formValues: this.formGroup.value,
+        formStructure: this.election.type.formStructure,
+      }
+    });
   }
 }
 

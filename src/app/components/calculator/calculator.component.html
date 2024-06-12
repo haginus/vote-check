@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Calculator</h2>
+<mat-dialog-content>
+  <div class="tabs">
+    @for(spec of _specs(); track $index) {
+      <button
+        mat-button
+        class="tab-button"
+        [class]="{ 'active': $index === specIndex() }"
+        (click)="specIndex.set($index)"
+      >
+        {{ spec.title }}
+      </button>
+    }
+  </div>
+  <div class="tab-content" [formGroup]="currentFormGroup()">
+    <p class="description" [class.invalid]="currentFormGroup().invalid">
+      {{ currentSpec().description }}
+    </p>
+    <div class="columns">
+      @for(column of [leftFields(), rightFields()]; track $index) {
+        <div class="column">
+          @for(field of column; track field.id) {
+            <div class="field">
+              <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>{{ field.title }}</mat-label>
+                <input
+                  type="number"
+                  min="0"
+                  matInput
+                  [formControlName]="field.id"
+                  (blur)="onFieldBlur(field.id, $event)"
+                />
+              </mat-form-field>
+              <button
+                mat-icon-button
+                class="lock-button"
+                (click)="toggleLock(field.id)"
+                tabindex="-1"
+                [attr.data-locked]="currentFormGroup().get(field.id).disabled"
+              >
+                @if(currentFormGroup().get(field.id).disabled) {
+                  <mat-icon>lock_open</mat-icon>
+                } @else {
+                  <mat-icon>lock</mat-icon>
+                }
+              </button>
+            </div>
+          }
+        </div>
+      }
+    </div>
+    @if(currentFormGroup().invalid) {
+      <p class="error">
+        Combinația actuală de valori nu este validă.
+      </p>
+    }
+  </div>
+</mat-dialog-content>
