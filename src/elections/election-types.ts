@@ -20,12 +20,12 @@ export const electionTypes = [
     formStructure: parliamentStructure,
     polls: [
       {
-        id: 'CDEP',
+        id: 'CD',
         name: 'Camera Deputaților',
         candidateScope: CandidateScope.County,
       },
       {
-        id: 'SENAT',
+        id: 'S',
         name: 'Senat',
         candidateScope: CandidateScope.County,
       },
