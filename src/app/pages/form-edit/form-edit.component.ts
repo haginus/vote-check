@@ -29,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { KeyValuePipe } from '@angular/common';
 import { CalculatorComponent, CalculatorData } from '../../components/calculator/calculator.component';
+import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 
 @Component({
   selector: 'app-form-edit',
@@ -45,6 +46,7 @@ import { CalculatorComponent, CalculatorData } from '../../components/calculator
     MatIconModule,
     MatButtonModule,
     KeyValuePipe,
+    ElectionNamePipe,
   ],
   providers: [
     {

@@ -61,6 +61,7 @@ export interface Election {
   id: string;
   type: ElectionType;
   date: Date;
+  name?: string;
 }
 
 export type CandidatesFile =

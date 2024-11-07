@@ -1,4 +1,8 @@
-<h1 mat-dialog-title>VoteCheck 🇷🇴 <br>{{ electionName }} {{ electionYear }}</h1>
+<h1 mat-dialog-title>VoteCheck 🇷🇴 <br>
+  @for(election of elections; track election.id) {
+    {{ election | electionName }}{{ $last ? '' : ',' }}
+  }
+</h1>
 <div mat-dialog-content>
   <p style="max-width: 480px">
     Folosiți această aplicație pentru a primi ajutor privind organizarea secției de votare, completarea

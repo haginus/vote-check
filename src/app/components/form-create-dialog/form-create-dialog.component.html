@@ -4,7 +4,7 @@
     <mat-label>Scrutin</mat-label>
     <mat-select formControlName="election" (valueChange)="createForm.get('poll').setValue($event.type.polls[0])">
       @for(election of elections; track election.id) {
-        <mat-option [value]="election">{{ election.type.name }} {{ election.date | date:"yyyy" }}</mat-option>
+        <mat-option [value]="election">{{ election | electionName }}</mat-option>
       }
     </mat-select>
   </mat-form-field>

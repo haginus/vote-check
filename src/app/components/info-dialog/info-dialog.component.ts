@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 
 @Component({
   selector: 'app-info-dialog',
@@ -8,10 +9,10 @@ import { MatDialogModule } from '@angular/material/dialog';
   standalone: true,
   imports: [
     MatDialogModule,
+    ElectionNamePipe,
   ]
 })
 export class InfoDialogComponent {
   appVersion = environment.appVersion;
-  electionName = environment.currentElections.map(election => election.type.name).join(', ');
-  electionYear = environment.currentElections[0].date.getFullYear();
+  elections = environment.currentElections;
 }

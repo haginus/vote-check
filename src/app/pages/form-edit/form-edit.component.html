@@ -24,7 +24,7 @@
           <mat-card-header>
             <mat-card-title>
               <div>
-                Proces-verbal pentru {{ election.type.name }} - {{ poll.name }}
+                Proces-verbal pentru {{ election | electionName }} - {{ poll.name }}
                 @if(precinct) {
                   (S.V. {{ precinct.county }}-{{ precinct.number }})
                 }

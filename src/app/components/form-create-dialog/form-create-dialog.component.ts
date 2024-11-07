@@ -11,6 +11,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/mat
 import { MatSelectModule } from '@angular/material/select';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 
 @Component({
   selector: 'app-form-create-dialog',
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
     MatSelectModule,
     AsyncPipe,
     DatePipe,
+    ElectionNamePipe,
   ],
   providers: [
     {

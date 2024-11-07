@@ -20,7 +20,7 @@
                 {{ form.pollId }} / S.V. {{ form.precinct.county }}-{{ form.precinct.number }}
               </mat-card-title>
               <mat-card-subtitle>
-                <div>{{ getElection(form.electionId)?.type.name }} {{ getElection(form.electionId)?.date | date:'yyyy' }}</div>
+                <div>{{ getElection(form.electionId) | electionName }}</div>
                 <div>{{ form.timestamp | date:'dd.MM.yyyy HH:mm' }}</div>
               </mat-card-subtitle>
             </mat-card-header>

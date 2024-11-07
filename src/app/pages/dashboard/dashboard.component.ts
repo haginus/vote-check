@@ -13,6 +13,7 @@ import { TasksListComponent } from '../../tasks/tasks-list/tasks-list.component'
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,6 +31,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     TasksListComponent,
     AsyncPipe,
     DatePipe,
+    ElectionNamePipe,
   ],
 })
 export class DashboardComponent {
