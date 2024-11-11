@@ -57,11 +57,17 @@ export interface ElectionType {
   formStructure: FormStructure;
 }
 
+export interface ElectionConstituency {
+  countyCode: string;
+  uats?: string[];
+}
+
 export interface Election {
   id: string;
   type: ElectionType;
   date: Date;
   name?: string;
+  constituencies?: ElectionConstituency[];
 }
 
 export type CandidatesFile =

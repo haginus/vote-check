@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Election, Poll } from '../../../elections/types';
 import { getAvailablePolls } from '../../../elections/election-types';
 import { SettingsService } from '../../services/settings.service';
-import { combineLatest, map, startWith, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, first, map, Observable, pipe, startWith, tap } from 'rxjs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ElectionNamePipe } from '../../pipes/election-name.pipe';
+import { elections, isElectionAvailable } from '../../../elections/elections';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-form-create-dialog',
@@ -23,6 +25,7 @@ import { ElectionNamePipe } from '../../pipes/election-name.pipe';
     ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
+    MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
     AsyncPipe,
@@ -38,11 +41,29 @@ import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 })
 export class FormCreateDialogComponent {
 
+  constructor() {
+    this.elections$.pipe(first()).subscribe(elections => {
+      this.electionControl.setValue(elections[0]);
+    });
+  }
+
   settingsService = inject(SettingsService);
-  elections = environment.currentElections;
+  selectedPrecinct$ = this.settingsService.watchSettings().pipe(map(settings => settings.selectedPrecinct));
+
+  showAllElections$ = new BehaviorSubject(false);
+  elections$ = combineLatest([
+    this.showAllElections$,
+    this.selectedPrecinct$
+  ]).pipe(
+    map(([showAllElections, precinct]) => {
+      return showAllElections
+        ? elections.map(election => ({ ...election, isAvailable: isElectionAvailable(election, precinct) }))
+        : environment.currentElections.filter(election => isElectionAvailable(election, precinct))
+    })
+  ) as Observable<(Election & { isAvailable?: boolean })[]>;
 
   createForm = new FormGroup({
-    election: new FormControl<Election>(this.elections[0], { validators: [Validators.required] }),
+    election: new FormControl<Election>(null, { validators: [Validators.required] }),
     poll: new FormControl<Poll>(null, { validators: [Validators.required] }),
   });
 
@@ -56,13 +77,13 @@ export class FormCreateDialogComponent {
 
   polls$ = combineLatest([
     this.electionControl.valueChanges.pipe(startWith(this.electionControl.value)),
-    this.settingsService.getSettings()
+    this.selectedPrecinct$,
   ]).pipe(
-    map(([election, settings]) => {
+    map(([election, selectedPrecinct]) => {
       if (!election) {
         return [];
       }
-      return getAvailablePolls(election.type, settings.selectedPrecinct);
+      return getAvailablePolls(election.type, selectedPrecinct);
     }),
     tap(polls => {
       this.pollControl.setValue(polls[0] || null);

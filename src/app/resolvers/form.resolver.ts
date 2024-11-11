@@ -4,7 +4,7 @@ import { inject } from "@angular/core";
 import { Candidate, Election, Poll, Precint } from "../../elections/types";
 import { firstValueFrom } from "rxjs";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { getElection } from "../../elections/elections";
+import { getElection, isElectionAvailable } from "../../elections/elections";
 import { SettingsService } from "../services/settings.service";
 import { CandidatesService } from "../services/candidates.service";
 import { getAvailablePolls } from "../../elections/election-types";
@@ -44,7 +44,7 @@ export const FormResolver: ResolveFn<FormData | null> = async (route: ActivatedR
   }
   const election = getElection(electionId as any);
   const poll = election ? getAvailablePolls(election.type, precinct).find(p => p.id === pollId) : undefined;
-  if (!election || !poll) {
+  if (!election || !poll || !isElectionAvailable(election, precinct)) {
     snackBar.open('Scrutin necunoscut.');
     router.navigate(['/']);
     return null;
