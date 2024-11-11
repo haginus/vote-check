@@ -848,5 +848,13 @@ export const referendumStructure: FormStructure = {
     });
     return validator.getAllErrors();
   },
-  // TODO: simpvPullStrategy
+  simpvPullStrategy: (formGroup, simpvPrecinct) => {
+    formGroup.get('1')!.setValue(simpvPrecinct.initial_count_lp);
+    formGroup.get('2')!.setValue(simpvPrecinct.LT);
+    return {
+      county: simpvPrecinct['county']['code'],
+      number: +simpvPrecinct['precinct']['nr'],
+      uatName: simpvPrecinct['uat']['name'],
+    };
+  },
 }
