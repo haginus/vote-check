@@ -842,7 +842,7 @@ export const referendumStructure: FormStructure = {
       key: '2_5_6_7',
       constraint: '2 = 5 + 6 + 7',
       error: {
-        condition: (value) => value['2'] !== value['5'] + value['6'] + value['7'],
+        condition: (value) => (value['2'] || 0) !== value['5'] + value['6'] + value['7'],
         message: 'Numărul de participanți trebuie să fie egal cu numărul de voturi exprimate.'
       }
     });

@@ -90,7 +90,7 @@ export const electionTypes = [
     formStructure: referendumStructure,
     polls: [
       {
-        id: 'R',
+        id: 'Î1',
         name: 'Întrebarea 1',
         candidateScope: CandidateScope.Country,
       },
@@ -100,6 +100,16 @@ export const electionTypes = [
 
 export function getElectionType(id: typeof electionTypes[number]['id']) {
   return electionTypes.find(et => et.id === id);
+}
+
+export function getElectionTypeReferendum(numberOfQuestions: number) {
+  const baseType = getElectionType('REFERENDUM');
+  const polls = Array.from({ length: numberOfQuestions }).map((_, index) => ({
+    id: `Î${index + 1}`,
+    name: `Întrebarea ${index + 1}`,
+    candidateScope: CandidateScope.Country,
+  }));
+  return { ...baseType, polls };
 }
 
 export function getAvailablePolls(electionType: ElectionType, precint: Precint) {
