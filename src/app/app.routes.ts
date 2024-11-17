@@ -30,5 +30,9 @@ export const routes: Routes = [
     resolve: {
       formData: FormResolver,
     }
-  }
+  },
+  {
+    path: 'live-results',
+    loadComponent: () => import('./pages/live-results/live-results.component').then(m => m.LiveResultsComponent),
+  },
 ];

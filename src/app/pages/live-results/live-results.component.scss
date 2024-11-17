@@ -1,0 +1,159 @@
+mat-toolbar {
+  .toolbox {
+    margin-left: 8px;
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    min-width: 0;
+  }
+
+  button[mat-fab] {
+    height: 40px;
+
+    ::ng-deep {
+      .mdc-button__label {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.page-wrapper {
+  padding: 16px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.results-container {
+  .results-columns {
+    display: flex;
+    gap: 24px;
+
+    .map-column {
+      flex: 1;
+    }
+
+    .data-column {
+      flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      flex-wrap: wrap;
+      .map-column, .data-column {
+        width: 100%;
+        flex: unset;
+      }
+    }
+  }
+
+}
+
+.map {
+  width: 100%;
+  aspect-ratio: 1.5/1;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.data-column {
+
+  .toolbar {
+    margin-bottom: 16px;
+  }
+
+  .header {
+    margin-bottom: 12px;
+
+    .header-text {
+      font-weight: 500;
+      font-size: 28px;
+    }
+  }
+
+  .header-stats {
+    cursor: default;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    .stat {
+      position: relative;
+      padding-left: 12px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0px;
+        width: 4px;
+        height: 100%;
+        border-radius: 4px;
+        background: #005cbb;
+      }
+
+      &>:first-child {
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      &>:last-child {
+        font-size: 20px;
+        color: #005cbb;
+        display: flex;
+        position: relative;
+
+        button {
+          margin-left: 4px;
+          height: 24px;
+          width: 24px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          mat-icon {
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .candidate-list {
+    margin-top: 16px;
+
+    .cantidate-entry {
+
+      padding: 8px 0;
+
+      .text {
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 8px;
+        margin-bottom: 8px;
+
+        .candidate-percentage {
+          text-align: right;
+        }
+      }
+
+      .bar-outer {
+        background: rgba(0, 93, 187, 0.3);
+        height: 12px;
+        border-radius: 6px;
+        overflow: hidden;
+
+        .bar {
+          background: #005cbb;
+          border-radius: 6px;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

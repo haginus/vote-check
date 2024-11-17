@@ -16,6 +16,7 @@ export interface Poll {
   name: string;
   candidateScope: CandidateScope;
   availableFor?: (precint: Precint) => boolean;
+  sicpvId?: string;
 }
 
 export enum FieldMeaning {
