@@ -22,6 +22,7 @@ import { Election } from '../../../elections/types';
 import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 import { indexArray } from '../../../../tools/utils';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-live-results',
@@ -34,6 +35,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatIconModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatTooltipModule,
     BigNumberPipe,
@@ -86,6 +88,7 @@ export class LiveResultsComponent {
 
 
   setSelectedCountyCode(value: string | null) {
+    if(!this.totalResults()) return;
     if (this.selectedCountyCode() && value !== this.selectedCountyCode()) {
       this.findPolygon(this.selectedCountyCode())?.setAll({
         stroke: am5.color(0x000000),
@@ -172,16 +175,20 @@ export class LiveResultsComponent {
     this.selectedCountyResults.set(null);
     this.selectedElection.set(election);
     this.selectedCategory.set(election.type.polls.find(p => !!p.sicpvId)?.['sicpvId']);
-    this.getTotalResults();
+    this.getTotalResults(true);
   }
 
-  private async getTotalResults() {
-    this.totalResults.set(
-      await this.loadData(
-        firstValueFrom(this.resultsService.getCountryResults(this.selectedElection().id))
-      )
-    );
-    this.updateMapData();
+  protected async getTotalResults(initialLoad = false) {
+    try {
+      this.totalResults.set(
+        await this.loadData(
+          firstValueFrom(this.resultsService.getCountryResults(this.selectedElection().id)),
+          initialLoad
+        )
+      );
+    } finally {
+      this.updateMapData();
+    }
   }
 
   private async getCountyResults() {
@@ -193,15 +200,19 @@ export class LiveResultsComponent {
     }
   }
 
-  private async loadData<T>(promise: Promise<T>) {
+  private async loadData<T>(promise: Promise<T>, fatalError = false) {
     const loadTime = Date.now();
     const sbRef = this.snackBar.open("Datele se actualizează...", null, { duration: -1 });
     this.isLoading.set(true);
     try {
       const result = await promise;
+      this.error.set(false);
       return result;
     } catch(err) {
       this.snackBar.open("A apărut o eroare la încărcarea datelor.");
+      if(fatalError) {
+        this.error.set(true);
+      }
       throw err;
     } finally {
       setTimeout(() => {
@@ -212,11 +223,10 @@ export class LiveResultsComponent {
   }
 
   updateMapData() {
-    if (!this.totalResults()) return;
-    const counties = this.totalResults().counties.reduce(
+    const counties = this.totalResults()?.counties.reduce(
       (acc, c) => ({ ...acc, [c.countyCode]: c }),
       {} as Record<string, CountyResults>
-    );
+    ) || {};
     this.polygonSeries?.mapPolygons.each((polygon) => {
       const data = counties[polygon.dataItem.dataContext['id']];
       polygon.setAll({
@@ -231,6 +241,5 @@ export class LiveResultsComponent {
       this.root.dispose();
     }
   }
-
 
 }

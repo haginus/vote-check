@@ -40,7 +40,11 @@
           }
           <mat-form-field subscriptSizing="dynamic">
             <mat-label>Circumscripții</mat-label>
-            <mat-select [ngModel]="selectedCountyCode()" (ngModelChange)="setSelectedCountyCode($event)">
+            <mat-select
+              [ngModel]="selectedCountyCode()"
+              (ngModelChange)="setSelectedCountyCode($event)"
+              [disabled]="error() || isLoading()"
+            >
               <mat-option [value]="null">Toate circumscripțiile</mat-option>
               @for(county of counties; track county[0]) {
                 <mat-option [value]="county[0]">{{ county[1] }}</mat-option>
@@ -81,51 +85,72 @@
                 {{ selectedResults().countedVotes | bigNumber }} ({{ selectedResults().countedVotes / selectedResults().castVotes * 100 | number:'1.2-2'}}%)
               </div>
             </div>
-            <div class="stat">
-              <div>Voturi valabil exprimate</div>
-              <div [matTooltip]="selectedResults().categories[selectedCategory()].validVotes + ''">
-                {{ selectedResults().categories[selectedCategory()].validVotes | bigNumber }}
+            @if(selectedResults().countedVotes > 0) {
+              <div class="stat">
+                <div>Voturi valabil exprimate</div>
+                <div [matTooltip]="selectedResults().categories[selectedCategory()].validVotes + ''">
+                  {{ selectedResults().categories[selectedCategory()].validVotes | bigNumber }}
+                </div>
               </div>
-            </div>
-            <div class="stat">
-              <div>Voturi nule</div>
-              <div>
-                <span [matTooltip]="selectedResults().categories[selectedCategory()].invalidVotes + ''">
-                  {{ selectedResults().categories[selectedCategory()].invalidVotes | bigNumber }}
-                </span>
-                <button
-                  mat-icon-button
-                  [matTooltip]="showInvalidVotes() ? 'Excludeți voturile nule în constituirea procentajelor' : 'Includeți voturile nule în constituirea procentajelor'"
-                  (click)="showInvalidVotes.set(!showInvalidVotes())"
-                >
-                  <mat-icon>{{ showInvalidVotes() ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
-                </button>
+              <div class="stat">
+                <div>Voturi nule</div>
+                <div>
+                  <span [matTooltip]="selectedResults().categories[selectedCategory()].invalidVotes + ''">
+                    {{ selectedResults().categories[selectedCategory()].invalidVotes | bigNumber }}
+                  </span>
+                  <button
+                    mat-icon-button
+                    [matTooltip]="showInvalidVotes() ? 'Excludeți voturile nule în constituirea procentajelor' : 'Includeți voturile nule în constituirea procentajelor'"
+                    (click)="showInvalidVotes.set(!showInvalidVotes())"
+                  >
+                    <mat-icon>{{ showInvalidVotes() ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+                  </button>
+                </div>
               </div>
-            </div>
+            }
           </div>
-          <div class="candidate-list">
-            @for(result of selectedResults().categories[selectedCategory()].candidateVotes; track result.candidate) {
-              <div class="cantidate-entry">
-                <div class="text">
-                  <div class="candidate-name">{{ result.candidate }}</div>
-                  <div class="candidate-percentage"><b>{{ result.votes / (showInvalidVotes() ? selectedResults().countedVotes : selectedResults().categories[selectedCategory()].validVotes) * 100 | number:'1.2-2' }}%</b> ({{ result.votes }})</div>
+          @if(selectedResults().countedVotes > 0) {
+            <div class="candidate-list">
+              @for(result of selectedResults().categories[selectedCategory()].candidateVotes; track result.candidate) {
+                <div class="cantidate-entry">
+                  <div class="text">
+                    <div class="candidate-name">{{ result.candidate }}</div>
+                    <div class="candidate-percentage"><b>{{ result.votes / (showInvalidVotes() ? selectedResults().countedVotes : selectedResults().categories[selectedCategory()].validVotes) * 100 | number:'1.2-2' }}%</b> ({{ result.votes }})</div>
+                  </div>
+                  <div class="bar-outer">
+                    <div class="bar" [style]="{ width: (result.votes / (showInvalidVotes() ? selectedResults().countedVotes : selectedResults().categories[selectedCategory()].validVotes) * 100) + '%' }"></div>
+                  </div>
                 </div>
-                <div class="bar-outer">
-                  <div class="bar" [style]="{ width: (result.votes / (showInvalidVotes() ? selectedResults().countedVotes : selectedResults().categories[selectedCategory()].validVotes) * 100) + '%' }"></div>
+              }
+              @if(showInvalidVotes() && selectedResults().countedVotes > 0) {
+                <div class="cantidate-entry">
+                  <div class="text">
+                    <div class="candidate-name">Voturi nule</div>
+                    <div class="candidate-percentage"><b>{{ selectedResults().categories[selectedCategory()].invalidVotes / selectedResults().countedVotes * 100 | number:'1.2-2' }}%</b> ({{ selectedResults().categories[selectedCategory()].invalidVotes }})</div>
+                  </div>
+                  <div class="bar-outer">
+                    <div class="bar" [style]="{ width: (selectedResults().categories[selectedCategory()].invalidVotes / selectedResults().countedVotes * 100) + '%' }"></div>
+                  </div>
                 </div>
-              </div>
-            }
-            @if(showInvalidVotes()) {
-              <div class="cantidate-entry">
-                <div class="text">
-                  <div class="candidate-name">Voturi nule</div>
-                  <div class="candidate-percentage"><b>{{ selectedResults().categories[selectedCategory()].invalidVotes / selectedResults().countedVotes * 100 | number:'1.2-2' }}%</b> ({{ selectedResults().categories[selectedCategory()].invalidVotes }})</div>
-                </div>
-                <div class="bar-outer">
-                  <div class="bar" [style]="{ width: (selectedResults().categories[selectedCategory()].invalidVotes / selectedResults().countedVotes * 100) + '%' }"></div>
-                </div>
-              </div>
-            }
+              }
+            </div>
+          } @else {
+            <div class="placeholder-content">
+              <mat-icon>cloud</mat-icon>
+              <div>Nu există încă rezultate.</div>
+            </div>
+          }
+        } @else if(isLoading()) {
+          <div class="placeholder-content">
+            <mat-progress-spinner mode="indeterminate" [diameter]="48"></mat-progress-spinner>
+          </div>
+        } @else if(error()) {
+          <div class="placeholder-content">
+            <mat-icon>warning_amber</mat-icon>
+            <div>A apărut o eroare.</div>
+            <button mat-button (click)="getTotalResults()">
+              Reîncercați
+            </button>
           </div>
         }
       </div>
