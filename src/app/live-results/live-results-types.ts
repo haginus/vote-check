@@ -27,7 +27,7 @@ export interface CountyPresence {
 export interface PrecinctPresence {
   registeredVoters: number;
   castVotes: number;
-  precint: {
+  precinct: {
     id: number;
     number: string;
     name: string;
