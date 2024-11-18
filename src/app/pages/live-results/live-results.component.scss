@@ -62,6 +62,13 @@ mat-toolbar {
 
   .toolbar {
     margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    mat-form-field {
+      width: 100%;
+    }
   }
 
   .header {
@@ -70,6 +77,7 @@ mat-toolbar {
     .header-text {
       font-weight: 500;
       font-size: 28px;
+      line-height: normal;
     }
   }
 

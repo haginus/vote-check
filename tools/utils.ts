@@ -15,3 +15,10 @@ export function normalize(str: string) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
 };
+
+export function indexArray<T, K extends number | string>(array: T[], getKey: (item: T) => K) {
+  return array.reduce((acc, item) => {
+    acc[getKey(item)] = item;
+    return acc;
+  }, {} as Record<K, T>);
+}

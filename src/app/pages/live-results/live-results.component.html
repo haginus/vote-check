@@ -14,7 +14,7 @@
   <div class="toolbox">
     <button mat-fab extended [matMenuTriggerFor]="electionSelector">
       <mat-icon>swap_horiz</mat-icon>
-      <span>{{ selectedElection | electionName }}</span>
+      <span>{{ selectedElection() | electionName }}</span>
     </button>
   </div>
 </mat-toolbar>
@@ -26,87 +26,103 @@
       </div>
       <div class="data-column">
         <div class="toolbar">
-          <mat-form-field subscriptSizing="dynamic">
-            <mat-label>Categorie</mat-label>
-            <mat-select [(ngModel)]="selectedCategory">
-              @for(poll of selectedElection.type.polls; track poll.id) {
-                @if(poll.sicpvId) {
-                  <mat-option [value]="poll.sicpvId">{{ poll.name }}</mat-option>
+          @if(selectedElection().type.polls.length > 1) {
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Categorie</mat-label>
+              <mat-select [(ngModel)]="selectedCategory">
+                @for(poll of selectedElection().type.polls; track poll.id) {
+                  @if(poll.sicpvId) {
+                    <mat-option [value]="poll.sicpvId">{{ poll.name }}</mat-option>
+                  }
                 }
-              }
-            </mat-select>
-          </mat-form-field>
+              </mat-select>
+            </mat-form-field>
+          }
           <mat-form-field subscriptSizing="dynamic">
             <mat-label>Circumscripții</mat-label>
-            <mat-select [ngModel]="selectedCountyCode" (ngModelChange)="selectedCountyCode = $event">
+            <mat-select [ngModel]="selectedCountyCode()" (ngModelChange)="setSelectedCountyCode($event)">
               <mat-option [value]="null">Toate circumscripțiile</mat-option>
               @for(county of counties; track county[0]) {
                 <mat-option [value]="county[0]">{{ county[1] }}</mat-option>
               }
             </mat-select>
           </mat-form-field>
+          @if(selectedCountyResults()) {
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Secție de votare</mat-label>
+              <mat-select [(ngModel)]="selectedPrecinct" [typeaheadDebounceInterval]="300">
+                <mat-option [value]="null">Toate secțiile</mat-option>
+                @for(precinct of selectedCountyResults().precincts; track precinct.precint.id) {
+                  <mat-option [value]="precinct">{{ precinct.precint.number }}/{{ precinct.precint.name }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          }
         </div>
-        @if(selectedResults) {
+        @if(selectedResults()) {
           <div class="header">
             <div class="header-text">
-              {{ selectedCountyCode ? countiesIndex[selectedCountyCode] : 'Toate circumscripțiile'}}
+              <span>{{ selectedCountyCode() ? countiesIndex[selectedCountyCode()] : 'Toate circumscripțiile' }}</span>
+              @if(selectedPrecinct()) {
+                <span>, Secția nr. {{ selectedPrecinct().precint.number }} - {{ selectedPrecinct().precint.name }}</span>
+              }
             </div>
           </div>
           <div class="header-stats">
             <div class="stat">
               <div>Votanți</div>
-              <div [matTooltip]="selectedResults.castVotes + ''">
-                {{ selectedResults.castVotes | bigNumber }}
+              <div [matTooltip]="selectedResults().castVotes + ''">
+                {{ selectedResults().castVotes | bigNumber }}
               </div>
             </div>
             <div class="stat">
               <div>Voturi numărate</div>
-              <div [matTooltip]="selectedResults.countedVotes + ''">
-                {{ selectedResults.countedVotes | bigNumber }} ({{ selectedResults.countedVotes / selectedResults.castVotes * 100 | number:'1.2-2'}}%)
+              <div [matTooltip]="selectedResults().countedVotes + ''">
+                {{ selectedResults().countedVotes | bigNumber }} ({{ selectedResults().countedVotes / selectedResults().castVotes * 100 | number:'1.2-2'}}%)
               </div>
             </div>
             <div class="stat">
               <div>Voturi valabil exprimate</div>
-              <div [matTooltip]="selectedResults.categories[selectedCategory].validVotes + ''">
-                {{ selectedResults.categories[selectedCategory].validVotes | bigNumber }}
+              <div [matTooltip]="selectedResults().categories[selectedCategory()].validVotes + ''">
+                {{ selectedResults().categories[selectedCategory()].validVotes | bigNumber }}
               </div>
             </div>
             <div class="stat">
               <div>Voturi nule</div>
               <div>
-                <span [matTooltip]="selectedResults.categories[selectedCategory].invalidVotes + ''">
-                  {{ selectedResults.categories[selectedCategory].invalidVotes | bigNumber }}
+                <span [matTooltip]="selectedResults().categories[selectedCategory()].invalidVotes + ''">
+                  {{ selectedResults().categories[selectedCategory()].invalidVotes | bigNumber }}
                 </span>
                 <button
                   mat-icon-button
-                  [matTooltip]="showInvalidVotes ? 'Excludeți voturile nule în constituirea procentajelor' : 'Includeți voturile nule în constituirea procentajelor'"
-                  (click)="showInvalidVotes = !showInvalidVotes"
+                  [matTooltip]="showInvalidVotes() ? 'Excludeți voturile nule în constituirea procentajelor' : 'Includeți voturile nule în constituirea procentajelor'"
+                  (click)="showInvalidVotes.set(!showInvalidVotes())"
                 >
-                  <mat-icon>{{ showInvalidVotes ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+                  <mat-icon>{{ showInvalidVotes() ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
                 </button>
               </div>
             </div>
           </div>
           <div class="candidate-list">
-            @for(result of selectedResults.categories[selectedCategory].candidateVotes; track result.candidate) {
+            @for(result of selectedResults().categories[selectedCategory()].candidateVotes; track result.candidate) {
               <div class="cantidate-entry">
                 <div class="text">
                   <div class="candidate-name">{{ result.candidate }}</div>
-                  <div class="candidate-percentage"><b>{{ result.votes / (showInvalidVotes ? selectedResults.countedVotes : selectedResults.categories[selectedCategory].validVotes) * 100 | number:'1.2-2' }}%</b> ({{ result.votes }})</div>
+                  <div class="candidate-percentage"><b>{{ result.votes / (showInvalidVotes() ? selectedResults().countedVotes : selectedResults().categories[selectedCategory()].validVotes) * 100 | number:'1.2-2' }}%</b> ({{ result.votes }})</div>
                 </div>
                 <div class="bar-outer">
-                  <div class="bar" [style]="{ width: (result.votes / (showInvalidVotes ? selectedResults.countedVotes : selectedResults.categories[selectedCategory].validVotes) * 100) + '%' }"></div>
+                  <div class="bar" [style]="{ width: (result.votes / (showInvalidVotes() ? selectedResults().countedVotes : selectedResults().categories[selectedCategory()].validVotes) * 100) + '%' }"></div>
                 </div>
               </div>
             }
-            @if(showInvalidVotes) {
+            @if(showInvalidVotes()) {
               <div class="cantidate-entry">
                 <div class="text">
                   <div class="candidate-name">Voturi nule</div>
-                  <div class="candidate-percentage"><b>{{ selectedResults.categories[selectedCategory].invalidVotes / selectedResults.countedVotes * 100 | number:'1.2-2' }}%</b> ({{ selectedResults.categories[selectedCategory].invalidVotes }})</div>
+                  <div class="candidate-percentage"><b>{{ selectedResults().categories[selectedCategory()].invalidVotes / selectedResults().countedVotes * 100 | number:'1.2-2' }}%</b> ({{ selectedResults().categories[selectedCategory()].invalidVotes }})</div>
                 </div>
                 <div class="bar-outer">
-                  <div class="bar" [style]="{ width: (selectedResults.categories[selectedCategory].invalidVotes / selectedResults.countedVotes * 100) + '%' }"></div>
+                  <div class="bar" [style]="{ width: (selectedResults().categories[selectedCategory()].invalidVotes / selectedResults().countedVotes * 100) + '%' }"></div>
                 </div>
               </div>
             }
