@@ -2,10 +2,13 @@
   <mat-toolbar>
     <span>VoteCheck 🇷🇴</span>
     <span class="spacer"></span>
-    <button mat-icon-button (click)="openSettingsDialog()">
+    <button mat-icon-button [routerLink]="['/live-results']" matTooltip="Rezultate în timp real">
+      <mat-icon>live_tv</mat-icon>
+    </button>
+    <button mat-icon-button (click)="openSettingsDialog()" matTooltip="Setări">
       <mat-icon>settings</mat-icon>
     </button>
-    <button mat-icon-button (click)="openInfoDialog()">
+    <button mat-icon-button (click)="openInfoDialog()" matTooltip="Despre">
       <mat-icon>info</mat-icon>
     </button>
   </mat-toolbar>

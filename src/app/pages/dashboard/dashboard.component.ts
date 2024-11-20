@@ -14,6 +14,7 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ElectionNamePipe } from '../../pipes/election-name.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,6 +28,7 @@ import { ElectionNamePipe } from '../../pipes/election-name.pipe';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatTooltipModule,
     MatProgressSpinnerModule,
     TasksListComponent,
     AsyncPipe,
