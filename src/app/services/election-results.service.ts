@@ -9,7 +9,7 @@ export class ElectionResultsService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly resultsUrl = "http://localhost:3000";
+  private readonly resultsUrl = "https://vote-check-simpv-crawler-502836939228.europe-west1.run.app";
 
   getCountryResults(electionId: string, stage: PvStage = 'PROV') {
     return this.http.get<TotalResults>(`${this.resultsUrl}/results/${electionId}/stage/${stage}`);

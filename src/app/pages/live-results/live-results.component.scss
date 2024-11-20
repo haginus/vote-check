@@ -33,6 +33,13 @@ mat-toolbar {
 
     .map-column {
       flex: 1;
+
+      .disclaimer {
+        margin-top: 4px;
+        color: #333;
+        font-size: 12px;
+        letter-spacing: 0.07em;
+      }
     }
 
     .data-column {

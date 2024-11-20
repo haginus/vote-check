@@ -59,6 +59,8 @@ export class LiveResultsComponent {
   protected currentElections = environment.currentElections;
   protected countiesIndex = COUNTIES;
 
+  private intervalId: any;
+  protected lastUpdated = signal<Date | null>(null);
   protected error = signal(false);
   protected isLoading = signal(false);
   protected totalResults = signal<TotalResults | null>(null);
@@ -182,6 +184,11 @@ export class LiveResultsComponent {
     this.selectedElection.set(election);
     this.selectedCategory.set(election.type.polls.find(p => !!p.sicpvId)?.['sicpvId']);
     this.getTotalResults(true);
+    clearInterval(this.intervalId);
+    this.intervalId = setInterval(() => {
+      this.getTotalResults();
+      this.getCountyResults();
+    }, 60000);
   }
 
   protected async getTotalResults(initialLoad = false) {
@@ -192,6 +199,7 @@ export class LiveResultsComponent {
           initialLoad
         )
       );
+      this.lastUpdated.set(new Date());
       if(this.availableConstituencies().length === 1) {
         this.setSelectedCountyCode(this.availableConstituencies()[0].code);
       }
@@ -205,6 +213,7 @@ export class LiveResultsComponent {
       const results = await this.loadData(
         firstValueFrom(this.resultsService.getCountyResults(this.selectedElection().id, this.selectedCountyCode()))
       );
+      this.lastUpdated.set(new Date());
       this.selectedCountyResults.set(results);
     }
   }

@@ -23,6 +23,11 @@
     <div class="results-columns">
       <div class="map-column">
         <div id="chartdiv" class="map"></div>
+        @if(lastUpdated()) {
+          <div class="disclaimer">
+            Ultima actualizare: {{ lastUpdated().toLocaleString("ro-RO") }}
+          </div>
+        }
       </div>
       <div class="data-column">
         <div class="toolbar">
