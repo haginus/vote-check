@@ -258,6 +258,7 @@ export class LiveResultsComponent {
     if (this.root) {
       this.root.dispose();
     }
+    clearInterval(this.intervalId);
   }
 
 }
