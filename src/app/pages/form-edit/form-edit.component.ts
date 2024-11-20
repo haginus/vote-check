@@ -30,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { KeyValuePipe } from '@angular/common';
 import { CalculatorComponent, CalculatorData } from '../../components/calculator/calculator.component';
 import { ElectionNamePipe } from '../../pipes/election-name.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-form-edit',
@@ -40,6 +41,7 @@ import { ElectionNamePipe } from '../../pipes/election-name.pipe';
     RouterModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
