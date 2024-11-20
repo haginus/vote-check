@@ -46,8 +46,8 @@
               [disabled]="error() || isLoading()"
             >
               <mat-option [value]="null">Toate circumscripțiile</mat-option>
-              @for(county of counties; track county[0]) {
-                <mat-option [value]="county[0]">{{ county[1] }}</mat-option>
+              @for(county of availableConstituencies(); track county.code) {
+                <mat-option [value]="county.code">{{ county.name }}</mat-option>
               }
             </mat-select>
           </mat-form-field>
@@ -151,6 +151,11 @@
             <button mat-button (click)="getTotalResults()">
               Reîncercați
             </button>
+          </div>
+        } @else {
+          <div class="placeholder-content">
+            <mat-icon>cloud</mat-icon>
+            <div>Nu există încă rezultate.</div>
           </div>
         }
       </div>

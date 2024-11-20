@@ -1,5 +1,5 @@
 import { europeansStructure, localsStructure, parliamentStructure, presidentialsStructure, referendumStructure } from './form-structures';
-import { CandidateScope, ElectionType, Precint } from './types';
+import { CandidateScope, ElectionType, Poll, Precint } from './types';
 
 export const electionTypes = [
   {
@@ -111,10 +111,11 @@ export function getElectionType(id: typeof electionTypes[number]['id']) {
 
 export function getElectionTypeReferendum(numberOfQuestions: number) {
   const baseType = getElectionType('REFERENDUM');
-  const polls = Array.from({ length: numberOfQuestions }).map((_, index) => ({
+  const polls: Poll[] = Array.from({ length: numberOfQuestions }).map((_, index) => ({
     id: `Î${index + 1}`,
     name: `Întrebarea ${index + 1}`,
     candidateScope: CandidateScope.Country,
+    sicpvId: 'REF',
   }));
   return { ...baseType, polls };
 }

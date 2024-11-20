@@ -58,7 +58,6 @@ export class LiveResultsComponent {
 
   protected currentElections = environment.currentElections;
   protected countiesIndex = COUNTIES;
-  protected counties = Object.entries(COUNTIES);
 
   protected error = signal(false);
   protected isLoading = signal(false);
@@ -69,6 +68,13 @@ export class LiveResultsComponent {
   protected selectedCountyCode = signal<string | null>(null);
   protected selectedCountyResults = signal<CountyResults | null>(null);
   protected selectedPrecinct = signal<PrecinctResults | null>(null);
+  protected availableConstituencies = computed(() => {
+    if(!this.selectedElection()) return [];
+    if(this.selectedElection().constituencies) {
+      return this.selectedElection().constituencies.map(c => ({ code: c.countyCode, name: COUNTIES[c.countyCode] }))
+    }
+    return Object.keys(COUNTIES).map((code) => ({ code, name: COUNTIES[code] }));
+  });
   protected selectedCountyUats = computed(() => {
     if(!this.selectedCountyResults()) return [];
     return Object.values(indexArray(this.selectedCountyResults().precincts.map(p => p.uat), uat => uat.id));
@@ -86,9 +92,9 @@ export class LiveResultsComponent {
     return results;
   })
 
-
   setSelectedCountyCode(value: string | null) {
     if(!this.totalResults()) return;
+    if(value && !this.availableConstituencies().find(c => c.code === value)) return;
     if (this.selectedCountyCode() && value !== this.selectedCountyCode()) {
       this.findPolygon(this.selectedCountyCode())?.setAll({
         stroke: am5.color(0x000000),
@@ -169,8 +175,8 @@ export class LiveResultsComponent {
   }
 
   protected changeSelectedElection(election: Election) {
+    this.setSelectedCountyCode(null);
     this.totalResults.set(null);
-    this.selectedCountyCode.set(null);
     this.selectedPrecinct.set(null);
     this.selectedCountyResults.set(null);
     this.selectedElection.set(election);
@@ -186,6 +192,9 @@ export class LiveResultsComponent {
           initialLoad
         )
       );
+      if(this.availableConstituencies().length === 1) {
+        this.setSelectedCountyCode(this.availableConstituencies()[0].code);
+      }
     } finally {
       this.updateMapData();
     }
