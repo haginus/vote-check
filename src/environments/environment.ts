@@ -1,10 +1,10 @@
 import { getElection } from "../elections/elections";
 
 export const environment = {
-  appVersion: "3.2.0",
+  appVersion: "4.0.0",
   currentElections: [
-    getElection('europarlamentare09062024'),
-    getElection('locale09062024'),
+    getElection('prezidentiale24112024'),
+    getElection('referendum24112024'),
   ],
   production: false
 };
