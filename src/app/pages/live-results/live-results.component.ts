@@ -249,7 +249,7 @@ export class LiveResultsComponent {
       const data = counties[polygon.dataItem.dataContext['id']];
       polygon.setAll({
         fill: am5.color(0x005cbb),
-        fillOpacity: data ? data.countedVotes / data.castVotes : 0,
+        fillOpacity: data?.castVotes ? data.countedVotes / data.castVotes : 0,
       })
     });
   }

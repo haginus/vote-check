@@ -93,6 +93,7 @@ mat-toolbar {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
+    margin-bottom: 16px;
 
     .stat {
       position: relative;
@@ -138,7 +139,6 @@ mat-toolbar {
   }
 
   .candidate-list {
-    margin-top: 16px;
 
     .cantidate-entry {
 
