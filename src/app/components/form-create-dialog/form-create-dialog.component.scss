@@ -20,4 +20,8 @@ mat-form-field + mat-form-field {
   font-size: 14px;
   font-weight: 500;
   color: #005cbb;
+  cursor: pointer;
+  &:hover {
+    background: var(--mat-option-hover-state-layer-color);
+  }
 }

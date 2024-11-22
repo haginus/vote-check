@@ -2,11 +2,15 @@
 <mat-dialog-content [formGroup]="createForm">
   <mat-form-field>
     <mat-label>Scrutin</mat-label>
-    <mat-select formControlName="election" (valueChange)="createForm.get('poll').setValue($event.type.polls[0])">
+    <mat-select
+      formControlName="election"
+      (valueChange)="createForm.get('poll').setValue($event.type.polls[0])"
+      [compareWith]="compareElections"
+    >
       @for(election of elections$ | async; track election.id) {
         <mat-option [value]="election" [disabled]="election.isAvailable === false">{{ election | electionName }}</mat-option>
       }
-      <div class="pseudo-option" (click)="showAllElections$.next(!showAllElections$.value)">
+      <div matRipple class="pseudo-option" (click)="showAllElections$.next(!showAllElections$.value)">
         @if(showAllElections$.value) {
           <span>Ascundeți alegerile necurente</span>
           <mat-icon>expand_less</mat-icon>

@@ -4,16 +4,17 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Election, Poll } from '../../../elections/types';
 import { getAvailablePolls } from '../../../elections/election-types';
 import { SettingsService } from '../../services/settings.service';
-import { BehaviorSubject, combineLatest, first, map, Observable, pipe, startWith, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, first, map, Observable, startWith, tap } from 'rxjs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 import { elections, isElectionAvailable } from '../../../elections/elections';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-form-create-dialog',
@@ -26,10 +27,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatButtonModule,
     MatIconModule,
+    MatRippleModule,
     MatFormFieldModule,
     MatSelectModule,
     AsyncPipe,
-    DatePipe,
     ElectionNamePipe,
   ],
   providers: [
@@ -89,5 +90,9 @@ export class FormCreateDialogComponent {
       this.pollControl.setValue(polls[0] || null);
     }),
   );
+
+  compareElections(a: Election, b: Election) {
+    return a?.id === b?.id;
+  }
 
 }
