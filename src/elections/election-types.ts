@@ -11,6 +11,7 @@ export const electionTypes = [
         id: 'P',
         name: 'Președinte',
         candidateScope: CandidateScope.Country,
+        sicpvId: 'PRSD',
       },
     ],
   },
@@ -115,7 +116,7 @@ export function getElectionTypeReferendum(numberOfQuestions: number) {
     id: `Î${index + 1}`,
     name: `Întrebarea ${index + 1}`,
     candidateScope: CandidateScope.Country,
-    sicpvId: 'REF',
+    sicpvId: `REF${index + 1}`,
   }));
   return { ...baseType, polls };
 }
