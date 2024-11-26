@@ -114,13 +114,13 @@
           <mat-card class="form-edit-card mat-elevation-z2">
             <mat-card-header>
               <mat-card-title>Voturi valabil exprimate pentru fiecare candidat</mat-card-title>
-              <mat-card-subtitle>Numărați voturile valabil exprimate pentru fiecare candidat în parte (punctul h.)</mat-card-subtitle>
+              <mat-card-subtitle>Numărați voturile valabil exprimate pentru fiecare candidat în parte (punctul {{ election.type.formStructure.candidateSectionKey }}.)</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
               @for(candidate of candidates; track $index) {
                 <mat-form-field>
                   <mat-label>
-                    h{{ $index + 1 }}. {{ candidate.candidate }} {{ candidate.party ? '(' + candidate.party + ')' : '' }}
+                    {{ election.type.formStructure.candidateSectionKey }}{{ $index + 1 }}. {{ candidate.candidate }} {{ candidate.party ? '(' + candidate.party + ')' : '' }}
                   </mat-label>
                   <input
                     matInput
