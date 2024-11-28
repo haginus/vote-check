@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -40,6 +41,8 @@ export class DashboardComponent {
 
   forms$ = this.formsService.watchForms();
   constructor(private formsService: FormsService, private dialog: MatDialog) { }
+
+  currentElection = environment.currentElections[0];
 
   createForm() {
     this.dialog.open(FormCreateDialogComponent);

@@ -31,8 +31,12 @@ export const routes: Routes = [
       formData: FormResolver,
     }
   },
+  // {
+  //   path: 'live-results',
+  //   loadComponent: () => import('./pages/live-results/live-results.component').then(m => m.LiveResultsComponent),
+  // },
   {
-    path: 'live-results',
-    loadComponent: () => import('./pages/live-results/live-results.component').then(m => m.LiveResultsComponent),
+    path: '**',
+    redirectTo: ''
   },
 ];

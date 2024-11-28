@@ -2,9 +2,11 @@
   <mat-toolbar>
     <span>VoteCheck 🇷🇴</span>
     <span class="spacer"></span>
-    <button mat-icon-button [routerLink]="['/live-results']" matTooltip="Rezultate în timp real">
-      <mat-icon>live_tv</mat-icon>
-    </button>
+    <a target="_blank" href="https://prezenta.roaep.ro/{{ currentElection.id }}/pv/romania/results">
+      <button mat-icon-button matTooltip="Rezultate în timp real">
+        <mat-icon>live_tv</mat-icon>
+      </button>
+    </a>
     <button mat-icon-button (click)="openSettingsDialog()" matTooltip="Setări">
       <mat-icon>settings</mat-icon>
     </button>
