@@ -62,9 +62,8 @@ const isValid = (_tasks: any) => {
 }
 
 export interface TaskChapter {
-  chapterName: string,
-  availableOn: number,
-  sections: TaskSection[]
+  chapterName: string;
+  sections: TaskSection[];
 }
 
 export interface Task {
