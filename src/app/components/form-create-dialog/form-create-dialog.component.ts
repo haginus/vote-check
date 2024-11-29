@@ -44,7 +44,9 @@ export class FormCreateDialogComponent {
 
   constructor() {
     this.elections$.pipe(first()).subscribe(elections => {
-      this.electionControl.setValue(elections[0]);
+      setTimeout(() => {
+        this.electionControl.setValue(elections[0]);
+      }, 0);
     });
   }
 
