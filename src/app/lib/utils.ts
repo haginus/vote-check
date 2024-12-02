@@ -37,3 +37,7 @@ export function shadeColor(color: string, percent: number) {
 
   return "#"+RR+GG+BB;
 }
+
+export function formatWithSign(n: number) {
+  return n > 0 ? '+' + n : n;
+}

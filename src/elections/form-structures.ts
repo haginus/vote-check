@@ -1,4 +1,5 @@
 import { FieldMeaning, FormStructure } from "./types";
+import { formatWithSign } from "../app/lib/utils";
 
 type FormGroupValue = Record<string, number>;
 
@@ -11,14 +12,15 @@ export interface ValidationError {
 interface AssertConstraintOptions {
   key: string;
   constraint: string;
+  computeConstraint: (formValue: FormGroupValue) => number;
   error: {
-    condition: (formGroupValue: FormGroupValue) => boolean;
+    condition: (constraintValue: number) => boolean;
     message: string;
-  }
+  };
   warning?: {
-    condition: (formGroupValue: FormGroupValue) => boolean;
+    condition: (constraintValue: number) => boolean;
     message: string;
-  }
+  };
 }
 
 class Validator {
@@ -27,11 +29,12 @@ class Validator {
 
   constructor(private formGroupValue: Record<string, number>) {}
 
-  assertConstraint({ key, constraint, error, warning }: AssertConstraintOptions): void {
-    const isError = error.condition(this.formGroupValue);
-    const isWarning = warning && warning.condition(this.formGroupValue);
+  assertConstraint({ key, constraint, computeConstraint, error, warning }: AssertConstraintOptions): void {
+    const constraintValue = computeConstraint(this.formGroupValue);
+    const isError = error.condition(constraintValue);
+    const isWarning = warning && warning.condition(constraintValue);
     if(isError || isWarning) {
-      this.addRecord(key, constraint, isError ? 'error' : 'warning', isError ? error.message : warning!.message);
+      this.addRecord(key, constraint, isError ? 'error' : 'warning', isError ? error.message : warning!.message, constraintValue);
     }
   }
 
@@ -39,11 +42,11 @@ class Validator {
     return Object.keys(this.validationErrors) ? this.validationErrors : null;
   }
 
-  private addRecord(key: string, constraint: string, type: 'error' | 'warning', message: string) {
+  private addRecord(key: string, constraint: string, type: 'error' | 'warning', message: string, constraintValue?: number) {
     this.validationErrors[key] = {
       type,
       constraint,
-      message: `${type === 'error' ? 'Constrângere nerespectată' : 'Atenționare'}: ${constraint}; ${message}`
+      message: `${type === 'error' ? 'Constrângere nerespectată' : 'Atenționare'}:${constraintValue ? ` (${formatWithSign(constraintValue)})` : ''} ${constraint}; ${message}`
     }
   }
 
@@ -184,48 +187,53 @@ export const parliamentStructure: FormStructure = {
     validator.assertConstraint({
       key: 'a1_b1',
       constraint: 'a1 ≥ b1',
+      computeConstraint: (formValue) => formValue['a1'] - formValue['b1'],
       error: {
-        condition: (value) => value['a1'] < value['b1'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'a2_b2',
       constraint: 'a2 ≥ b2',
+      computeConstraint: (formValue) => formValue['a2'] - formValue['b2'],
       error: {
-        condition: (value) => value['a2'] < value['b2'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista suplimentară nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'a3_b3',
       constraint: 'a3 ≥ b3',
+      computeConstraint: (formValue) => formValue['a3'] - formValue['b3'],
       error: {
-        condition: (value) => value['a3'] < value['b3'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista pentru urnă specială nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'c_d_e_f_g',
       constraint: 'c ≥ d + e + f + g',
+      computeConstraint: (formValue) => formValue['c'] - (formValue['d'] + formValue['e'] + formValue['f'] + formValue['g']),
       error: {
-        condition: (value) => value['c'] < value['d'] + value['e'] + value['f'] + value['g'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele anulate însumate cu cele intrate în urnă.'
       },
       warning: {
-        condition: (value) => value['c'] > value['d'] + value['e'] + value['f'] + value['g'],
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele anulate însumate cu cele intrate în urnă.'
       }
     });
     validator.assertConstraint({
       key: 'e_b_f_g',
       constraint: 'e ≤ [b - (f + g)]',
+      computeConstraint: (formValue) => formValue['e'] - (formValue['b'] - (formValue['f'] + formValue['g'])),
       error: {
-        condition: (value) => value['e'] > value['b'] - (value['f'] + value['g']),
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule/albe.'
       },
       warning: {
-        condition: (value) => value['e'] < value['b'] - (value['f'] + value['g']),
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule/albe.'
       }
     });
@@ -382,56 +390,62 @@ export const localsStructure: FormStructure = {
     validator.assertConstraint({
       key: 'a1_b1',
       constraint: 'a1 ≥ b1',
+      computeConstraint: (formValue) => formValue['a1'] - formValue['b1'],
       error: {
-        condition: (value) => value['a1'] < value['b1'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'a2_b2',
       constraint: 'a2 ≥ b2',
+      computeConstraint: (formValue) => formValue['a2'] - formValue['b2'],
       error: {
-        condition: (value) => value['a2'] < value['b2'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista complementară nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'a3_b3',
       constraint: 'a3 ≥ b3',
+      computeConstraint: (formValue) => formValue['a3'] - formValue['b3'],
       error: {
-        condition: (value) => value['a3'] < value['b3'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista suplimentară nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'a4_b4',
       constraint: 'a4 ≥ b4',
+      computeConstraint: (formValue) => formValue['a4'] - formValue['b4'],
       error: {
-        condition: (value) => value['a4'] < value['b4'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista pentru urnă specială nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'c_b_d',
       constraint: 'c ≤ b - d',
+      computeConstraint: (formValue) => formValue['c'] - (formValue['b'] - formValue['d']),
       error: {
-        condition: (value) => value['c'] > value['b'] - value['d'],
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule.'
       },
       warning: {
-        condition: (value) => value['c'] < value['b'] - value['d'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule.'
       }
     });
     validator.assertConstraint({
       key: 'e_c_d_f',
       constraint: 'e ≥ c + d + f',
+      computeConstraint: (formValue) => formValue['e'] - (formValue['c'] + formValue['d'] + formValue['f']),
       error: {
-        condition: (value) => value['e'] < value['c'] + value['d'] + value['f'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele intrate în urnă însumate cu cele anulate.'
       },
       warning: {
-        condition: (value) => value['e'] > value['c'] + value['d'] + value['f'],
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele intrate în urnă însumate cu cele anulate.'
       }
     });
@@ -575,40 +589,44 @@ export const europeansStructure: FormStructure = {
     validator.assertConstraint({
       key: 'a1_b1',
       constraint: 'a1 ≥ b1',
+      computeConstraint: (formValue) => formValue['a1'] - formValue['b1'],
       error: {
-        condition: (value) => value['a1'] < value['b1'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'a2_b2',
       constraint: 'a2 ≥ b2',
+      computeConstraint: (formValue) => formValue['a2'] - formValue['b2'],
       error: {
-        condition: (value) => value['a2'] < value['b2'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista specială nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'c_d_e_f',
       constraint: 'c ≥ d + e + f',
+      computeConstraint: (formValue) => formValue['c'] - (formValue['d'] + formValue['e'] + formValue['f']),
       error: {
-        condition: (value) => value['c'] < value['d'] + value['e'] + value['f'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele anulate însumate cu cele intrate în urnă.'
       },
       warning: {
-        condition: (value) => value['c'] > value['d'] + value['e'] + value['f'],
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele anulate însumate cu cele intrate în urnă.'
       }
     });
     validator.assertConstraint({
       key: 'e_b_f',
       constraint: 'e ≤ b - f',
+      computeConstraint: (formValue) => formValue['e'] - (formValue['b'] - formValue['f']),
       error: {
-        condition: (value) => value['e'] > value['b'] - value['f'],
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule.'
       },
       warning: {
-        condition: (value) => value['e'] < value['b'] - value['f'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule.'
       }
     });
@@ -726,32 +744,35 @@ export const presidentialsStructure: FormStructure = {
     validator.assertConstraint({
       key: 'a_b1',
       constraint: 'a ≥ b1',
+      computeConstraint: (formValue) => formValue['a'] - formValue['b1'],
       error: {
-        condition: (value) => value['a'] < value['b1'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de votanți prezenți pe lista permanentă nu poate fi mai mare decât cei înscriși pe această listă.'
       }
     });
     validator.assertConstraint({
       key: 'c_b_d',
       constraint: 'c ≤ b - d',
+      computeConstraint: (formValue) => formValue['c'] - (formValue['b'] - formValue['d']),
       error: {
-        condition: (value) => value['c'] > value['b'] - value['d'],
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Numărul de voturi valabil exprimate nu poate fi mai mare decât diferența dintre numărul de votanți prezenți și voturile nule.'
       },
       warning: {
-        condition: (value) => value['c'] < value['b'] - value['d'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Este de preferat ca numărul de voturi valabil exprimate să fie egal cu diferența dintre numărul de votanți prezenți și voturile nule.'
       }
     });
     validator.assertConstraint({
       key: 'e_c_d_f',
       constraint: 'e ≥ c + d + f',
+      computeConstraint: (formGroup) => formGroup['e'] - (formGroup['c'] + formGroup['d'] + formGroup['f']),
       error: {
-        condition: (value) => value['e'] < value['c'] + value['d'] + value['f'],
+        condition: (constraintValue) => constraintValue < 0,
         message: 'Numărul de buletine de vot primite nu poate fi mai mic decât cele intrate în urnă însumate cu cele anulate.'
       },
       warning: {
-        condition: (value) => value['e'] > value['c'] + value['d'] + value['f'],
+        condition: (constraintValue) => constraintValue > 0,
         message: 'Este de preferat ca numărul de buletine de vot primite să coincidă cu cele intrate în urnă însumate cu cele anulate.'
       }
     });
@@ -851,8 +872,9 @@ export const referendumStructure: FormStructure = {
     validator.assertConstraint({
       key: '2_5_6_7',
       constraint: '2 = 5 + 6 + 7',
+      computeConstraint: (formValue) => formValue['2'] - (formValue['5'] + formValue['6'] + formValue['7']),
       error: {
-        condition: (value) => (value['2'] || 0) !== value['5'] + value['6'] + value['7'],
+        condition: (constraintValue) => constraintValue != 0,
         message: 'Numărul de participanți trebuie să fie egal cu numărul de voturi exprimate.'
       }
     });
