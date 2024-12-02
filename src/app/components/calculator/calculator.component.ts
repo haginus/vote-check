@@ -74,16 +74,9 @@ export class CalculatorComponent {
         },
         {
           id: 'validVotes',
-          title: 'Voturi valabil exprimate',
+          title: 'Buletine de vot în urnă',
           side: 'right',
-          meaning: FieldMeaning.ValidVotes,
-        },
-        {
-          id: 'invalidVotes',
-          title: 'Voturi nule',
-          side: 'right',
-          meaning: FieldMeaning.InvalidVotes,
-          disabledByDefault: true,
+          meaning: [FieldMeaning.ValidVotes, FieldMeaning.InvalidVotes],
         },
         {
           id: 'spoiledBallots',
