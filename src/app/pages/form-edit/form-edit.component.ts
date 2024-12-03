@@ -146,6 +146,9 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
 
     action.subscribe(() => {
       this.snackBar.open('Proces verbal salvat.');
+      if(!this.existingForm) {
+        this.router.navigate(['form', form.id, 'edit'], { replaceUrl: true });
+      }
       this.existingForm = form;
       this.formGroup.markAsPristine();
     });
