@@ -57,6 +57,13 @@ button[mat-icon-button] {
 .mat-icon {
   font-family: 'Material Icons Outlined';
   font-size: 24px;
+  line-height: normal;
+
+  &.small-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
 }
 
 mat-checkbox.multiline {

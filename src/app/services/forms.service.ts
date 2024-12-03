@@ -24,7 +24,7 @@ export class FormsService {
 
   watchForms(): Observable<PVForm[]> {
     return this.storage.watch<Record<string, PVForm>>('forms', undefined).pipe(
-      map(forms => forms === undefined ? [] : Object.values(forms))
+      map(forms => forms === undefined ? [] : Object.values(forms).sort((a, b) => b.timestamp - a.timestamp))
     );
   }
 
@@ -81,4 +81,5 @@ export interface PVForm {
   pollId: string;
   precinct: Precint;
   values: Record<string, number>;
+  isArchived?: boolean;
 }

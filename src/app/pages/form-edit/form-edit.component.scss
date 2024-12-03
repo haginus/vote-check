@@ -15,6 +15,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .archived-icon {
+      margin-left: 4px;
+      vertical-align: middle;
+      color: #666;
+    }
   }
 
   mat-card-subtitle {

@@ -1,3 +1,14 @@
+<mat-menu #formMenu="matMenu">
+  <button mat-menu-item (click)="toggleFormArchive()">
+    <mat-icon>archive</mat-icon>
+    <span>{{ existingForm?.isArchived ? 'Dezarhivați' : 'Arhivați' }}</span>
+  </button>
+  <button mat-menu-item (click)="deleteForm()">
+    <mat-icon>delete</mat-icon>
+    <span>Ștergeți</span>
+  </button>
+</mat-menu>
+
 <div class="scroll-container">
   <mat-toolbar>
     <button mat-icon-button [routerLink]="['/']" style="margin-right: 8px;">
@@ -8,14 +19,14 @@
     <button mat-icon-button matTooltip="Calculator" (click)="openCalculator()">
       <mat-icon>calculate</mat-icon>
     </button>
-    @if(existingForm) {
-      <button mat-icon-button matTooltip="Ștergeți P.V." (click)="deleteForm()">
-        <mat-icon>delete</mat-icon>
-      </button>
-    }
     <button mat-icon-button matTooltip="Salvați P.V." (click)="saveForm()">
       <mat-icon>save</mat-icon>
     </button>
+    @if(existingForm) {
+      <button mat-icon-button matTooltip="Mai multe" [mat-menu-trigger-for]="formMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    }
   </mat-toolbar>
   <div class="scroll">
     @if(formGroup) {
@@ -24,9 +35,12 @@
           <mat-card-header>
             <mat-card-title>
               <div>
-                Proces-verbal pentru {{ election | electionName }} - {{ poll.name }}
+                <span>Proces-verbal pentru {{ election | electionName }} - {{ poll.name }}</span>
                 @if(precinct) {
-                  (S.V. {{ precinct.county }}-{{ precinct.number }})
+                  <span> (S.V. {{ precinct.county }}-{{ precinct.number }})</span>
+                }
+                @if(existingForm?.isArchived) {
+                  <mat-icon class="archived-icon small-icon" matTooltip="Arhivat">archive</mat-icon>
                 }
               </div>
               @if(election.type.formStructure.simpvPullStrategy) {

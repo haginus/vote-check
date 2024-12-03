@@ -10,7 +10,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 12px;
+  margin: 12px 0;
 }
 
 .form-card {
@@ -24,5 +24,53 @@
 
   @media (min-width: 769px) and (max-width: 1024px) {
     width: calc(50% - 6px);
+  }
+
+  mat-card-title {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    mat-icon {
+      color: #666;
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    gap: 8px;
+
+    .link-button {
+      flex: 1;
+    }
+
+  }
+}
+
+.form-create-button {
+  background-color: rgba(0, 92, 187, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: column;
+  border: 1px dashed #005cbb;
+  border-radius: 16px;
+  height: 172px;
+  box-sizing: border-box;
+  padding: 16px;
+  color: #005cbb;
+  font-size: 0.95rem;
+  letter-spacing: var(--mdc-filled-button-label-text-tracking);
+  font-weight: var(--mdc-filled-button-label-text-weight);
+  font-family: var(--mdc-filled-button-label-text-font);
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 92, 187, 0.15);
+  }
+
+  &:active {
+    background-color: rgba(0, 92, 187, 0.2);
   }
 }

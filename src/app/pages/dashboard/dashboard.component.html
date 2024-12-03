@@ -1,3 +1,42 @@
+<mat-menu #formMenu="matMenu">
+  <ng-template matMenuContent let-form="form">
+    <button mat-menu-item (click)="toggleFormArchive(form)">
+      <mat-icon>archive</mat-icon>
+      <span>{{ form.isArchived ? 'Dezarhivați' : 'Arhivați' }}</span>
+    </button>
+    <button mat-menu-item (click)="deleteForm(form)">
+      <mat-icon>delete</mat-icon>
+      <span>Ștergeți</span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<ng-template #formTemplate let-form="form">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div>{{ form.pollId }} / S.V. {{ form.precinct.county }}-{{ form.precinct.number }}</div>
+        @if(form.isArchived) {
+          <mat-icon class="small-icon" matTooltip="Arhivat">archive</mat-icon>
+        }
+      </mat-card-title>
+      <mat-card-subtitle>
+        <div>{{ getElection(form.electionId) | electionName }}</div>
+        <div>{{ form.timestamp | date:'dd.MM.yyyy HH:mm' }}</div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button class="link-button" mat-flat-button [routerLink]="['/form', form.id, 'edit']">
+        <mat-icon>arrow_forward</mat-icon>
+        <span>Accesați</span>
+      </button>
+      <button mat-icon-button [mat-menu-trigger-for]="formMenu" [matMenuTriggerData]="{ form: form }">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>
+
 <div class="scroll-container">
   <mat-toolbar>
     <span>VoteCheck 🇷🇴</span>
@@ -18,28 +57,27 @@
     <div class="home-section">
       <h6>Procese-verbale</h6>
       <div class="form-cards">
+        <button class="form-card form-create-button" (click)="createForm()">
+          <mat-icon>add</mat-icon>
+          <div>Adăugați un proces-verbal</div>
+        </button>
         @for(form of forms$ | async; track form.id) {
-          <mat-card class="form-card">
-            <mat-card-header>
-              <mat-card-title>
-                {{ form.pollId }} / S.V. {{ form.precinct.county }}-{{ form.precinct.number }}
-              </mat-card-title>
-              <mat-card-subtitle>
-                <div>{{ getElection(form.electionId) | electionName }}</div>
-                <div>{{ form.timestamp | date:'dd.MM.yyyy HH:mm' }}</div>
-              </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-actions>
-              <button mat-icon-button [routerLink]="['/form', form.id, 'edit']">
-                <mat-icon>arrow_forward</mat-icon>
-              </button>
-            </mat-card-actions>
-          </mat-card>
+          <ng-container *ngTemplateOutlet="formTemplate; context: { form: form }"></ng-container>
         }
       </div>
-      <button mat-button mat-stroked-button (click)="createForm()">
-        Creați P.V.
-      </button>
+      @if(archivedFormsCount$ | async) {
+        <button mat-button (click)="showArchivedForms = !showArchivedForms">
+          <mat-icon>{{ showArchivedForms ? 'expand_less' : 'expand_more' }}</mat-icon>
+          <span>{{ showArchivedForms ? 'Ascundeți' : 'Arătați' }} procesele-verbale arhivate ({{ archivedFormsCount$ | async }})</span>
+        </button>
+      }
+      @if(showArchivedForms) {
+        <div class="form-cards">
+          @for(form of archivedForms$ | async; track form.id) {
+            <ng-container *ngTemplateOutlet="formTemplate; context: { form: form }"></ng-container>
+          }
+        </div>
+      }
     </div>
       <div class="home-section">
         <h6>Sarcini</h6>
