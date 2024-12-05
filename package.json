@@ -1,6 +1,6 @@
 {
   "name": "vote-check",
-  "version": "4.0.1",
+  "version": "5.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

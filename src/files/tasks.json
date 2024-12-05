@@ -4,7 +4,7 @@
     "sections": [
       {
         "sectionName": "Materiale necesare",
-        "reference": "Pag. 13 - Ghidul expertului electoral",
+        "reference": "Pag. 14 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -13,6 +13,21 @@
             "tasks": [
               {
                 "taskName": "un exemplar al listei electorale permanente"
+              },
+              {
+                "taskName": "buletinele de vot"
+              },
+              {
+                "taskName": "ștampila de control"
+              },
+              {
+                "taskName": "ștampilele cu mențiunea „VOTAT”"
+              },
+              {
+                "taskName": "tuș și tușiere, de culoare albastră"
+              },
+              {
+                "taskName": "formularele pentru încheierea proceselor-verbale pentru consemnarea rezultatelor votării"
               },
               {
                 "taskName": "formularele listei electorale suplimentare"
@@ -24,43 +39,22 @@
                 "taskName": "formularele necesare pentru consemnarea situațiilor semnalate de SIMPV"
               },
               {
-                "taskName": "buletinele de vot pentru alegerea Senatului"
-              },
-              {
-                "taskName": "buletinele de vot pentru alegerea Camerei Deputaţilor"
-              },
-              {
-                "taskName": "ștampila de control a secției de votare"
-              },
-              {
-                "taskName": "ștampilele cu mențiunea „VOTAT”"
-              },
-              {
-                "taskName": "formularele pentru încheierea proceselor-verbale pentru consemnarea rezultatelor votării"
-              },
-              {
-                "taskName": "formularele tipizate pentru consemnarea opțiunilor ce rezultă din citirea buletinelor de vot"
-              },
-              {
-                "taskName": "broșuri conținând legislația aplicabilă"
-              },
-              {
-                "taskName": "circulare și decizii ale birourilor electorale ierarhic superioare"
+                "taskName": "un buletin de vot anulat de către președintele biroului electoral județean sau al sectorului municipiului București, după caz, pe care îl va afișa la sediul secției de votare"
               },
               {
                 "taskName": "timbre autocolante"
               },
               {
-                "taskName": "tuș și tușiere, de culoare albastră"
+                "taskName": "broșuri conținând legislația aplicabilă"
+              },
+              {
+                "taskName": "pixuri și coli albe de hârtie A4"
               },
               {
                 "taskName": "ecusoanele membrilor biroului electoral al secției de votare"
               },
               {
-                "taskName": "buletine de vot anulate de către președintele biroului electoral de circumscripție, unul pentru alegerea Senatului și unul pentru alegerea Camerei Deputaților"
-              },
-              {
-                "taskName": "alte materiale necesare votării"
+                "taskName": "alte materiale stabilite de Biroul Electoral Central"
               }
             ]
           }
@@ -88,7 +82,7 @@
       },
       {
         "sectionName": "Pregătirea secției",
-        "reference": "Pag. 14 - Ghidul expertului electoral",
+        "reference": "Pag. 15 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -124,7 +118,7 @@
       },
       {
         "sectionName": "Verificări privind funcționalitatea SIMPV",
-        "reference": "Pag. 15 - Ghidul expertului electoral",
+        "reference": "Pag. 16 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -183,7 +177,7 @@
     "sections": [
       {
         "sectionName": "Verificarea stării secției",
-        "reference": "Pag. 20 - Ghidul expertului electoral",
+        "reference": "Pag. 23 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -251,7 +245,7 @@
       },
       {
         "sectionName": "Urna specială",
-        "reference": "Pag. 37 - Ghidul expertului electoral",
+        "reference": "Pag. 40 - Ghidul expertului electoral",
         "isOptional": true,
         "content": [
           {
@@ -311,7 +305,7 @@
       },
       {
         "sectionName": "Încheierea votării",
-        "reference": "Pag. 40 - Ghidul expertului electoral",
+        "reference": "Pag. 43 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -365,7 +359,7 @@
       },
       {
         "sectionName": "Numărarea voturilor",
-        "reference": "Pag. 41 - Ghidul expertului electoral",
+        "reference": "Pag. 45 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -375,11 +369,10 @@
                 "taskName": "Desigilați, pe rând, urnele de vot"
               },
               {
-                "taskName": "Numărați voturile găsite în urne",
-                "tip": "Unul dintre membrii BESV, asistat de cel puțin încă un membru al acestuia, consemnează pe formularul tipizat elaborat de AEP opțiunea ce rezultă prin citirea fiecărui buletin de vot."
+                "taskName": "Numărați voturile găsite în urne"
               },
               {
-                "taskName": "Evidențiați separat voturile valabil exprimate, voturile nule și voturile albe"
+                "taskName": "Evidențiați separat voturile valabil exprimate și voturile nule"
               },
               {
                 "taskName": "Introduceți rezultatele votării în formularul electronic pentru verificarea corelațiilor cu ajutorul operatorului de calculator"
@@ -398,7 +391,7 @@
       },
       {
         "sectionName": "Constituirea dosarelor",
-        "reference": "Pag. 44 - Ghidul expertului electoral",
+        "reference": "Pag. 50 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -408,73 +401,39 @@
           },
           {
             "type": "list",
-            "text": "Un dosar sigilat și ștampilat care cuprinde, pentru Senat:",
+            "text": "a) un dosar sigilat și ștampilat însoțit de ștampila de control a biroului electoral al secției de votare, care cuprinde:",
             "tasks": [
               {
                 "taskName": "două exemplare ale procesului-verbal privind consemnarea rezultatelor votării"
               },
               {
-                "taskName": "toate întâmpinările și contestațiile privitoare la operațiunile electorale ale biroului electoral al secției de votare"
-              },
-              {
-                "taskName": "voturile nule"
-              },
-              {
-                "taskName": "voturile contestate"
-              },
-              {
-                "taskName": "buletinele de vot albe"
-              },
-              {
-                "taskName": "formularele tipizate folosite la calculul rezultatelor"
-              },
-              {
-                "taskName": "înscrieți pe dosar sintagma „ALEGEREA SENATULUI”, denumirea UAT-ului și numărul secției de votare"
+                "taskName": "toate întâmpinările și contestațiile privitoare la operațiunile electorale ale biroului electoral al secției de votare, buletinele de vot nule și cele contestate, precum și ciorna procesului-verbal, dacă aceasta există (ciorna procesuluiverbal nu trebuie să poarte semnăturile membrilor biroului electoral)"
               }
             ]
           },
           {
             "type": "list",
-            "text": "Un dosar sigilat și ștampilat care cuprinde, pentru Camera Deputaților:",
             "tasks": [
               {
-                "taskName": "două exemplare ale procesului-verbal privind consemnarea rezultatelor votării"
-              },
-              {
-                "taskName": "toate întâmpinările și contestațiile privitoare la operațiunile electorale ale biroului electoral al secției de votare"
-              },
-              {
-                "taskName": "voturile nule"
-              },
-              {
-                "taskName": "voturile contestate"
-              },
-              {
-                "taskName": "buletinele de vot albe"
-              },
-              {
-                "taskName": "formularele tipizate folosite la calculul rezultatelor"
-              },
-              {
-                "taskName": "înscrieți pe dosar sintagma „ALEGEREA CAMEREI DEPUTAȚILOR”, denumirea UAT-ului și numărul secției de votare"
+                "taskName": "b) un dosar sigilat și ștampilat cuprinzând listele electorale utilizate în cadrul secției de votare, respectiv lista electorală permanentă, lista electorală suplimentară și extrasul din listele electorale"
               }
             ]
           },
           {
             "type": "list",
-            "text": "Un dosar sigilat și ștampilat care cuprinde:",
+            "text": "Scrieți pe fiecare dosar:",
             "tasks": [
               {
-                "taskName": "lista permanentă"
+                "taskName": "sintagma „ALEGERI PREZIDENȚIALE”"
               },
               {
-                "taskName": "listele suplimentare"
+                "taskName": "data scrutinului"
               },
               {
-                "taskName": "extras din listele suplimentare (după caz)"
+                "taskName": "denumirea unității administrativ-teritoriale sau a subdiviziunii administrativteritoriale, denumirea județului sau municipiul București"
               },
               {
-                "taskName": "înscrieți pe dosar sintagma „ALEGERI PARLAMENTARE - LISTE ELECTORALE”, denumirea UAT-ului și numărul secției de votare"
+                "taskName": "numărul secției de votare"
               }
             ]
           },
@@ -495,24 +454,21 @@
       },
       {
         "sectionName": "Constituirea sacilor",
-        "reference": "Instruire BEJ",
+        "reference": "Pag. 50 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
             "type": "list",
-            "text": "Asigurați, cu sprijinul celorlalți membri ai BESV, constituirea următorilor saci:",
+            "text": "Asigurați, cu sprijinul celorlalți membri ai BESV, introducerea într-un sac, a:",
             "tasks": [
               {
-                "taskName": "un sac ce cuprinde buletinele de vot întrebuințate și necontestate pentru Senat, grupate pe competitori electorali",
-                "tip": "Etichetați cu sintagma „Buletine de vot folosite - Senat - SV ...”"
+                "taskName": "buletinele de vot neîncredințate și anulate"
               },
               {
-                "taskName": "un sac ce cuprinde buletinele de vot întrebuințate și necontestate pentru Camera Deputaților, grupate pe competitori electorali",
-                "tip": "Etichetați cu sintagma „Buletine de vot folosite - Camera Deputaților - SV ...”"
+                "taskName": "buletinele de vot valabil exprimate întrebuințate și necontestate, grupate pe competitori electorali"
               },
               {
-                "taskName": "un sac ce cuprinde buletinele de vot anulate, timbrele autocolante rămase neutilizate, celelalte formulare, procese-verbale folosite în procesul electoral, tipizate pentru consemnarea situațiilor semnalate de SIMPV, cereri de vot prin intermediul urnei speciale, copii ale actelor din care rezultă necesitatea urnei speciale, plicul sigilat cu ștampilele cu mențiunea „VOTAT” etc.",
-                "tip": "Etichetați cu sintagma „Buletine de vot anulate și materiale - Alegeri parlamentare 2024 - SV ...”"
+                "taskName": "alte materiale utilizate în secția de votare privind alegerile (declarații date de către alegători, tipizate liste electorale neutilizate, tipizate SIMPV, tipizate declarații neutilizate etc.)."
               }
             ]
           },
