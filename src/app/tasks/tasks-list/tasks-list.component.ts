@@ -38,7 +38,8 @@ export class TasksListComponent implements OnInit {
 
   async openSection(chapter: number, section: number) {
     const dialogRef = this.dialog.open(TaskSectionComponent, {
-      data: this.tasks[chapter].sections[section]
+      data: this.tasks[chapter].sections[section],
+      autoFocus: 'dialog',
     });
     await firstValueFrom(dialogRef.afterClosed());
     await firstValueFrom(this.tasksService.setTasks(this.tasks));
