@@ -16,7 +16,7 @@ export const elections = [
     id: "prezidentiale24112024",
     type: getElectionType('PRESIDENTIAL'),
     date: new Date("2024-11-24"),
-    name: 'Alegeri prezidențiale 2024 (Tur 1)'
+    name: 'Alegeri prezidențiale 2024 (Tur 1 - Anulat)'
   },
   {
     id: "referendum24112024",
@@ -31,12 +31,6 @@ export const elections = [
     id: "parlamentare01122024",
     type: getElectionType('PARLIAMENTARY'),
     date: new Date("2024-12-01")
-  },
-  {
-    id: "prezidentiale08122024",
-    type: getElectionType('PRESIDENTIAL'),
-    date: new Date("2024-12-08"),
-    name: 'Alegeri prezidențiale 2024 (Tur 2)'
   }
 ] as const satisfies Election[];
 
