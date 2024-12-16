@@ -1,4 +1,8 @@
 <mat-menu #formMenu="matMenu">
+  <button mat-menu-item (click)="editPrecinct()">
+    <mat-icon>settings</mat-icon>
+    <span>Schimbați secția</span>
+  </button>
   <button mat-menu-item (click)="toggleFormArchive()">
     <mat-icon>archive</mat-icon>
     <span>{{ existingForm?.isArchived ? 'Dezarhivați' : 'Arhivați' }}</span>

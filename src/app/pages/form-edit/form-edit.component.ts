@@ -32,6 +32,8 @@ import { CalculatorComponent, CalculatorData } from '../../components/calculator
 import { ElectionNamePipe } from '../../pipes/election-name.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
+import { SettingsComponent } from '../../components/settings/settings.component';
+import { Settings } from '../../services/settings.service';
 
 @Component({
   selector: 'app-form-edit',
@@ -167,6 +169,16 @@ export class FormEditComponent implements OnInit, OnDestroy, CanDeactivate {
     const newForm = await firstValueFrom(this.formsService.editForm(form.id, { ...form, isArchived: !form.isArchived }));
     this.snackBar.open(`Proces-verbal ${form.isArchived ? 'dezarhivat' : 'arhivat'}.`);
     this.existingForm = newForm;
+  }
+
+  async editPrecinct() {
+    const dialogRef = this.dialog.open(SettingsComponent, {
+      data: { form: this.getPvForm() }
+    });
+    const settings = await firstValueFrom<Settings>(dialogRef.afterClosed());
+    if(!settings) return;
+    this.precinct = settings.selectedPrecinct;
+    this.formGroup.markAsDirty();
   }
 
   async autocompleteFromSimpv() {
