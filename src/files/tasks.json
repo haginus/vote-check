@@ -305,7 +305,7 @@
       },
       {
         "sectionName": "Încheierea votării",
-        "reference": "Pag. 43 - Ghidul expertului electoral",
+        "reference": "Pag. 46 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -359,7 +359,7 @@
       },
       {
         "sectionName": "Numărarea voturilor",
-        "reference": "Pag. 45 - Ghidul expertului electoral",
+        "reference": "Pag. 48 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -391,7 +391,7 @@
       },
       {
         "sectionName": "Constituirea dosarelor",
-        "reference": "Pag. 50 - Ghidul expertului electoral",
+        "reference": "Pag. 59 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -407,7 +407,13 @@
                 "taskName": "două exemplare ale procesului-verbal privind consemnarea rezultatelor votării"
               },
               {
-                "taskName": "toate întâmpinările și contestațiile privitoare la operațiunile electorale ale biroului electoral al secției de votare, buletinele de vot nule și cele contestate, precum și ciorna procesului-verbal, dacă aceasta există (ciorna procesuluiverbal nu trebuie să poarte semnăturile membrilor biroului electoral)"
+                "taskName": "toate întâmpinările și contestațiile privitoare la operațiunile electorale ale biroului electoral al secției de votare"
+              },
+              {
+                "taskName": "buletinele de vot nule și cele contestate împreună cu întâmpinările, contestațiile și materialele la care se referă acestea"
+              },
+              {
+                "taskName": "ciorna procesului-verbal, dacă există (ciorna procesului-verbal nu trebuie să poarte semnăturile membrilor biroului electoral)"
               }
             ]
           },
@@ -454,7 +460,7 @@
       },
       {
         "sectionName": "Constituirea sacilor",
-        "reference": "Pag. 50 - Ghidul expertului electoral",
+        "reference": "Pag. 60 - Ghidul expertului electoral",
         "isOptional": false,
         "content": [
           {
@@ -474,7 +480,16 @@
           },
           {
             "type": "list",
-            "text": "După constituirea sacului:",
+            "text": "Atenție:",
+            "tasks": [
+              {
+                "taskName": "Ștampilele cu menţiunea „VOTAT” (într-un plic sigilat prin aplicarea ștampilei de control) și alte materiale care pot fi reutilizate la desfășurarea unui nou tur de scrutin (tuș, tușiere etc.) vor fi introduse într-un sac separat."
+              }
+            ]
+          },
+          {
+            "type": "list",
+            "text": "După constituirea sacilor:",
             "tasks": [
               {
                 "taskName": "Sigilați sacul și legați-l cu sfoară sau coliere de plastic"

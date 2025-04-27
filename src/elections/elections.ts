@@ -31,6 +31,11 @@ export const elections = [
     id: "parlamentare01122024",
     type: getElectionType('PARLIAMENTARY'),
     date: new Date("2024-12-01")
+  },
+  {
+    id: "prezidentiale04052025",
+    type: getElectionType('PRESIDENTIAL'),
+    date: new Date("2025-05-04")
   }
 ] as const satisfies Election[];
 
