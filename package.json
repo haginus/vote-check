@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "extract-candidates": "cd ./tools && tsc && cd .. && node ./tools/dist/extract-candidates.js"
+    "extract-candidates": "cd ./tools && tsc && cd .. && node ./tools/dist/extract-candidates.js",
+    "deploy": "firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {
