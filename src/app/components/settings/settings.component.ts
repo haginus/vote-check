@@ -79,6 +79,7 @@ export class SettingsComponent implements OnInit {
     map((res) => !res.hasNetworkConnection)
   );
   loadingPrecincts = false;
+  isUsingFallback = false;
   counties = [];
   filteredPrecincts: Observable<any>;
 
@@ -109,7 +110,23 @@ export class SettingsComponent implements OnInit {
       this.loadingPrecincts = true;
       this.precinctSearch.disable();
     }),
-    switchMap(([_, county]) => county ? this.simpv.getPrecincts(this.electionId, county) : of([])),
+    switchMap(([_, county]) => {
+      if(!county) return of([]);
+      return this.simpv.getPrecincts(this.electionId, county).pipe(
+        catchError(() => {
+          this.isUsingFallback = true;
+          const fallbackValue = Array.from({ length: 1500 }).map(() => ({
+            precinct: {
+              name: '',
+            },
+            uat: {
+              name: ''
+            }
+          }));
+          return of(fallbackValue);
+        })
+      );
+    }),
     map(result => result.map((precinct, precinctNo) => ({
       name: precinct['precinct']['name'].toLowerCase(),
       uatName: precinct['uat']['name'].toLowerCase(),
@@ -131,12 +148,6 @@ export class SettingsComponent implements OnInit {
         this.precinctSearch.disable();
         this.precinct.setValue(null);
       }
-    }),
-    catchError((e) => {
-      console.error(e);
-      this.loadingPrecincts = false;
-      this.precinct.setValue(null);
-      return [];
     }),
   );
 

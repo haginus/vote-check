@@ -25,7 +25,7 @@
         @for(precinct of filteredPrecincts | async; track precinct.number) {
           <mat-option [value]="precinct.number">
             <div class="precinct-info">
-              <div class="precinct-name"><b>Secția Nr. {{ precinct.number }}</b> ({{ precinct.uatName | titlecase }})</div>
+              <div class="precinct-name"><b>Secția Nr. {{ precinct.number }}</b> @if(precinct.uatName) { ({{ precinct.uatName | titlecase }}) }</div>
               <div class="precinct-details">{{ precinct.name }}</div>
             </div>
           </mat-option>
@@ -36,6 +36,10 @@
     @if(isOffline$ | async) {
       <div class="error">
         Este nevoie de o conexiune la internet pentru a obține date despre secții!
+      </div>
+    } @else if(isUsingFallback) {
+      <div class="error">
+        Nu am putut obține date despre secții din SIMPV. Puteți introduce în continuare numărul secției.
       </div>
     }
   </div>
