@@ -35,7 +35,14 @@ export const elections = [
   {
     id: "prezidentiale04052025",
     type: getElectionType('PRESIDENTIAL'),
+    name: 'Alegeri prezidențiale 2025 (Tur 1)',
     date: new Date("2025-05-04")
+  },
+  {
+    id: "prezidentiale18052025",
+    type: getElectionType('PRESIDENTIAL'),
+    name: 'Alegeri prezidențiale 2025 (Tur 2)',
+    date: new Date("2025-05-18")
   }
 ] as const satisfies Election[];
 
